@@ -1,0 +1,38 @@
+body {
+    background-image: url("../images/fondo.jpg") !important;
+    background-repeat: repeat; /* Do not repeat the image */
+    color: #6A6A6A; 
+}
+
+
+#barra_navegacion{
+    background: whitesmoke;
+    margin-top: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 5px;
+}
+
+.nav-item{
+    padding-left: 5%;
+    width: 100%;
+}
+.btn-primary-outline{
+    background-color: #bb4a00;
+    color: white;
+    border-style: outset;
+    border-color: white;
+    opacity: 1.0;
+}
+
+
+.cosa{
+    background-color:  white;
+    opacity:  0.9;
+    border-radius: 5px;
+    
+    padding: 10px, 10px, 10px, 10px;
+    padding-left: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
