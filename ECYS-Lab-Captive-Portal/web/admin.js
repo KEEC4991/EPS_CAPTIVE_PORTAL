@@ -24,7 +24,7 @@ function cambioPanel(valor) {
     switch (valor) {
         case 2:
         {
-            $('#bodyAdministrador').load('reportesAdministracion.html');
+            $('#bodyAdministrador').load('reportesAdministracion.jsp');
 
             break;
         }
@@ -40,7 +40,7 @@ function cambioPanel(valor) {
         }
         case 4:
         {
-            $('#bodyAdministrador').load('politicasAdministracion.html');
+            $('#bodyAdministrador').load('politicasAdministracion.jsp');
             break;
         }
         case 5:

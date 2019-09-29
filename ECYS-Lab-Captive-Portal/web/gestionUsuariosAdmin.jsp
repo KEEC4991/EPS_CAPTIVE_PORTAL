@@ -319,13 +319,6 @@
     </div>
 </div>
 <br>
-<hr>
-<!-- SEGUNDA SECCION -->
-<div class="row">
-    <div class="col">
-        <h4><b>Detalle de Usuarios de la Red</b></h4>
-    </div>
-</div>
 
 <script src="gestionUsuariosAdministrador.js" type="text/javascript"></script>
 

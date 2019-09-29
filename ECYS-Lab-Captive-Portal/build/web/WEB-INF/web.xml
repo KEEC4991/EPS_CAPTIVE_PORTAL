@@ -12,17 +12,9 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
-    <servlet>
-        <servlet-name>my-admin</servlet-name>
-        <jsp-file>/admin.jsp</jsp-file>
-    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>my-admin</servlet-name>
-        <url-pattern>/my-admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -30,7 +22,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.htm</welcome-file>
+        <welcome-file>admin.jsp</welcome-file>
     </welcome-file-list>
     <jsp-config>
         <jsp-property-group>

@@ -15,7 +15,8 @@
     }
     
 </style>
-
+<hr>
+<br>
 <div>
     <div class="container">
         <div class="row">
