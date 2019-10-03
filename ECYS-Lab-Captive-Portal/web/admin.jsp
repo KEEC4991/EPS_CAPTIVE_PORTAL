@@ -13,26 +13,30 @@
 
         <title> ADMIN ECYS - Portal Cautivo </title>
 
+
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="assets/js/core/jquery.min.js"></script>
+
         <link rel="shortcut icon" href="images/logo.png">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/fontawsom-all.min.css">
-        <!--link rel="stylesheet" type="text/css" href="css/admin.css" /-->
+
         <link rel="stylesheet" type="text/css" href="css/w3.css"/>
         <link rel="stylesheet" type="text/css" href="css/css.css"/>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/fontawsom-all.min.css"/>
         <link rel="stylesheet" type="text/scss" href="scss/mdb.scss"/>
         <link rel="stylesheet" type="text/css" href="css/mdb.css"/>
-        <link href="css/addons/datatables.css" rel="stylesheet">
-        <link href="css/addons/datatables-select.min.css" rel="stylesheet">
+        <link href="css/addons/datatables.css" rel="stylesheet"/>
+        <link href="css/addons/datatables-select.min.css" rel="stylesheet"/>
         <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
+        <link href="css/jquery-ui.css" rel="stylesheet" />
 
-        <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
         <script src="js/popper.js"></script>
-        <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/addons/datatables.min.js"></script>
 
         <script src="js/modules/waves.js"></script>
@@ -41,6 +45,9 @@
         <script src="js/addons/datatables-select.min.js"></script>
 
         <script src="admin.js" type="text/javascript"></script>
+
+        <script src="js/moment.js"></script>
+        <script src="js/jquery-ui.js"></script>
 
     </head>
     <body class="">
@@ -134,7 +141,7 @@
 
         </div>
 
-        <script src="assets/js/core/jquery.min.js"></script>
+        <!--script src="assets/js/core/jquery.min.js"></script-->
         <script src="assets/js/core/popper.min.js"></script>
         <script src="assets/js/core/bootstrap-material-design.min.js"></script>
         <script src="https://unpkg.com/default-passive-events"></script>
@@ -142,7 +149,7 @@
 
         <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        <!--script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script-->
 
         <script src="assets/js/plugins/chartist.min.js"></script>
 
@@ -150,8 +157,8 @@
 
         <script src="assets/js/material-dashboard.js?v=2.1.0"></script>
 
-        <script src="assets/demo/demo.js"></script>
-        
+        <!--script src="assets/demo/demo.js"></script-->
+
         <!--script>
                                 $(document).ready(function () {
                                     $().ready(function () {
@@ -315,6 +322,6 @@
                                 });
         </script-->
 
-        
+
     </body>
 </html>
