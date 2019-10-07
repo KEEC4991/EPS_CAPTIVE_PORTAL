@@ -1,41 +1,62 @@
 $(document).ready(function () {
-    /*
-    var table = $('#tablaUsuarios').DataTable({
-        data: dataSet,
+    var tabla = $('#tabla_usuarios_administrativos').DataTable({
         columns: [{
-                title: "Name"
+                title: "NOMBRE"
             },
             {
-                title: "Position"
+                title: "ESTADO"
             },
             {
-                title: "Office"
+                title: "FECHA CREACION"
             },
             {
-                title: "Extn."
+                title: "ULT. CONEXIÓN"
             },
             {
-                title: "Start date"
-            },
-            {
-                title: "Salary"
+                title: "ACCIONES"
             }
         ],
         dom: 'Bfrtip',
         select: true,
-        buttons: [{
-                text: 'Select all',
-                action: function () {
-                    table.rows().select();
-                }
-            },
-            {
-                text: 'Select none',
-                action: function () {
-                    table.rows().deselect();
-                }
-            }
-        ]
-    });
-    */
+    })
+
+    /*
+     var table = $('#tablaUsuarios').DataTable({
+     data: dataSet,
+     columns: [{
+     title: "Name"
+     },
+     {
+     title: "Position"
+     },
+     {
+     title: "Office"
+     },
+     {
+     title: "Extn."
+     },
+     {
+     title: "Start date"
+     },
+     {
+     title: "Salary"
+     }
+     ],
+     dom: 'Bfrtip',
+     select: true,
+     buttons: [{
+     text: 'Select all',
+     action: function () {
+     table.rows().select();
+     }
+     },
+     {
+     text: 'Select none',
+     action: function () {
+     table.rows().deselect();
+     }
+     }
+     ]
+     });
+     */
 });

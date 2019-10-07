@@ -350,12 +350,12 @@
                         <table id="example" class="display" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>NOMBRE USUARIO</th>
+                                    <th>DIRECCIÓN IP</th>
+                                    <th>FECHA</th>
+                                    <th>INICIO CONEXIÓN</th>
+                                    <th>FIN DE CONEXIÓN</th>
+                                    <th>MAC</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -818,12 +818,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
+                                    <th>NOMBRE USUARIO</th>
+                                    <th>DIRECCIÓN IP</th>
                                     <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>INICIO DE CONEXIÓN</th>
+                                    <th>FIN DE CONEXIÓN</th>
+                                    <th>MAC</th>
                                 </tr>
                             </tfoot>
                         </table>
