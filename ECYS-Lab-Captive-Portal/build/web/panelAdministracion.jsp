@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 
 <link type="text/css" href="css/GUI/panelAdministracion.css" rel="stylesheet">
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col" align="center">
             <h5 style="font-weight: bold;"> Panel Administrativo </h5>
@@ -17,7 +17,7 @@
     <hr style="margin-top: -5px;">
     <div class="row">
         <div class="panel_general">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col panel_reporte" align="center">
                         <h5 class="card-title" >Reportes</h5>
@@ -29,9 +29,9 @@
                             var myLineChart = new Chart(ctxL, {
                                 type: 'line',
                                 data: {
-                                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                    labels: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
                                     datasets: [{
-                                            label: "My First dataset",
+                                            label: "Laboratorio 013 - 014",
                                             data: [65, 59, 80, 81, 56, 55, 40],
                                             backgroundColor: [
                                                 'rgba(105, 0, 132, .2)',
@@ -42,13 +42,24 @@
                                             borderWidth: 2
                                         },
                                         {
-                                            label: "My Second dataset",
+                                            label: "Laboratorio India 1 - 2",
                                             data: [28, 48, 40, 19, 86, 27, 90],
                                             backgroundColor: [
                                                 'rgba(0, 137, 132, .2)',
                                             ],
                                             borderColor: [
                                                 'rgba(0, 10, 130, .7)',
+                                            ],
+                                            borderWidth: 2
+                                        },
+                                        {
+                                            label: "Laboratorio Electronica",
+                                            data: [100, 24, 50, 36, 68, 100, 20],
+                                            backgroundColor: [
+                                                'rgba(0, 255, 132, .2)',
+                                            ],
+                                            borderColor: [
+                                                'rgba(0, 255, 130, .7)',
                                             ],
                                             borderWidth: 2
                                         }

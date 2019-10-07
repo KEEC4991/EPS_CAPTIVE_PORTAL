@@ -18,7 +18,30 @@ $(document).ready(function () {
         ],
         dom: 'Bfrtip',
         select: true,
-    })
+    });
+
+    //tabla_usuarios_red
+
+    var tabla = $('#tabla_usuarios_red').DataTable({
+        columns: [{
+                title: "NOMBRE"
+            },
+            {
+                title: "ESTADO"
+            },
+            {
+                title: "FECHA CREACION"
+            },
+            {
+                title: "ULT. CONEXIÓN"
+            },
+            {
+                title: "ACCIONES"
+            }
+        ],
+        dom: 'Bfrtip',
+        select: true,
+    });
 
     /*
      var table = $('#tablaUsuarios').DataTable({

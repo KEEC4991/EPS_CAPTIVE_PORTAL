@@ -34,7 +34,7 @@
     });
 </script>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col" align="center">
             <h5> <b style="font-weight: bold;">Panel de Reportes </b></h5>
@@ -42,7 +42,7 @@
     </div>
     <hr style="margin-top: -5px;">
     <div class="row">
-        <div class="container panel_general">
+        <div class="container-fluid panel_general">
             <div class="row">
                 <div class="col" align="center">
                     <div class="panel_reporte" style="margin-left: 0%;  width: 100%; height: 100%;">

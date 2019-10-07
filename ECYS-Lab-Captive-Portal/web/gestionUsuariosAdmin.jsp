@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <link type="text/css" href="css/GUI/gestionUsuariosAdmin.css" rel="stylesheet">
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col" align="center">
             <h5 style="font-weight: bold;">Gestión de Usuarios</h5>
@@ -16,10 +16,10 @@
     </div>
     <hr style="margin-top: -5px;">
     <div class="row">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col panel_general">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row panel_reporte">
                             <div style="width:100%">
                                 <p style="font-weight: bold; width: 100%">Usuarios Administrativos</p>    
@@ -32,14 +32,18 @@
                         <hr>
                         <div class="row">
                             <div class="col panel_reporte">
-                                <p style="font-weight: bold;">Usuarios de la Red</p>
+
+                                <div style="width:100%">
+                                    <p style="font-weight: bold; width: 100%">Usuarios de la Red</p>    
+                                </div>
+                                <div style="width: 100%">
+                                    <table id="tabla_usuarios_red" style="width: 100%">
+                                    </table>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col panel_general">
                 </div>
             </div>
         </div>

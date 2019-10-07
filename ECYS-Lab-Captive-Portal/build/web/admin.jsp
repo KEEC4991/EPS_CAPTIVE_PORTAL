@@ -132,8 +132,6 @@
                 <div class="content" >
                     <div class="container-fluid" id="bodyAdministrador" >
 
-                        <h5>NO SE QUE ES ESTO</h5>
-
                     </div>
                 </div>
 

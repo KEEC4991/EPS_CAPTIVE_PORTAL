@@ -8,10 +8,6 @@ $(document).ready(function () {
 
 function avisoClick() {
     alert("inicio de las alertas");
-
-    //Carga del panel de adminsitrador al panel principal
-
-
 }
 
 
@@ -19,9 +15,13 @@ function avisoClick() {
 function cambioPanel(valor) {
 
     $('#bodyAdministrador').html('');
-    
 
     switch (valor) {
+        case 7:
+        {
+            alert("Configuración de la cuenta");
+            break;
+        }
         case 2:
         {
             $('#bodyAdministrador').load('reportesAdministracion.jsp');
