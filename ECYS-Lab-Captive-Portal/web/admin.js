@@ -14,7 +14,8 @@ function avisoClick() {
 
 function cambioPanel(valor) {
 
-    $('#bodyAdministrador').html('');
+    //$('#bodyAdministrador').html('');
+    $('#bodyAdministrador').empty();
 
     switch (valor) {
         case 7:

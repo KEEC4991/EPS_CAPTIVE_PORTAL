@@ -9,7 +9,8 @@
 <style>
 
     .panel_informativo{
-        background-color: #ccccff;
+        background-color: #312f2f;
+        color:white;
         border-radius: 5px;
         padding: 20px 20px 20px 20px;
     }

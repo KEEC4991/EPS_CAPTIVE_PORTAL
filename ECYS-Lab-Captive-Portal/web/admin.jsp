@@ -5,7 +5,7 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -50,10 +50,10 @@
         <script src="js/jquery-ui.js"></script>
 
     </head>
-    <body class="">
+    <body style="height: 100vh;">
 
-        <div class="wrapper ">
-            <div class="sidebar" data-color="orange" data-background-color="black" data-image="images/fondo.jpg">
+        <div class="wrapper" style="height:  97%;">
+            <div class="sidebar" data-color="orange" data-background-color="black" data-image="images/fondo.jpg" style="height: 100%;">
                 <div class="logo">
                     <a href="#" class="simple-text logo-normal">
                         - Portal Cautivo -<br>
@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <div class="main-panel">
+            <div class="main-panel" style="height: 100%;">
                 <!-- Navbar -->
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
@@ -129,8 +129,8 @@
 
                 <!-- PANELES DE TIPOS -->
 
-                <div class="content" >
-                    <div class="container-fluid" id="bodyAdministrador" >
+                <div class="content"  style="height:  90%; margin-top: 0px;" >
+                    <div class="container-fluid" id="bodyAdministrador"  style="height:  100%;">
 
                     </div>
                 </div>
