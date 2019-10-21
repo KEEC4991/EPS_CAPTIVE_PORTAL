@@ -61,7 +61,6 @@
                                         <p style="width: 45%; display: inline-block;">Fecha Inicial: <input type="text" style="text-align: center; border-radius: 1px;" id="datepicker1"></p>
                                         <p style="width: 45%; display: inline-block;">Fecha Final: <input type="text" style="text-align: center;  border-radius: 1px;" id="datepicker2"></p>
                                     </div>
-                                    <hr style="margin-top: -2px;">
                                     <div align="center">
                                         <canvas id="lineChart" style="max-width: 60%;"></canvas>
                                     </div>

@@ -20,7 +20,7 @@
 
         <link rel="shortcut icon" href="images/logo.png">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/fontawsom-all.min.css">
+        <!--link rel="stylesheet" href="css/fontawsom-all.min.css"-->
 
         <link rel="stylesheet" type="text/css" href="css/w3.css"/>
         <link rel="stylesheet" type="text/css" href="css/css.css"/>

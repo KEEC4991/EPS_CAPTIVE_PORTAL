@@ -25,7 +25,7 @@
                 <button type="button" class="btn btn-warning" style="width: 75%;" onclick="cargaMenu(1)">Administración de Acceso a Usuarios</button>
                 <br>
                 <span class="badge badge-danger badge-pill" style="margin-right: 1%;" >-</span>
-                <button type="button" class="btn btn-warning" style="width: 75%;" onclick="cargaMenu(2)">Gestión de Direcciones</button>
+                <button type="button" class="btn btn-warning" style="width: 75%;" onclick="cargaMenu(2)">Gestión de Politicas</button>
                 <br>
                 <span class="badge badge-danger badge-pill" style="margin-right: 1%;" >-</span>
                 <button type="button" class="btn btn-warning" style="width: 75%;" onclick="cargaMenu(3)">Gestión de Dominios</button>
