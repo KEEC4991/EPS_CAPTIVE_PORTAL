@@ -11,6 +11,12 @@
 <link href="css/GUI/politicasAdministracion.css" type="text/javascript" rel="stylesheet">
 <script src="politicasAdministracion.js" type="text/javascript"></script>
 
+<script>
+    $(function (){
+        cargaMenu(1);
+    });
+</script>
+
 <div class="container-fluid" style="height: 100%;">
     <div class="row" >
         <div class="col" align="center">

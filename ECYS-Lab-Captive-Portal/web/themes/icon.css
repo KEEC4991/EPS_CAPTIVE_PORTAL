@@ -115,3 +115,9 @@
 .icon-reporte-4{
     	background:url('icons/reportar_4.png') no-repeat center center;    
 }
+.icon-tipo-usuario{
+        background:url('icons/tipo_usuario.png') no-repeat center center;
+}
+.icon-estado-usuario{
+        background:url('icons/estado_usuario.png') no-repeat center center;
+}

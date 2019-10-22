@@ -21,19 +21,19 @@
         </div>
     </div>    
     <hr>
-    <div class="row" style="height: 100%;">
+    <div class="row" style="height: 100%; width: 100;">
         <div class="col" align="center" style="height: 100%; width: 100%;">
-            <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
 
+
+            <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
                 <div data-options="region:'center',title:'Concurrencia de Usuarios',split:true" style="width:90%; height: 100%;" align='center'>
                     <div class="container-fluid" style="height: 100%; width: 100%;" align='center'>
                         <div class="row" style="width:  100%; height: 100%; " align='center'>
-                            <div class="col panel_general" style="width: 100%; height: 98%; " align='center' >
-                                <div class="panel_reporte" align='center' style="width: 100%; height: 100%;">
-
+                            <div class="col panel_general" style="width: 100%; height: 96%; margin-top: 1%;" align='center' >
+                                <div class="panel_reporte" align='center' style="width: 100%; height: 100%; color: black">
                                     <br>
-                                    <canvas id="lineChart" style="max-width: 80%;"></canvas>
-
+                                    <br>
+                                    <canvas id="lineChart" style=" max-width: 80%; /* width: 60%; max-width: 65%; max-height: 90%;*/"></canvas>
                                     <script>
                                         //line
                                         var ctxL = document.getElementById("lineChart").getContext('2d');
@@ -83,7 +83,7 @@
 
                                     </script>
 
-                                    <a class="btn alert-primary" style="background-color: #2a1758" onclick="$('#w').window('open')"> Detalle </a>
+                                    <!--a class="easyui-linkbutton" style="background-color: #2a1758" onclick="$('#w').window('open')"> <b>Detalle</b> </a-->
 
                                 </div>
                             </div>
@@ -201,15 +201,15 @@
 </div>
 
 
-<div id="w" class="easyui-window" title="Detalle de Conexiones" data-options="modal:true,inline:true,closed:true,iconCls:'icon-reporte-4'" style="height: 80%;">
+<div id="w" class="easyui-window" title="Detalle de Conexiones" data-options="modal:true,inline:true,closed:true,iconCls:'icon-reporte-4'" style="height: 60%; width: 60%;">
     <form>
         <h6>CONTENIDO DE LA HISTORIA</h6>
         <hr>
-        
+
         <table class="easyui-datagrid">
-            
+
         </table>
-        
+
     </form>
 </div>
 

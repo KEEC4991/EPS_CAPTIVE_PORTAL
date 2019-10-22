@@ -120,6 +120,14 @@ public class gestionUsuariosAdmin extends HttpServlet {
                     out.print(respuesta);
                     break;
                 }
+                case 8: {
+                    Usuario usuario_admin = new Usuario();
+                    String param_id_usuario = request.getParameter("id_usuario");
+                    String param_id_estado = request.getParameter("id_tipo_usuario");
+                    String respuesta = usuario_admin.cambiar_tipo_usuario_admin(param_id_usuario, param_id_estado);
+                    out.print(respuesta);
+                    break;
+                }
             }
 
         }

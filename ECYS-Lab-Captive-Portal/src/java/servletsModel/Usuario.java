@@ -24,6 +24,27 @@ public class Usuario {
     public Usuario() {
     }
 
+    public String cambiar_tipo_usuario_admin(String id_usuario, String id_tipo_usuario) {
+
+        try {
+            String query = "UPDATE public.captive_administrador\n"
+                    + "	SET tipo_usuario=" + id_tipo_usuario + "\n"
+                    + "	WHERE id_usuario = " + id_usuario + ";";
+
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            int valor_retorno = pstate.executeUpdate();
+
+            return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Cambio de estado realizado con exito.\" }";
+
+        } catch (SQLException ex) {
+            return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado, problemas en la base de datos. - " + ex.getMessage() + "\" }";
+        } catch (ClassNotFoundException ex) {
+            return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado.\" }";
+        }
+    }
+
     public String cambiar_estado_usuario_admin(String id_usuario, String id_estado) {
         try {
             String query = "UPDATE public.captive_administrador\n"

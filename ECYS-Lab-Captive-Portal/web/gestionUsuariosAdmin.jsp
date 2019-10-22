@@ -7,33 +7,30 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link type="text/css" href="css/GUI/gestionUsuariosAdmin.css" rel="stylesheet">
-
 <link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
 <script src="gestionUsuariosAdmin.js" type="text/javascript"></script>
 
+
 <script type="text/javascript">
 
-    var data_administradores = $('#dg_usuarios_administrativos').datagrid({
-        singleSelect: true,
-        collapsible: true,
-        method: 'get',
-        toolbar: '#ft1',
+    var datagrid_usuarios_red = $('#dg_usuarios_red_gestion').datagrid({
+        singleSelect: false,
+        rownumbers: true,
         pagination: true,
         clientPaging: true,
-        rownumbers: true,
         checkOnSelect: true,
         selectOnCheck: true,
-        nowrap:false,
-        url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=0'
+        collapsible: true,
+        nowrap: false,
+        url: 'datagrid_data1.json',
+        method: 'get',
+        toolbar: '#ft2'
     });
 
-//url: 'datagrid_data1.json',
-
-    data_administradores.datagrid('enableFilter');
-
+    datagrid_usuarios_red.datagrid('enableFilter');
 
 </script>
 
@@ -48,16 +45,13 @@
     <div class="row"  style="height: 100%; width: 100%;">
         <div class="col" style="height: 100%;width: 100%;">
             <div id="aa" class="easyui-accordion" style="width:100%; height: 100%;">
+
                 <div title="Usuarios Administrativos" data-options="iconCls:'icon-lan-2'" style="padding:10px;   width: 100%; height: 100%;" align='center'>
 
                     <div class="container-fluid" style="height: 100%; width: 100%;" align='center'>
                         <div class="row" style="height: 100%; width: 100%;" align='center'>
                             <div class="col panel_reporte" style="height: 100%; width: 100%;" align='center'>
-
-                                <table 
-                                    id="dg_usuarios_administrativos" 
-                                    title="Listado de Usuarios Administrativos" 
-                                    style="width:100%; height: 95%;">
+                                <table id="dg_usuarios_administrativos"  style="width:100%; height: 100%;">
                                     <thead>
                                         <tr>
                                             <th data-options="field:'ck',checkbox:true" ></th>
@@ -83,21 +77,25 @@
                         </div>
                     </div>                  
                 </div>
+
                 <div title="Usuarios de la Red" data-options="iconCls:'icon-user'" style="padding:10px;  width: 100%; height: 100%;">
                     <div class="container-fluid" style="height: 100%; width: 100%;" align='center'>
                         <div class="row" style="height: 100%; width: 100%;"  align='center'>
                             <div class="col panel_reporte" style="height: 100%; width: 100%;"  align='center'>
-                                <table class="easyui-datagrid" title="Basic DataGrid" style="width:100%; height: 100%;"
-                                       data-options="singleSelect:false,collapsible:true,url:'datagrid_data1.json',method:'get'" toolbar="#ft2">
+                                <table style="width:100%; height: 100%;"
+                                       id="dg_usuarios_red_gestion"
+                                       data-options="singleSelect:false,rownumbers:true,collapsible:true,url:'datagrid_data1.json',method:'get'" toolbar="#ft2">
                                     <thead>
                                         <tr>
                                             <th data-options="field:'ck',checkbox:true"></th>
-                                            <th data-options="field:'itemid'" align="center" width="10%">Item ID</th>
-                                            <th data-options="field:'productid'" align="center" width="10%">Product</th>
-                                            <th data-options="field:'listprice'" align="center" width="10%">List Price</th>
-                                            <th data-options="field:'unitcost'" align="center" width="10%">Unit Cost</th>
-                                            <th data-options="field:'attr1'" align="left" width="50%">Attribute</th>
-                                            <th data-options="field:'status'" align="center" width="8%">Status</th>
+                                            <th data-options="field:'id_sesion'" align="center" width="13%">ID Sesión</th>
+                                            <th data-options="field:'nombre_usuario'" align="left" width="13%">Nombre de Usuario</th>
+                                            <th data-options="field:'direccion_ip'" align="center" width="12%">Dirección IP</th>
+                                            <th data-options="field:'fecha_conexion'" align="center" width="12%">Fecha Conexión</th>
+                                            <th data-options="field:'inicio_conexion'" align="center" width="12%">Inicio Conexión</th>
+                                            <th data-options="field:'fin_conexion'" align="center" width="12%">Fin Conexión</th>
+                                            <th data-options="field:'tiempo_conexion'" align="center" width="12%">Tiempo Conexión</th>
+                                            <th data-options="field:'direccion_mac'" align="center" width="12%">Dirección MAC</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -160,6 +158,5 @@
         </div>
     </form>
 </div>
-
 
 

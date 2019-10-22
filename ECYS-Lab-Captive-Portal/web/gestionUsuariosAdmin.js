@@ -1,5 +1,19 @@
-$(document).ready(function () {
-
+$(function () {
+    var data_administradores = $('#dg_usuarios_administrativos').datagrid({
+        singleSelect: true,
+        collapsible: true,
+        url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=0',
+        pagination: true,
+        clientPaging: true,
+        checkOnSelect: true,
+        selectOnCheck: true,
+        rownumbers: true,
+        nowrap: false,
+        method: 'get',
+        toolbar: '#ft1',
+        title: 'Listado de Usuarios Administrativos'
+    });
+    data_administradores.datagrid('enableFilter');
 });
 
 function reiniciarTablaUsuariosAdmin() {

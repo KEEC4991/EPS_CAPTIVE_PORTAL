@@ -5,9 +5,7 @@
  */
 
 $(document).ready(function () {
-
-
-
+    cargaMenu(1);
 });
 
 
