@@ -56,7 +56,7 @@
                                         <tr>
                                             <th data-options="field:'ck',checkbox:true" ></th>
                                             <th data-options="field:'id_usuario'" align="center" width="8%">ID Usuario</th>
-                                            <th data-options="field:'nombre_usuario'" align="left" width="15%">Nombre Usuario</th>
+                                            <th data-options="field:'nombre_usuario'" align="left" width="15%">Nombre</th>
                                             <th data-options="field:'correo_electronico'" align="center" width="15%">Correo Electronico</th>
                                             <th data-options="field:'tipo_usuario'" align="center" width="10%">Tipo Usuario</th>
                                             <th data-options="field:'estado_usuario'" align="center" width="10%">Estado</th>
@@ -88,14 +88,15 @@
                                     <thead>
                                         <tr>
                                             <th data-options="field:'ck',checkbox:true"></th>
-                                            <th data-options="field:'id_sesion'" align="center" width="13%">ID Sesión</th>
-                                            <th data-options="field:'nombre_usuario'" align="left" width="13%">Nombre de Usuario</th>
-                                            <th data-options="field:'direccion_ip'" align="center" width="12%">Dirección IP</th>
-                                            <th data-options="field:'fecha_conexion'" align="center" width="12%">Fecha Conexión</th>
-                                            <th data-options="field:'inicio_conexion'" align="center" width="12%">Inicio Conexión</th>
-                                            <th data-options="field:'fin_conexion'" align="center" width="12%">Fin Conexión</th>
-                                            <th data-options="field:'tiempo_conexion'" align="center" width="12%">Tiempo Conexión</th>
-                                            <th data-options="field:'direccion_mac'" align="center" width="12%">Dirección MAC</th>
+                                            <th data-options="field:'id_sesion'" align="center" width="11%">ID Sesión</th>
+                                            <th data-options="field:'nombre_usuario'" align="left" width="11%">Nombre</th>
+                                            <th data-options="field:'apellido_usuario'" align="left" width="11%">Apellido</th>
+                                            <th data-options="field:'direccion_ip'" align="center" width="11%">Dirección IP</th>
+                                            <th data-options="field:'fecha_conexion'" align="center" width="11%">Fecha Conexión</th>
+                                            <th data-options="field:'inicio_conexion'" align="center" width="11%">Inicio Conexión</th>
+                                            <th data-options="field:'fin_conexion'" align="center" width="11%">Fin Conexión</th>
+                                            <th data-options="field:'tiempo_conexion'" align="center" width="11%">Tiempo Conexión</th>
+                                            <th data-options="field:'direccion_mac'" align="center" width="10%">Dirección MAC</th>
                                         </tr>
                                     </thead>
                                 </table>

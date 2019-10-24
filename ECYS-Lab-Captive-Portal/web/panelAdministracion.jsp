@@ -24,9 +24,8 @@
     <div class="row" style="height: 100%; width: 100;">
         <div class="col" align="center" style="height: 100%; width: 100%;">
 
-
             <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
-                <div data-options="region:'center',title:'Concurrencia de Usuarios',split:true" style="width:90%; height: 100%;" align='center'>
+                <div data-options="region:'center',title:'Concurrencia de Servicio Internet Inalambrico',split:true" style="width:90%; height: 100%;" align='center'>
                     <div class="container-fluid" style="height: 100%; width: 100%;" align='center'>
                         <div class="row" style="width:  100%; height: 100%; " align='center'>
                             <div class="col panel_general" style="width: 100%; height: 96%; margin-top: 1%;" align='center' >
