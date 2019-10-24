@@ -3,17 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/politicasContenedor/administracionUsuarios.jsp</file>
-            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/gestionUsuariosAdmin.jsp</file>
-            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/politicasContenedor/administracionUsuarios.js</file>
+            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/my-admin.js</file>
+            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/src/java/servletsController/gestionUsuariosAdmin.java</file>
             <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/gestionUsuariosAdmin.js</file>
             <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/admin.jsp</file>
+            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/cerrarSesionAdministracion.html</file>
             <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/src/java/servletsModel/Usuario.java</file>
-            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/src/java/servletsController/loginController.java</file>
             <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/login.jsp</file>
             <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/login.js</file>
-            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/panelAdministracion.jsp</file>
-            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/themes/icon.css</file>
+            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/admin.js</file>
+            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/my-admin.jsp</file>
+            <file>file:/C:/Users/kgmt4/Desktop/CAPTIVE/ECYS-Lab-Captive-Portal/web/cerrarSesionAdministrador.js</file>
         </group>
     </open-files>
 </project-private>

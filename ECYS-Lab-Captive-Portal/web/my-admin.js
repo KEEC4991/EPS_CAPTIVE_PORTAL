@@ -1,12 +1,12 @@
 
-$(document).ready(function (){
-   
+$(document).ready(function () {
+
 });
 
 function cambioPanel(valor) {
 
     $('#bodyAdministrador').html('');
-    
+
 
     switch (valor) {
         case 2:

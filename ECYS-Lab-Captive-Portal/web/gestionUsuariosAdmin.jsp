@@ -117,17 +117,18 @@
 </div>
 <br>
 
-<div id='window_gestion_usuarios_nuevo' title='Nuevo Usuario Administrador' class="easyui-window" data-options="modal:true,closed:true,iconCls:'icon-add'" style="width: 40%; height: 40%;">
-    <form id='form_gestion_usuarios_nuevo' style="width: 100%; height: 80%; padding: 10px; color: white; ">
+<div id='window_gestion_usuarios_nuevo' title='Nuevo Usuario Administrador' class="easyui-window" data-options="modal:true,closed:true,iconCls:'icon-add'" style="width: 40%; height: 45%;">
+    <form id='form_gestion_usuarios_nuevo' style="width: 100%; height: content-box; padding: 10px; color: white; ">
         <hr>
-        <div class="easyui-form" style="width: 100%;height: 40%;" title='Informacion General'>
+        <div class="easyui-form" style="width: 100%;height: content-box;" title='Informacion General'>
             <input id='txt_gestion_usuario_nombre' class="easyui-textbox" data-options="iconCls:'icon-search',required:true" labelWidth='140' label='Nombre de Usuario' style="width:100%;">
             <input id='txt_gestion_usuario_correo' class="easyui-textbox" data-options="iconCls:'icon-search',required:true,validType:'email',label:'Correo Electronico'" labelWidth='140' style="width:100%;">
             <input id='txt_gestion_usuario_descripcion' class="easyui-textbox" data-options="iconCls:'icon-search',required:true,prompt:'Ingrese una breve descripción',multiline:true" labelWidth='140' label='Descripción Usuario' style="width:100%;">
-
+            <input id='txt_gestion_usuario_contraseña' class="easyui-passwordbox" data-options="iconCls:'icon-search',required:true,prompt:'Contraseña'" labelWidth='140' label='Contraseña' style="width:100%;">
+            <input id='txt_gestion_usuario_contraseña_confirm' class="easyui-passwordbox" data-options="iconCls:'icon-search',required:true,prompt:'Repita la contraseña'" labelWidth='140' label='Confirmación Contraseña' style="width:100%;">
         </div>
         <hr>
-        <div style="width: 100%;height: 25%;" class="easyui-form container" title="Clasificacion de Usuario">
+        <div style="width: 100%;height: content-box;" class="easyui-form container" title="Clasificacion de Usuario">
             <input class="easyui-combobox" labelWidth='140' label='Tipo Usuario' 
                    id='txt_gestion_usuario_tipo_usuario'
                    data-options="
@@ -154,7 +155,7 @@
                    style="width:100%;">
         </div>
         <hr>
-        <div style="width: 100%;height: 10%;" class="easyui-form" title="Clasificacion de Usuario" align='center'>
+        <div style="width: 100%;height: content-box;" class="easyui-form" title="Clasificacion de Usuario" align='center'>
             <a href="#" class="easyui-linkbutton c1" style="font-size: 15px; width: 30%;" data-options="iconCls:'icon-save',iconAlign:'bottom'" onclick="guardarNuevoUsuario()"><span style='font-size:18px'>Guardar</span></a>
         </div>
     </form>

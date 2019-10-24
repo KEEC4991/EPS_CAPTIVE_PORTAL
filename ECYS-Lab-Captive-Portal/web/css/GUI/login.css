@@ -9,12 +9,13 @@ and open the template in the editor.
 */
 
 body{
-    background-color: #201e1e;
+    background-color: white;
     font-family: sans-serif;
 }
 
 .region_login{
-    background-image: url('../../themes/icons/backg.jpg');
+    background-color: white;
+    /* background-image: url('../../themes/icons/backg.jpg'); */
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: scroll;

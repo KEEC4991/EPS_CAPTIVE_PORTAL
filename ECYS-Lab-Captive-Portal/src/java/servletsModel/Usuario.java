@@ -17,6 +17,34 @@ import java.sql.SQLException;
 public class Usuario {
 
     public Usuario() {
+
+    }
+
+    public String verificar_credenciales(String id_usuario, String id_contraseña) {
+        try {
+            String query = "SELECT * FROM captive_administrador where id_usuario = " + id_usuario + " and passwd_usuario = md5('" + id_contraseña + "');";
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            ResultSet rs = pstate.executeQuery();
+            String respuesta = "[\n";
+            while (rs.next()) {
+                respuesta += "{\n\"id_usuario\":\"" + rs.getString(1) + "\",\n";
+                respuesta += "\"nombre_usuario\":\"" + rs.getString(2) + "\",\n";
+                respuesta += "\"correo\":\"" + rs.getString(3) + "\",\n";
+                respuesta += "\"tipo\":\"" + rs.getString(4) + "\",\n";
+                respuesta += "\"estado\":\"" + rs.getString(5) + "\",\n";
+                respuesta += "\"fecha_con\":\"" + rs.getString(6) + "\",\n";
+                respuesta += "\"fecha_reg\":\"" + rs.getString(7) + "\",\n";
+                respuesta += "\"descripcion\":\"" + rs.getString(8) + "\"\n}";
+            }
+            respuesta += "\n]";
+            return respuesta;
+        } catch (SQLException ex) {
+            return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado, problemas en la base de datos. - " + ex.getMessage() + "\" }";
+        } catch (ClassNotFoundException ex) {
+            return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado.\" }";
+        }
     }
 
     public String cambiar_tipo_usuario_admin(String id_usuario, String id_tipo_usuario) {
@@ -79,11 +107,11 @@ public class Usuario {
         }
     }
 
-    public String registrar_usuario_admin(String nombre, String correo, String tipo_usuario, String estado, String descripcion) {
+    public String registrar_usuario_admin(String nombre, String correo, String tipo_usuario, String estado, String descripcion, String passwd) {
         try {
             String query = "INSERT INTO public.captive_administrador(\n"
-                    + "	 nombre_usuario, correo_electronico, tipo_usuario, id_estado, usuario_descripcion)\n"
-                    + "	VALUES ( '" + nombre + "', '" + correo + "', " + tipo_usuario + ", " + estado + ", '" + descripcion + "');";
+                    + "	 nombre_usuario, correo_electronico, tipo_usuario, id_estado, usuario_descripcion, passwd_usuario)\n"
+                    + "	VALUES ( '" + nombre + "', '" + correo + "', " + tipo_usuario + ", " + estado + ", '" + descripcion + "', md5('" + passwd + "'));";
 
             JDBC_PostgreSQL con = new JDBC_PostgreSQL();
             Connection post_con = con.get_connection();

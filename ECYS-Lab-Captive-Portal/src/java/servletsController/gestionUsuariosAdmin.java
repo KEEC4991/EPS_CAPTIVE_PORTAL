@@ -100,7 +100,8 @@ public class gestionUsuariosAdmin extends HttpServlet {
                     String param_descrip = request.getParameter("descrip");
                     String param_tipo_user = request.getParameter("tipo_user");
                     String param_estado = request.getParameter("estado");
-                    String respuesta = inter_admin.registrar_usuario_admin(param_nombre, param_correo, param_tipo_user, param_estado, param_descrip);
+                    String param_passwd = request.getParameter("contrasena");
+                    String respuesta = inter_admin.registrar_usuario_admin(param_nombre, param_correo, param_tipo_user, param_estado, param_descrip, param_passwd);
                     out.print(respuesta);
                     break;
                 }

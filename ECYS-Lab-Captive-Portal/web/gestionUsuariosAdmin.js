@@ -49,7 +49,7 @@ function eliminarUsusario() {
 
                         $.ajax({
                             url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=6',
-                            metod: 'GET',
+                            method: 'GET',
                             data: {id_usuario: seleccionado.id_usuario},
                             success: function (data, textStatus, jqXHR) {
                                 try {
@@ -92,46 +92,59 @@ function eliminarUsusario() {
 
 function guardarNuevoUsuario() {
 
-    var resultado = $('#form_gestion_usuarios_nuevo').form('validate');
+    var contrasena1 = $('#txt_gestion_usuario_contraseña').passwordbox('getValue');
+    var contrasena2 = $('#txt_gestion_usuario_contraseña_confirm').passwordbox('getValue');
 
-    if (resultado) {
+    if (contrasena1 == contrasena2) {
 
-        var nombre = $('#txt_gestion_usuario_nombre').textbox('getValue');
-        var correo = $('#txt_gestion_usuario_correo').textbox('getValue');
-        var descripcion = $('#txt_gestion_usuario_descripcion').textbox('getValue');
+        var resultado = $('#form_gestion_usuarios_nuevo').form('validate');
 
-        var tipo_usuario = $('#txt_gestion_usuario_tipo_usuario').combobox('getValue');
-        var estado = $('#txt_gestion_usuario_estado').combobox('getValue');
+        if (resultado) {
 
-        $.ajax({
-            url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=5',
-            metod: 'GET',
-            data: {nombre: nombre, correo: correo, descrip: descripcion, tipo_user: tipo_usuario, estado: estado},
-            success: function (data, textStatus, jqXHR) {
-                try {
-                    var resultado = JSON.parse(data);
-                    reiniciarTablaUsuariosAdmin();
-                    cerrarReiniciarFormularioRegistro();
-                    $.messager.alert({
-                        title: 'Registro Usuarios Administrativos',
-                        msg: '<p style="text-align: center;"><b>' + resultado.mensaje + '</b></p>',
-                        showType: 'slide'
-                    });
-                } catch (e) {
-                    $.messager.alert({
-                        title: 'Registro Usuarios Administrativos',
-                        msg: '<p style="text-align: center;"><b>Error, el servidor no esta retornando una respuesta correcta.</b></p>',
-                        showType: 'slide'
-                    });
+            var nombre = $('#txt_gestion_usuario_nombre').textbox('getValue');
+            var correo = $('#txt_gestion_usuario_correo').textbox('getValue');
+            var descripcion = $('#txt_gestion_usuario_descripcion').textbox('getValue');
+
+            var tipo_usuario = $('#txt_gestion_usuario_tipo_usuario').combobox('getValue');
+            var estado = $('#txt_gestion_usuario_estado').combobox('getValue');
+
+            $.ajax({
+                url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=5',
+                metod: 'GET',
+                data: {nombre: nombre, correo: correo, descrip: descripcion, tipo_user: tipo_usuario, estado: estado, contrasena: contrasena1},
+                success: function (data, textStatus, jqXHR) {
+                    try {
+                        var resultado = JSON.parse(data);
+                        reiniciarTablaUsuariosAdmin();
+                        cerrarReiniciarFormularioRegistro();
+                        $.messager.alert({
+                            title: 'Registro Usuarios Administrativos',
+                            msg: '<p style="text-align: center;"><b>' + resultado.mensaje + '</b></p>',
+                            showType: 'slide'
+                        });
+                    } catch (e) {
+                        $.messager.alert({
+                            title: 'Registro Usuarios Administrativos',
+                            msg: '<p style="text-align: center;"><b>Error, el servidor no esta retornando una respuesta correcta.</b></p>',
+                            showType: 'slide'
+                        });
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            $.messager.alert({
+                title: 'Registro Usuarios Administrativos',
+                msg: '<p style="text-align: center;"><b>Error, no se ha completado la información de registro.</b></p>',
+                showType: 'slide'
+            });
+        }
+
     } else {
         $.messager.alert({
             title: 'Registro Usuarios Administrativos',
-            msg: '<p style="text-align: center;"><b>Error, no se ha completado la información de registro.</b></p>',
+            msg: '<p style="text-align: center;"><b>Error, las contraseñas no coinciden.</b></p>',
             showType: 'slide'
         });
     }
-
+    
 }
