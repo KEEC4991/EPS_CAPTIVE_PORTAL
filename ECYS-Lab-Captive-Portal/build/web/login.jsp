@@ -33,7 +33,7 @@
                 <div class="col region_login" style="width: 30%; height: content-box; padding: 10px; border-radius: 10px; border: solid 1px orange; color: white;" align='center'>
                     <div style="height: 100%;">
                         <div style="height: 30%;">
-                            <img src="images/logo.png" style="width: 20%; ; border-radius: 50%; background-color: orangered;" >
+                            <img src="images/logo.png" style="width: 20%; ; border-radius: 50%; background-color: orange;" >
                         </div>
                         <div class="container" style="height: 60%; background-color: white; color: #333333; width: 100%; border-radius: 10px;">
                             <div class="row">

@@ -20,6 +20,14 @@
         <servlet-name>LoginAutServlet</servlet-name>
         <servlet-class>servletsController.loginController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroCaptivo</servlet-name>
+        <jsp-file>/captive/registro.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>IngresoCaptivo</servlet-name>
+        <jsp-file>/captive/inicio.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>LoginAutServlet</servlet-name>
         <url-pattern>/auth-log</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroCaptivo</servlet-name>
+        <url-pattern>/reg-cap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IngresoCaptivo</servlet-name>
+        <url-pattern>/init-cap</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
