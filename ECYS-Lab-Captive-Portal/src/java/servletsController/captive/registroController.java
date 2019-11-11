@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servletsModel.NetUser;
 
 /**
  *
@@ -72,10 +73,23 @@ public class registroController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
         
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.setContentType("text/html;charset=UTF-8");
         
-        
+        String param_carnet = request.getParameter("carnet");
+        String param_nombre = request.getParameter("nombre");
+        String param_apellido = request.getParameter("apellido");
+        String param_fecha_nac = request.getParameter("fecha_nacimiento");
+        String param_carrera = request.getParameter("carrera");
+        String param_correo = request.getParameter("correo");
+
+        try (PrintWriter out = response.getWriter()) {
+            NetUser usuariosRed = new NetUser();
+            out.println(usuariosRed.saveNetUser(param_carnet, param_nombre, param_apellido, param_fecha_nac, param_carrera, param_correo));            
+        }
     }
 
     /**

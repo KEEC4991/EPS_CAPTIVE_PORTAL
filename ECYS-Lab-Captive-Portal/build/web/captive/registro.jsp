@@ -63,31 +63,33 @@
 
                                 <div class="easyui-form">
                                     <hr>
-                                    <input class="easyui-textbox" style="width: 100%; text-align: center; " data-options="prompt:'Nombre',required:true,message:'Ingrese su nombre..',missingMessage:'Ingrese su nombre...'"  >
+                                    <input class="easyui-numberbox" id="txt_reg_carnet" style="width: 100%; text-align: center; " data-options="precision:0,prompt:'Carnet',required:true,message:'Ingrese su numero de carnet estudiantil..',missingMessage:'Ingrese su carnet...'"  >
+                                    <br>
+                                    <br>                
+                                    <input class="easyui-textbox" id="txt_reg_nombre" style="width: 100%; text-align: center; " data-options="prompt:'Nombre',required:true,message:'Ingrese su nombre..',missingMessage:'Ingrese su nombre...'"  >
                                     <br>
                                     <br>
-                                    <input class="easyui-textbox" style="width: 100%; text-align: center; " data-options="prompt:'Apellido',required:true,missingMessage:'Ingrese su apellido...'">
+                                    <input class="easyui-textbox" id="txt_reg_apellido" style="width: 100%; text-align: center; " data-options="prompt:'Apellido',required:true,missingMessage:'Ingrese su apellido...'">
                                     <br>
-                                    <input class="easyui-datebox" label="Fecha nacimiento:" labelPosition="top" data-options="editable:false, required:true, missingMessage:'Seleccione una fecha'" style="width:100%; text-align: center;">
+                                    <input class="easyui-datebox" id="txt_reg_fecha" label="Fecha nacimiento:" labelPosition="top" data-options="editable:false, required:true, missingMessage:'Seleccione una fecha'" style="width:100%; text-align: center;">
                                     <br>
-                                    <select class="easyui-combobox" label='Carrera' labelPosition="top" style="width: 100%; font-family: inherit; text-align: left;" data-options='editable:false,'>
-                                        <option selected> Seleccionar.. </option>
-                                        <option> Ingenieria Civil </option>
-                                        <option> Ingenieria Química </option>
-                                        <option> Ingeniería Industrial </option>
-                                        <option> Ingeniería Electrica </option>
-                                        <option> Ingeniería Mecánica </option>
-                                        <option> Ingeniería Mecánica Eléctrica </option>
-                                        <option> Ingeniería Mecánica Industrial </option>
-                                        <option> Ingeniería en Ciencias y Sistemas </option>
-                                        <option> Ingeniería Electrónica </option>
-                                        <option> Ingeniería Ambiental </option>
+                                    <select class="easyui-combobox" id="txt_reg_carrera" label='Carrera' labelPosition="top" style="width: 100%; font-family: inherit; text-align: left;" data-options='editable:false,'>
+                                        <option selected value="0"> Seleccionar.. </option>
+                                        <option value="1"> Ingenieria Civil </option>
+                                        <option value="2"> Ingenieria Química </option>
+                                        <option value="5"> Ingeniería Industrial </option>
+                                        <option value="4"> Ingeniería Electrica </option>
+                                        <option value="3"> Ingeniería Mecánica </option>
+                                        <option value="6"> Ingeniería Mecánica Eléctrica </option>
+                                        <option value="7"> Ingeniería Mecánica Industrial </option>
+                                        <option value="9"> Ingeniería en Ciencias y Sistemas </option>
+                                        <option value="13"> Ingeniería Electrónica </option>
+                                        <option value="35"> Ingeniería Ambiental </option>
                                     </select>
                                     <br>
                                     <br>
 
-
-                                    <input style="text-align:center; width: 100%;" class="easyui-textbox" data-options="required: true,validType: 'email',prompt:'Correo Electronico',missingMessage:'Ingrese su correo electronico',invalidMessage:'Correo invalido...'" >
+                                    <input style="text-align:center; width: 100%;" id="txt_reg_correo" class="easyui-textbox" data-options="required: true,validType: 'email',prompt:'Correo Electronico',missingMessage:'Ingrese su correo electronico',invalidMessage:'Correo invalido...'" >
                                     <br>
                                     <hr>
                                     <div class="input-group center">

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servletsModel.NetUser;
 
 /**
  *
@@ -72,11 +73,18 @@ public class inicioController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
         
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.setContentType("text/html;charset=UTF-8");
         
-        
-        
+        String param_carnet = request.getParameter("carnet");
+
+        try (PrintWriter out = response.getWriter()) {
+            NetUser usuariosRed = new NetUser();
+            out.println(usuariosRed.checkUserJson(param_carnet));            
+        }
     }
 
     /**

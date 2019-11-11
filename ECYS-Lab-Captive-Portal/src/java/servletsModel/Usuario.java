@@ -19,6 +19,12 @@ public class Usuario {
     public Usuario() {
 
     }
+    
+    
+    /**
+     * USUARIOS ADMINISTRATIVOS
+     */
+    
 
     public String verificar_credenciales(String id_usuario, String id_contraseña) {
         try {

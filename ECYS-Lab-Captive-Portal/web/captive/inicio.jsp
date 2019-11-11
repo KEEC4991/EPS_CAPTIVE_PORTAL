@@ -25,7 +25,7 @@
         <script src="js/script.js"></script>
         
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
-        <link rel='stylesheet' type="text/css" href="themes/gray/easyui.css">
+        <link rel='stylesheet' type="text/css" href="themes/metro/easyui.css">
         <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
         <script src="js/jquery-ui.js" type="text/javascript"></script>
         <script src="js/easyui/jquery.easyui.min.js" type="text/javascript"></script>
@@ -42,7 +42,7 @@
     </head>
 
     <body>
-        <div class="container-fluid ">
+        <form class="container-fluid " id="formulario_inicio" method="post">
             <div class="container ">
                 <div class="row cdvfdfd">
                     <div class="col-lg-10 col-md-12 login-box">
@@ -64,11 +64,12 @@
                                 <div class="text-box-cont">
                                     <hr>
                                     
-                                    <input class="easyui-numberbox" data-options="precision:0,prompt:'Número de Carnet'" style="text-align: center; width: 100%;" >
+                                    <input class="easyui-numberbox" id="txt_ingreso_carnet" data-options="precision:0,prompt:'Número de Carnet',required:true" style="text-align: center; width: 100%;" >
                                     <br>
                                     <br>
                                     <div class="input-group center">
-                                        <button class="btn btn-secondary btn-round" onclick="access_validation()">INGRESAR</button>
+                                        <a class="easyui-linkbutton btn btn-secondary btn-round" onclick="access_validation()">Ingresar</a>
+                                        <a class="easyui-linkbutton btn btn-secondary btn-round" onclick="redirect_reg()()">Registrarse</a>
                                     </div> 
                                     <div class="row">
                                         <p class="small-info">Conectate con nosotros</p>
@@ -97,7 +98,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </body>
 
 
