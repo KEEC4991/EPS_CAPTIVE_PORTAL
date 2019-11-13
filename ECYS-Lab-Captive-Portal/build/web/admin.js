@@ -1,8 +1,7 @@
 $(document).ready(function () {
-
     cambioPanel(1);
     if (sessionStorage.getItem('id_usuario') == null) {
-        window.location.href = 'http://127.0.0.1:8080/ECYS-CP/login.jsp';
+        window.location.href = 'http://127.0.0.1:8080/ECYS-CP/log-cap';
     }
 });
 
@@ -47,8 +46,12 @@ function cambioPanel(valor) {
         }
         case 5:
         {
-            $('#bodyAdministrador').load('cerrarSesionAdministracion.html');
+            $('#bodyAdministrador').load('cerrarSesionAdministrador.jsp');
             break;
+        }
+        case 7:{
+                alert("Informacion del Usuario");
+                break;  
         }
         default:
         {

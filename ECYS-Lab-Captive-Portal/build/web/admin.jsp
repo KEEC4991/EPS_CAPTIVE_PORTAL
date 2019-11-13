@@ -93,6 +93,12 @@
                                 <p>Cerrar Sesión</p>
                             </a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="javascript:void(0)" onclick="cambioPanel(7)" style="background-color: black;">
+                                <i class="material-icons">face</i>
+                                <p>Cuenta</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

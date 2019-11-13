@@ -32,8 +32,6 @@ function saveNewUser() {
                 },
                 success: function (data, textStatus, jqXHR) {
 
-                    console.log(data);
-
                     try {
                         var resultado = JSON.parse(data, true);
                         if (resultado.resultado == true) {

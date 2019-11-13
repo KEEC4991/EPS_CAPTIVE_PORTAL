@@ -32,8 +32,12 @@ function cambioPanel(valor) {
         }
         case 5:
         {
-            $('#bodyAdministrador').load('cerrarSesionAdministracion.html');
+            $('#bodyAdministrador').load('cerrarSesionAdministrador.jsp');
             break;
+        }
+        case 7:{
+                alert("informacion del usuario en modal");
+                break;
         }
         default:
         {

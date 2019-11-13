@@ -28,6 +28,14 @@
         <servlet-name>IngresoCaptivo</servlet-name>
         <jsp-file>/captive/inicio.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>AdministracionCaptive</servlet-name>
+        <jsp-file>/admin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginCaptive</servlet-name>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>IngresoCaptivo</servlet-name>
         <url-pattern>/init-cap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministracionCaptive</servlet-name>
+        <url-pattern>/adm-cap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginCaptive</servlet-name>
+        <url-pattern>/log-cap</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
