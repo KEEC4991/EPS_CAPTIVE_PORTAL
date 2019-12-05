@@ -9,10 +9,14 @@
 
 <link type="text/css" href="css/GUI/panelAdministracion.css" rel="stylesheet">
 
-
 <link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/canvasjs/jquery.canvasjs.min.js"></script>
+
+<script type="text/javascript" src="panelAdministracion.js"></script>
+
+<!-- TAGS -->
 
 <div class="container-fluid" style="height: 100%; width: 100%;">
     <div class="row">
@@ -30,59 +34,72 @@
                         <div class="row" style="width:  100%; height: 100%; " align='center'>
                             <div class="col panel_general" style="width: 100%; height: 96%; margin-top: 1%;" align='center' >
                                 <div class="panel_reporte" align='center' style="width: 100%; height: 100%; color: black">
+
                                     <br>
                                     <br>
-                                    <canvas id="lineChart" style=" max-width: 80%; /* width: 60%; max-width: 65%; max-height: 90%;*/"></canvas>
+
+                                    <style>
+                                        body {  
+                                            background: #1D1F20;
+                                            padding: 16px;
+                                        }
+
+                                        canvas {
+                                            /*border: 1px dotted red;*/
+                                        }
+
+                                        .chart-container {
+                                            position: relative;
+                                            margin: auto;
+                                            height: 50vh;
+                                            width: 50vw;
+                                        }
+
+                                    </style>
+
+                                    <div class="chart-container">
+                                        <canvas id="chart"></canvas>
+                                    </div>
+
+
                                     <script>
-                                        //line
-                                        var ctxL = document.getElementById("lineChart").getContext('2d');
-                                        var myLineChart = new Chart(ctxL, {
-                                            type: 'line',
-                                            data: {
-                                                labels: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
-                                                datasets: [{
-                                                        label: "Laboratorio 013 - 014",
-                                                        data: [65, 59, 80, 81, 56, 55, 40],
-                                                        backgroundColor: [
-                                                            'rgba(105, 0, 132, .2)',
-                                                        ],
-                                                        borderColor: [
-                                                            'rgba(200, 99, 132, .7)',
-                                                        ],
-                                                        borderWidth: 2
-                                                    },
-                                                    {
-                                                        label: "Laboratorio India 1 - 2",
-                                                        data: [28, 48, 40, 19, 86, 27, 90],
-                                                        backgroundColor: [
-                                                            'rgba(0, 137, 132, .2)',
-                                                        ],
-                                                        borderColor: [
-                                                            'rgba(0, 10, 130, .7)',
-                                                        ],
-                                                        borderWidth: 2
-                                                    },
-                                                    {
-                                                        label: "Laboratorio Electronica",
-                                                        data: [100, 24, 50, 36, 68, 100, 20],
-                                                        backgroundColor: [
-                                                            'rgba(0, 255, 132, .2)',
-                                                        ],
-                                                        borderColor: [
-                                                            'rgba(0, 255, 130, .7)',
-                                                        ],
-                                                        borderWidth: 2
-                                                    }
-                                                ]
-                                            },
-                                            options: {
-                                                responsive: true
+                                        var data = {
+                                            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                                            datasets: [{
+                                                    label: "Dataset #1",
+                                                    backgroundColor: "rgba(255,99,132,0.2)",
+                                                    borderColor: "rgba(255,99,132,1)",
+                                                    borderWidth: 2,
+                                                    hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                                                    hoverBorderColor: "rgba(255,99,132,1)",
+                                                    data: [65, 59, 20, 81, 56, 55, 40],
+                                                }]
+                                        };
+
+                                        var options = {
+                                            maintainAspectRatio: false,
+                                            scales: {
+                                                yAxes: [{
+                                                        stacked: true,
+                                                        gridLines: {
+                                                            display: true,
+                                                            color: "rgba(255,99,132,0.2)"
+                                                        }
+                                                    }],
+                                                xAxes: [{
+                                                        gridLines: {
+                                                            display: false
+                                                        }
+                                                    }]
                                             }
+                                        };
+
+                                        Chart.Bar('chart', {
+                                            options: options,
+                                            data: data
                                         });
 
                                     </script>
-
-                                    <!--a class="easyui-linkbutton" style="background-color: #2a1758" onclick="$('#w').window('open')"> <b>Detalle</b> </a-->
 
                                 </div>
                             </div>

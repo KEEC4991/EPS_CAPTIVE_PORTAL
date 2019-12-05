@@ -13,27 +13,6 @@
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
 <script src="gestionUsuariosAdmin.js" type="text/javascript"></script>
 
-
-<script type="text/javascript">
-
-    var datagrid_usuarios_red = $('#dg_usuarios_red_gestion').datagrid({
-        singleSelect: false,
-        rownumbers: true,
-        pagination: true,
-        clientPaging: true,
-        checkOnSelect: true,
-        selectOnCheck: true,
-        collapsible: true,
-        nowrap: false,
-        url: 'datagrid_data1.json',
-        method: 'get',
-        toolbar: '#ft2'
-    });
-
-    datagrid_usuarios_red.datagrid('enableFilter');
-
-</script>
-
 <div class="container-fluid" style="height: 100%;">
     <div class="row">
         <div class="col" align="center">
@@ -84,19 +63,19 @@
                             <div class="col panel_reporte" style="height: 100%; width: 100%;"  align='center'>
                                 <table style="width:100%; height: 100%;"
                                        id="dg_usuarios_red_gestion"
-                                       data-options="singleSelect:false,rownumbers:true,collapsible:true,url:'datagrid_data1.json',method:'get'" toolbar="#ft2">
+                                       >
                                     <thead>
                                         <tr>
                                             <th data-options="field:'ck',checkbox:true"></th>
-                                            <th data-options="field:'id_sesion'" align="center" width="11%">ID Sesión</th>
-                                            <th data-options="field:'nombre_usuario'" align="left" width="11%">Nombre</th>
-                                            <th data-options="field:'apellido_usuario'" align="left" width="11%">Apellido</th>
-                                            <th data-options="field:'direccion_ip'" align="center" width="11%">Dirección IP</th>
-                                            <th data-options="field:'fecha_conexion'" align="center" width="11%">Fecha Conexión</th>
-                                            <th data-options="field:'inicio_conexion'" align="center" width="11%">Inicio Conexión</th>
-                                            <th data-options="field:'fin_conexion'" align="center" width="11%">Fin Conexión</th>
-                                            <th data-options="field:'tiempo_conexion'" align="center" width="11%">Tiempo Conexión</th>
-                                            <th data-options="field:'direccion_mac'" align="center" width="10%">Dirección MAC</th>
+                                            <th data-options="field:'id_usuario'" align="center" width="11%">ID Usuario</th>
+                                            <th data-options="field:'id_usuario_freeradius'" align="center" width="11%">Id RADIUS</th>
+                                            <th data-options="field:'carnet'" align="center" width="11%">Carnet</th>
+                                            <th data-options="field:'nombre'" align="center" width="11%">Nombre</th>
+                                            <th data-options="field:'apellido'" align="center" width="11%">Apellido</th>
+                                            <th data-options="field:'fecha_nac'" align="center" width="11%">Fecha Nac</th>
+                                            <th data-options="field:'id_carrera',hidden:true" align="center" width="11%">Fin Conexión</th>
+                                            <th data-options="field:'correo'" align="center" width="11%">Correo</th>
+                                            <th data-options="field:'nombre_carrera'" align="center" width="10%">Nombre Carrera</th>
                                         </tr>
                                     </thead>
                                 </table>

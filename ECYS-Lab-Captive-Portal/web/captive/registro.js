@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 function saveNewUser() {
 
     var validacion = $('#reg_cap_formulario').form('validate');
@@ -37,7 +36,7 @@ function saveNewUser() {
                         if (resultado.resultado == true) {
                             $.messager.alert({
                                 title: 'Registro de Usuario',
-                                msg: '<p style="text-align:center;">' + resultado.mensaje + '<br> Se redigirá al login de acceso principal a la red de internet.</p>',
+                                msg: '<p style="text-align:center;"><b>' + resultado.mensaje + '</b><br> Se redigirá al login de acceso principal a la red de internet.</p>',
                                 fn: function () {
                                     location.replace("http://localhost:8080/ECYS-CP/init-cap")
                                 }

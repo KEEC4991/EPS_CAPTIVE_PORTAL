@@ -41,6 +41,16 @@
     </head>
 
     <body>
+        <script>
+            $.getJSON('http://localhost:8080/ECYS-CP/reg-contr', {}, function (respuesta) {
+                $('#txt_reg_carrera').combobox({
+                    data : respuesta,
+                    editable:false,
+                    valueField:'id_carrera',
+                    textField:'descripcion'
+                });
+            });
+        </script>
 
         <form class="container-fluid" method="post" id="reg_cap_formulario">
             <div class="container ">
@@ -73,8 +83,9 @@
                                     <br>
                                     <input class="easyui-datebox" id="txt_reg_fecha" label="Fecha nacimiento:" labelPosition="top" data-options="editable:false, required:true, missingMessage:'Seleccione una fecha'" style="width:100%; text-align: center;">
                                     <br>
-                                    <select class="easyui-combobox" id="txt_reg_carrera" label='Carrera' labelPosition="top" style="width: 100%; font-family: inherit; text-align: left;" data-options='editable:false,'>
-                                        <option selected value="0"> Seleccionar.. </option>
+                                    <select class="easyui-combobox" id="txt_reg_carrera" label='Carrera' labelPosition="top" style="width: 100%; font-family: inherit; text-align: left;" 
+                                            >
+                                        <!--option selected value="0"> Seleccionar.. </option>
                                         <option value="1"> Ingenieria Civil </option>
                                         <option value="2"> Ingenieria Química </option>
                                         <option value="5"> Ingeniería Industrial </option>
@@ -84,11 +95,10 @@
                                         <option value="7"> Ingeniería Mecánica Industrial </option>
                                         <option value="9"> Ingeniería en Ciencias y Sistemas </option>
                                         <option value="13"> Ingeniería Electrónica </option>
-                                        <option value="35"> Ingeniería Ambiental </option>
+                                        <option value="35"> Ingeniería Ambiental </option-->
                                     </select>
                                     <br>
                                     <br>
-
                                     <input style="text-align:center; width: 100%;" id="txt_reg_correo" class="easyui-textbox" data-options="required: true,validType: 'email',prompt:'Correo Electronico',missingMessage:'Ingrese su correo electronico',invalidMessage:'Correo invalido...'" >
                                     <br>
                                     <hr>

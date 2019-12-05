@@ -18,7 +18,9 @@ public class JDBC_PostgreSQL {
     public Connection get_connection() throws ClassNotFoundException, SQLException {
 
         Class.forName("org.postgresql.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/captiveportal_ecyslab", "postgres", "admin");
+        //Connection conn = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/captiveportal_ecyslab", "postgres", "admin");
+        Connection conn = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/radius", "postgres", "admin");
+
 
         return conn;
     }

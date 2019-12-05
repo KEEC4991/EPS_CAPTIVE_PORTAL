@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servletsModel.NetUser;
 import servletsModel.Usuario;
 
 /**
@@ -126,6 +127,11 @@ public class gestionUsuariosAdmin extends HttpServlet {
                     String param_id_estado = request.getParameter("id_tipo_usuario");
                     String respuesta = usuario_admin.cambiar_tipo_usuario_admin(param_id_usuario, param_id_estado);
                     out.print(respuesta);
+                    break;
+                }
+                case 9:{
+                    NetUser usuarios_red = new NetUser();
+                    out.println(usuarios_red.getNetUsers());
                     break;
                 }
             }

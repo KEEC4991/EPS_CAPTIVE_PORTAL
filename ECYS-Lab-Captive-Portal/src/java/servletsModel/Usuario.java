@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,13 +20,10 @@ public class Usuario {
     public Usuario() {
 
     }
-    
-    
+
     /**
      * USUARIOS ADMINISTRATIVOS
      */
-    
-
     public String verificar_credenciales(String id_usuario, String id_contraseña) {
         try {
             String query = "SELECT * FROM captive_administrador where id_usuario = " + id_usuario + " and passwd_usuario = md5('" + id_contraseña + "');";
@@ -38,17 +36,24 @@ public class Usuario {
                 respuesta += "{\n\"id_usuario\":\"" + rs.getString(1) + "\",\n";
                 respuesta += "\"nombre_usuario\":\"" + rs.getString(2) + "\",\n";
                 respuesta += "\"correo\":\"" + rs.getString(3) + "\",\n";
-                respuesta += "\"tipo\":\"" + rs.getString(4) + "\",\n";
-                respuesta += "\"estado\":\"" + rs.getString(5) + "\",\n";
-                respuesta += "\"fecha_con\":\"" + rs.getString(6) + "\",\n";
-                respuesta += "\"fecha_reg\":\"" + rs.getString(7) + "\",\n";
-                respuesta += "\"descripcion\":\"" + rs.getString(8) + "\"\n}";
+                respuesta += "\"tipo\":\"" + rs.getString(6) + "\",\n";
+                respuesta += "\"estado\":\"" + rs.getString(7) + "\",\n";
+                respuesta += "\"fecha_con\":\"" + rs.getString(8) + "\",\n";
+                respuesta += "\"fecha_reg\":\"" + rs.getString(9) + "\",\n";
+                respuesta += "\"descripcion\":\"" + rs.getString(4) + "\"\n}";
             }
             respuesta += "\n]";
+            post_con.close();
             return respuesta;
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            Logger.getLogger("--- Error SQL");
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado, problemas en la base de datos. - " + ex.getMessage() + "\" }";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            Logger.getLogger("--- Erro de clase");
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado.\" }";
         }
     }
@@ -65,11 +70,16 @@ public class Usuario {
             PreparedStatement pstate = post_con.prepareStatement(query);
             int valor_retorno = pstate.executeUpdate();
 
+            post_con.close();
             return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Cambio de estado realizado con exito.\" }";
 
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado, problemas en la base de datos. - " + ex.getMessage() + "\" }";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado.\" }";
         }
     }
@@ -85,11 +95,16 @@ public class Usuario {
             PreparedStatement pstate = post_con.prepareStatement(query);
             int valor_retorno = pstate.executeUpdate();
 
+            post_con.close();
             return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Cambio de estado realizado con exito.\" }";
 
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado, problemas en la base de datos. - " + ex.getMessage() + "\" }";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al cambiar de estado.\" }";
         }
     }
@@ -104,11 +119,16 @@ public class Usuario {
             PreparedStatement pstate = post_con.prepareStatement(query);
             int valor_retorno = pstate.executeUpdate();
 
+            post_con.close();
             return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Eliminacion realizado con exito.\" }";
 
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al realizar la eliminacion, problemas en la base de datos. - " + ex.getMessage() + "\" }";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al realizar la eliminacion.\" }";
         }
     }
@@ -124,11 +144,16 @@ public class Usuario {
             PreparedStatement pstate = post_con.prepareStatement(query);
             int valor_retorno = pstate.executeUpdate();
 
+            post_con.close();
             return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Registro realizado con exito.\" }";
 
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al realizar el registro, problemas en la base de datos. - " + ex.getMessage() + "\" }";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "{ \"resultado\": false, \"mensaje\": \"Error al realizar el registro.\" }";
         }
     }
@@ -158,11 +183,16 @@ public class Usuario {
             }
 
             respuesta += "\n]";
+            post_con.close();
             return respuesta;
 
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "";
         }
     }
@@ -192,11 +222,16 @@ public class Usuario {
             }
 
             respuesta += "\n]";
+            post_con.close();
             return respuesta;
 
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "";
         }
     }
@@ -234,11 +269,16 @@ public class Usuario {
             }
 
             respuesta += "\n]";
+            post_con.close();
             return respuesta;
 
         } catch (SQLException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "";
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ex.getMessage());
+            System.out.println(ex.getMessage());
             return "";
         }
 

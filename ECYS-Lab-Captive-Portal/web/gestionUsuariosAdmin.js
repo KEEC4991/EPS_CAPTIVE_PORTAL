@@ -13,7 +13,26 @@ $(function () {
         toolbar: '#ft1',
         title: 'Listado de Usuarios Administrativos'
     });
+
     data_administradores.datagrid('enableFilter');
+
+    var datagrid_red = $('#dg_usuarios_red_gestion').datagrid({
+        singleSelect: true,
+        collapsible: true,
+        pagination: true,
+        clientPaging: true,
+        checkOnSelect: true,
+        selectOnCheck: true,
+        rownumbers: true,
+        nowrap: false,
+        toolbar: '#ft2',
+        title: 'Listado de Usuarios de la Red',
+        url : 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=9',
+        method : 'get'
+    });
+
+    data_administradores.datagrid('enableFilter');
+
 });
 
 function reiniciarTablaUsuariosAdmin() {
@@ -146,5 +165,5 @@ function guardarNuevoUsuario() {
             showType: 'slide'
         });
     }
-    
+
 }

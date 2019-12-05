@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servletsModel.NetUser;
 
 /**
  *
@@ -37,7 +38,7 @@ public class reportesAdministracionController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet reportesAdministracionController</title>");            
+            out.println("<title>Servlet reportesAdministracionController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet reportesAdministracionController at " + request.getContextPath() + "</h1>");
@@ -58,7 +59,29 @@ public class reportesAdministracionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.setContentType("text/html;charset=UTF-8");
+
+        try (PrintWriter out = response.getWriter()) {
+
+            String valor_accion = request.getParameter("accion");
+            int accion = Integer.valueOf(valor_accion);
+
+            switch (accion) {
+                case 0: {
+                    break;
+                }
+                case 1: {
+                    out.println();
+                    break;
+                }
+            }
+
+        }
+
     }
 
     /**
@@ -72,7 +95,27 @@ public class reportesAdministracionController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+
+            String valor_accion = request.getParameter("accion");
+            int accion = Integer.valueOf(valor_accion);
+
+            switch (accion) {
+                case 0: {
+                    break;
+                }
+                case 1: {
+                    out.println(new NetUser().getConnectionHistory());
+                    break;
+                }
+            }
+
+        }
     }
 
     /**

@@ -28,7 +28,7 @@ public class NetUser {
         String respuesta = "";
 
         if (check == 0) {
-            respuesta = "{ \"resultado\": false,\"mensaje\": \"<p style='text-align:center;'>Usuario no registrado.</p>\"}";
+            respuesta = "{ \"resultado\": false,\"mensaje\": \"<p style='text-align:center;'>El usuario no esta registrado.</p>\"}";
         } else if (check > 0) {
             respuesta = "{ \"resultado\": true,\"mensaje\": \"<p style='text-align:center;'>Bienvenido: " + carnet + "!!</p>\"}";
         }
@@ -53,6 +53,7 @@ public class NetUser {
                 return num;
             }
 
+            post_con.close();
             return 0;
 
         } catch (ClassNotFoundException ex) {
@@ -94,6 +95,8 @@ public class NetUser {
                     respuesta = "{\"resultado\": false, \"mensaje\": \"Usuario no registrado.\" , \"registro\":\"" + elementosInsertados + "\" }";
                 }
 
+                post_con.close();
+
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(NetUser.class.getName()).log(Level.SEVERE, null, ex);
                 respuesta = "{\"resultado\": false, \"mensaje\": \"Error en registro de usuario. Tipo: 2.\" , \"registro\":\"" + check + "\" }";
@@ -122,8 +125,10 @@ public class NetUser {
             int elementosInsertados = pstate.executeUpdate();
 
             if (elementosInsertados > 0) {
+                post_con.close();
                 return "true";
             } else {
+                post_con.close();
                 return "false";
             }
 
@@ -134,7 +139,129 @@ public class NetUser {
             Logger.getLogger(NetUser.class.getName()).log(Level.SEVERE, null, ex);
             return "false";
         }
+    }
 
+    public String get_Carreras() {
+
+        try {
+
+            String query = "SELECT * FROM captive_carrera;";
+
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            ResultSet rs = pstate.executeQuery();
+
+            String respuesta = "[\n";
+
+            int contador = 0;
+            while (rs.next()) {
+                if (contador == 0) {
+                    contador++;
+                } else {
+                    respuesta += ",";
+                }
+                respuesta += "{\n\"id_carrera\":\"" + rs.getString(1) + "\",\n"
+                        + "\"descripcion\":\"" + rs.getString(2) + "\"\n}";
+            }
+
+            respuesta += "\n]";
+            post_con.close();
+            return respuesta;
+
+        } catch (Exception ex) {
+            Logger.getLogger(ex.getMessage());
+            return "";
+        }
+
+    }
+
+    public String getNetUsers() {
+
+        try {
+            String query = "SELECT CU.*, CC.descripcion\n"
+                    + "FROM  public.captive_usuario CU\n"
+                    + "join public.captive_carrera CC on CU.id_carrera = CC.id_carrera\n"
+                    + "order by CU.id_usuario;";
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            ResultSet rs = pstate.executeQuery();
+
+            String respuesta = "[\n";
+
+            int contador = 0;
+            while (rs.next()) {
+                if (contador == 0) {
+                    contador++;
+                } else {
+                    respuesta += ",";
+                }
+                respuesta += "{\n\"id_usuario\":\"" + rs.getString(1) + "\",\n"
+                        + "\"id_usuario_freeradius\":\"" + rs.getString(2) + "\",\n"
+                        + "\"carnet\":\"" + rs.getString(3) + "\",\n"
+                        + "\"nombre\":\"" + rs.getString(4) + "\",\n"
+                        + "\"apellido\":\"" + rs.getString(5) + "\",\n"
+                        + "\"fecha_nac\":\"" + rs.getString(6) + "\",\n"
+                        + "\"id_carrera\":\"" + rs.getString(7) + "\",\n"
+                        + "\"correo\":\"" + rs.getString(8) + "\",\n"
+                        + "\"nombre_carrera\":\"" + rs.getString(9) + "\"\n}";
+            }
+
+            respuesta += "\n]";
+            post_con.close();
+            return respuesta;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NetUser.class.getName()).log(Level.SEVERE, null, ex);
+            return "[]";
+        } catch (SQLException ex) {
+            Logger.getLogger(NetUser.class.getName()).log(Level.SEVERE, null, ex);
+            return "[]";
+        }
+
+    }
+
+    public String getConnectionHistory() {
+        try {
+            String respuesta = "";
+
+            String query = "SELECT id, username, pass, reply, calledstationid, callingstationid, authdate FROM public.radpostauth;";
+
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            ResultSet rs = pstate.executeQuery();
+
+            respuesta = "[\n";
+            int contador = 0;
+
+            while (rs.next()) {
+                if (contador == 0) {
+                    contador++;
+                } else {
+                    respuesta += ",";
+                }
+                
+                respuesta += "{";
+                respuesta += "\"no_conexion\":\"" + rs.getString(1) + "\",";
+                respuesta += "\"no_usuario\":\"" + rs.getString(2) + "\",";
+                respuesta += "\"no_tipo_respuesta\":\"" + rs.getString(4) + "\",";
+                respuesta += "\"fecha_conexion\":\"" + rs.getString(7) + "\"";
+                respuesta += "}";
+
+            }
+
+            respuesta += "\n]";
+            post_con.close();
+            return respuesta;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(NetUser.class.getName()).log(Level.SEVERE, null, ex);
+            return "[]";
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NetUser.class.getName()).log(Level.SEVERE, null, ex);
+            return "[]";
+        }
     }
 
 }

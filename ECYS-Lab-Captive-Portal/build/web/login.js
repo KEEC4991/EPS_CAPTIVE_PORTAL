@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 function verificarCredenciales() {
     $.ajax({
         url: 'http://127.0.0.1:8080/ECYS-CP/auth-log?accion=1',
@@ -16,7 +15,7 @@ function verificarCredenciales() {
                 if (data.length >= 1) {
                     data = data[0];
 
-                    if (data.estado == 3) {
+                    if (data.estado == 2) {
                         $.messager.alert('Ingreso usuarios administrativos', '<p style="font-weight:bold; text-align:center; color:red;">El Usuario: ' + data.nombre_usuario + ', se encuentra bloqueado.</p><br><p style="text-align:center;"> Comuníquese con un administrador del sistema para habilitar el usuario nuevamente.</p>')
                     } else {
 
@@ -27,6 +26,7 @@ function verificarCredenciales() {
                             iconCls: 'icon-tip',
                             icon: 'info',
                             fn: function () {
+                                
                                 sessionStorage.setItem('id_usuario', data.id_usuario);
                                 sessionStorage.setItem('nombre_usuario', data.nombre_usuario);
                                 sessionStorage.setItem('correo', data.correo);
@@ -35,6 +35,10 @@ function verificarCredenciales() {
                                 sessionStorage.setItem('fecha_reg', data.fecha_reg);
                                 sessionStorage.setItem('estado', data.estado);
                                 sessionStorage.setItem('tipo', data.tipo);
+
+                                setInterval(function (){
+                                    console.log("inicio de pruebas");
+                                },5000);
 
                                 location.replace('http://127.0.0.1:8080/ECYS-CP/adm-cap');
                             }

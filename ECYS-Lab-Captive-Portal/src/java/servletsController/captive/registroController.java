@@ -59,7 +59,19 @@ public class registroController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.setContentType("application/json;charset=UTF-8");
+        
+        try (PrintWriter out = response.getWriter()) {
+            NetUser usuariosRed = new NetUser();
+            String resultado = usuariosRed.get_Carreras();
+            out.println(resultado);            
+        }
+        
     }
 
     /**

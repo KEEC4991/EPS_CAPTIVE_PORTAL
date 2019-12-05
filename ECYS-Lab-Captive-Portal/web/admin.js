@@ -1,7 +1,7 @@
 $(document).ready(function () {
     cambioPanel(1);
     if (sessionStorage.getItem('id_usuario') == null) {
-        window.location.href = 'http://127.0.0.1:8080/ECYS-CP/log-cap';
+        location.replace('http://127.0.0.1:8080/ECYS-CP/log-cap');
     }
 });
 

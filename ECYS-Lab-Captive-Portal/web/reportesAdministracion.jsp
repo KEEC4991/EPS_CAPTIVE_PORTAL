@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 
 <link type="text/css" rel="stylesheet" href="css/GUI/reportesAdministracion.css">
-<link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
+<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
@@ -363,18 +363,14 @@
                                 <div class="panel_reporte" style="height: 100%; color: black;">
 
                                     <table style="width:100%; height: 100%;"
-                                           id="dg_reportes_listado_usuarios_conexion"
-                                           >
+                                           id="dg_reportes_listado_usuarios_conexion" >
                                         <thead>
                                             <tr>
                                                 <th data-options="field:'ck',checkbox:true"></th>
-                                                <th data-options="field:'id_usuario'" align="center" width='15%'>ID USUARIO</th>
-                                                <th data-options="field:'nombre_usuario'" align="left" width='15%'>NOMBRE USUARIO</th>
-                                                <th data-options="field:'direccion_ip'" align="center" width='15%'>DIRECCIÓN IP</th>
-                                                <th data-options="field:'fecha_conexion'" align="center" width='15%'>FECHA</th>
-                                                <th data-options="field:'inicio_conexion'" align="center" width='30%'>INICIO DE CONEXIÓN</th>
-                                                <th data-options="field:'fin_conexion'" align="center" width='15%'>FIN DE CONEXIÓN</th>
-                                                <th data-options="field:'direccion_mac'" align="center" width='15%'>DIRECCIÓN MAC</th>
+                                                <th data-options="field:'no_conexion'" align="center" width='120'>Número Conexión</th>
+                                                <th data-options="field:'no_usuario'" align="center" width='300'>Usuario</th>
+                                                <th data-options="field:'no_tipo_respuesta'" align="center" width='300'>Respuesta Acceso</th>
+                                                <th data-options="field:'fecha_conexion'" align="center" width='300'>Fecha Conexión</th>
                                             </tr>
                                         </thead>
                                     </table>
