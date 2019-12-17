@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servletsModel.Carrera;
 import servletsModel.NetUser;
 
 /**
@@ -75,7 +76,8 @@ public class reportesAdministracionController extends HttpServlet {
                     break;
                 }
                 case 1: {
-                    out.println();
+                    Carrera post_car = new Carrera();
+                    out.println(post_car.getEstudiantesCarrera());
                     break;
                 }
             }

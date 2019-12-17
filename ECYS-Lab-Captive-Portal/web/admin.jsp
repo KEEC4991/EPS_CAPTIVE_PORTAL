@@ -22,31 +22,30 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!--link rel="stylesheet" href="css/fontawsom-all.min.css"-->
 
-        <link rel="stylesheet" type="text/css" href="css/w3.css"/>
         <link rel="stylesheet" type="text/css" href="css/css.css"/>
+        <!--link rel="stylesheet" type="text/css" href="css/w3.css"/>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/fontawsom-all.min.css"/>
         <link rel="stylesheet" type="text/scss" href="scss/mdb.scss"/>
-        <link rel="stylesheet" type="text/css" href="css/mdb.css"/>
-        <link href="css/addons/datatables.css" rel="stylesheet"/>
-        <link href="css/addons/datatables-select.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="css/mdb.css"/-->
         <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
+        
         <link href="css/jquery-ui.css" rel="stylesheet" />
 
-        <script src="js/popper.min.js"></script>
+        <!--script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
         <script src="js/popper.js"></script>
-        <script src="js/addons/datatables.min.js"></script>
+        <script src="js/addons/datatables.min.js"></script-->
 
-        <script src="js/modules/waves.js"></script>
+        <!--script src="js/modules/waves.js"></script>
         <script src="js/mdb.js"></script>
         <script src="js/addons/datatables.js"></script>
-        <script src="js/addons/datatables-select.min.js"></script>
+        <script src="js/moment.js"></script>
+        <script src="js/addons/datatables-select.min.js"></script-->
 
         <script src="admin.js" type="text/javascript"></script>
 
-        <script src="js/moment.js"></script>
         <script src="js/jquery-ui.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" ></script>

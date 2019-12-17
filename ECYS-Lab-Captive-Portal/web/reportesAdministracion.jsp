@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 
 <link type="text/css" rel="stylesheet" href="css/GUI/reportesAdministracion.css">
-<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
@@ -29,11 +29,20 @@
         $("#datepicker4").datepicker("setDate", currentDate);
         $("#datepicker5").datepicker("setDate", currentDate);
     });
-
-
 </script>
 
-<div class="container-fluid" style="height: 100%;">
+
+<style>
+    #reportesAdministracion_form .l-btn{
+        background: #009900 !important;
+        //background-image: linear-gradient(rgb(255, 152, 0) 0px, rgb(255, 152, 0) 100%) !important;
+        background-image: #009900 !important;
+
+    }
+</style>
+
+
+<div class="container-fluid" id="reportesAdministracion_form" style="height: 100%;">
     <div class="row">
         <div class="col" align="center">
             <h5> <b style="font-weight: bold;">Panel de Reportes </b></h5>
@@ -45,21 +54,25 @@
         <div class="col" style="height: 100%;">
             <div class="easyui-accordion" id="acordeon_reportes" style="width: 100%; height: 100%;">
 
-                <div title="Consumos de Servicio de Internet" data-options="iconCls:'icon-reporte-1'" style="overflow:auto;padding:10px; width: 100%; height: 100%;">
+                <div title="Cantidad de Consumidores de Servicio de Internet" data-options="iconCls:'icon-reporte-1'" style="overflow:auto;padding:10px; width: 100%; height: 100%;">
 
                     <div class="container-fluid" style="height: 100%;">
                         <div class="row" style="height: 100%;">
                             <div class="col panel_general" style="height: 100%;">
                                 <div class="panel_reporte" style="height: 100%;" align='center'>
 
-                                    <input class="easyui-datetimebox" style="color: black;" id="datepicker1" data-options="required:true,showSeconds:false,editable:false" >
-                                    <input class="easyui-datetimebox" style="color: black;" id="datepicker2" data-options="required:true,showSeconds:false,editable:false" >
-                                    <a class="easyui-linkbutton" style="background-color: #993300; color: white; display: inline-block;"> Detalle </a>
-                                    <a class="easyui-linkbutton" style="background-color: #993300; color: white; display: inline-block;"> Actualizar </a>
+                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker1" data-options="required:true,showSeconds:false,editable:false" >
+                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker2" data-options="required:true,showSeconds:false,editable:false" >
+
+
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px">Detalle</a>
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px">Actualizar</a>
+
                                     <hr>
-                                    <div style="height: 85%;">
-                                        <canvas id="lineChart" style="max-width: 70%;/* width: 30%; max-height: 100%; height: 100%; */"></canvas>
-                                    </div>
+
+                                    <!--div style="height: 85%;"-->
+                                    <canvas id="lineChart" style="height: 0.4vh; width: 1vh;"></canvas>
+                                    <!--/div-->
 
                                     <script>
                                         //line
@@ -98,6 +111,7 @@
                                         });
                                     </script>
 
+
                                 </div>
                             </div>
                         </div>
@@ -115,46 +129,67 @@
                                         <div class="col" style="height: content-box;" align='center'>
                                             <h4 style="font-weight: bold; font-size: 15px;">ESTUDIANTES POR CARRERA</h4>
                                             <hr>
-                                            <canvas id="myChart" style="max-width: 70%; "></canvas>
+
+                                            <!--canvas id="lineChart" style="height: 0.4vh; width: 1vh;"></canvas-->
+                                            <canvas id="myChart" style="height: 0.4vh; width: 1vh; "></canvas>
 
                                             <script>
-                                                var ctx = document.getElementById("myChart").getContext('2d');
-                                                var myChart = new Chart(ctx, {
-                                                    type: 'bar',
-                                                    data: {
-                                                        labels: ["Civil", "Quimica", "Industrial", "Electrica", "Mecánica", "Mecánica Electrica"],
-                                                        datasets: [{
-                                                                label: 'Número de Estudiantes',
-                                                                data: [12, 19, 3, 5, 2, 3],
-                                                                backgroundColor: [
-                                                                    'rgba(255, 99, 132, 0.2)',
-                                                                    'rgba(54, 162, 235, 0.2)',
-                                                                    'rgba(255, 206, 86, 0.2)',
-                                                                    'rgba(75, 192, 192, 0.2)',
-                                                                    'rgba(153, 102, 255, 0.2)',
-                                                                    'rgba(255, 159, 64, 0.2)'
-                                                                ],
-                                                                borderColor: [
-                                                                    'rgba(255,99,132,1)',
-                                                                    'rgba(54, 162, 235, 1)',
-                                                                    'rgba(255, 206, 86, 1)',
-                                                                    'rgba(75, 192, 192, 1)',
-                                                                    'rgba(153, 102, 255, 1)',
-                                                                    'rgba(255, 159, 64, 1)'
-                                                                ],
-                                                                borderWidth: 1
-                                                            }]
-                                                    },
-                                                    options: {
-                                                        scales: {
-                                                            yAxes: [{
-                                                                    ticks: {
-                                                                        beginAtZero: true
+
+                                                $.ajax({
+                                                    url: 'http://172.10.1.100:8080/ECYS-CP/rep-cap?accion=1',
+                                                    type: 'GET',
+                                                    success: function (data, textStatus, jqXHR) {
+
+                                                        console.log(data);
+
+                                                        try {
+
+                                                            var careerObject = JSON.parse(data);
+                                                            console.log(careerObject);
+
+                                                            var ctx = document.getElementById("myChart").getContext('2d');
+                                                            var myChart = new Chart(ctx, {
+                                                                type: 'bar',
+                                                                data: {
+                                                                    labels: careerObject.carreras, /* ["Civil", "Quimica", "Industrial", "Electrica", "Mecánica", "Mecánica Electrica"],*/
+                                                                    datasets: [{
+                                                                            label: 'Número de Estudiantes',
+                                                                            data: careerObject.cantidades, // [12, 19, 3, 5, 2, 3],
+                                                                            backgroundColor: [
+                                                                                'rgba(255, 99, 132, 0.2)',
+                                                                                'rgba(54, 162, 235, 0.2)',
+                                                                                'rgba(255, 206, 86, 0.2)',
+                                                                                'rgba(75, 192, 192, 0.2)',
+                                                                                'rgba(153, 102, 255, 0.2)',
+                                                                                'rgba(255, 159, 64, 0.2)'
+                                                                            ],
+                                                                            borderColor: [
+                                                                                'rgba(255,99,132,1)',
+                                                                                'rgba(54, 162, 235, 1)',
+                                                                                'rgba(255, 206, 86, 1)',
+                                                                                'rgba(75, 192, 192, 1)',
+                                                                                'rgba(153, 102, 255, 1)',
+                                                                                'rgba(255, 159, 64, 1)'
+                                                                            ],
+                                                                            borderWidth: 1
+                                                                        }]
+                                                                },
+                                                                options: {
+                                                                    scales: {
+                                                                        yAxes: [{
+                                                                                ticks: {
+                                                                                    beginAtZero: true
+                                                                                }
+                                                                            }]
                                                                     }
-                                                                }]
+                                                                }
+                                                            });
+                                                        } catch (e) {
+                                                            console.log(e);
                                                         }
                                                     }
                                                 });
+
                                             </script>
 
                                         </div>
