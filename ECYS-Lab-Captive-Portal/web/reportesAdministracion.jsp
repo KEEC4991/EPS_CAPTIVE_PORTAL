@@ -21,15 +21,13 @@
         $("#datepicker3").datepicker();
         $("#datepicker4").datepicker();
         $("#datepicker5").datepicker();
-
         var currentDate = new Date();
         $("#datepicker1").datepicker("setDate", currentDate);
         $("#datepicker2").datepicker("setDate", currentDate);
         $("#datepicker3").datepicker("setDate", currentDate);
         $("#datepicker4").datepicker("setDate", currentDate);
         $("#datepicker5").datepicker("setDate", currentDate);
-    });
-</script>
+    });</script>
 
 
 <style>
@@ -108,8 +106,7 @@
                                             options: {
                                                 responsive: true
                                             }
-                                        });
-                                    </script>
+                                        });</script>
 
 
                                 </div>
@@ -140,13 +137,9 @@
                                                     type: 'GET',
                                                     success: function (data, textStatus, jqXHR) {
 
-                                                        console.log(data);
-
                                                         try {
 
                                                             var careerObject = JSON.parse(data);
-                                                            console.log(careerObject);
-
                                                             var ctx = document.getElementById("myChart").getContext('2d');
                                                             var myChart = new Chart(ctx, {
                                                                 type: 'bar',
@@ -156,12 +149,16 @@
                                                                             label: 'Número de Estudiantes',
                                                                             data: careerObject.cantidades, // [12, 19, 3, 5, 2, 3],
                                                                             backgroundColor: [
-                                                                                'rgba(255, 99, 132, 0.2)',
-                                                                                'rgba(54, 162, 235, 0.2)',
-                                                                                'rgba(255, 206, 86, 0.2)',
-                                                                                'rgba(75, 192, 192, 0.2)',
-                                                                                'rgba(153, 102, 255, 0.2)',
-                                                                                'rgba(255, 159, 64, 0.2)'
+                                                                                'rgba(255, 99, 132, 0.6)',
+                                                                                'rgba(54, 162, 235, 0.6)',
+                                                                                'rgba(255, 206, 86, 0.6)',
+                                                                                'rgba(75, 192, 192, 0.6)',
+                                                                                'rgba(153, 102, 255, 0.6)',
+                                                                                'rgba(255, 159, 64, 0.6)',
+                                                                                'rgba(255, 159, 64, 0.6)',
+                                                                                'rgba(255, 159, 64, 0.6)',
+                                                                                'rgba(255, 159, 64, 0.6)',
+                                                                                'rgba(255, 159, 64, 0.6)'
                                                                             ],
                                                                             borderColor: [
                                                                                 'rgba(255,99,132,1)',
@@ -169,6 +166,10 @@
                                                                                 'rgba(255, 206, 86, 1)',
                                                                                 'rgba(75, 192, 192, 1)',
                                                                                 'rgba(153, 102, 255, 1)',
+                                                                                'rgba(255, 159, 64, 1)',
+                                                                                'rgba(255, 159, 64, 1)',
+                                                                                'rgba(255, 159, 64, 1)',
+                                                                                'rgba(255, 159, 64, 1)',
                                                                                 'rgba(255, 159, 64, 1)'
                                                                             ],
                                                                             borderWidth: 1
@@ -188,9 +189,7 @@
                                                             console.log(e);
                                                         }
                                                     }
-                                                });
-
-                                            </script>
+                                                });</script>
 
                                         </div>
                                     </div>
@@ -206,71 +205,78 @@
                                                 //radar
                                                 var ctxR1 = document.getElementById("radarChart1").getContext('2d');
                                                 var ctxR2 = document.getElementById("radarChart2").getContext('2d');
-                                                var myRadarChart = new Chart(ctxR1, {
-                                                    type: 'radar',
-                                                    data: {
-                                                        labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
-                                                        datasets: [{
-                                                                label: "Numero de Carnet",
-                                                                data: [65, 59, 90, 81, 56, 55, 40],
-                                                                backgroundColor: [
-                                                                    'rgba(105, 0, 132, .2)',
-                                                                ],
-                                                                borderColor: [
-                                                                    'rgba(200, 99, 132, .7)',
-                                                                ],
-                                                                borderWidth: 2
-                                                            }/*,
-                                                             {
-                                                             label: "My Second dataset",
-                                                             data: [28, 48, 40, 19, 96, 27, 100],
-                                                             backgroundColor: [
-                                                             'rgba(0, 250, 220, .2)',
-                                                             ],
-                                                             borderColor: [
-                                                             'rgba(0, 213, 132, .7)',
-                                                             ],
-                                                             borderWidth: 2
-                                                             }*/
-                                                        ]
-                                                    },
-                                                    options: {
-                                                        responsive: true
+                                                $.ajax({
+                                                    url: 'http://172.10.1.100:8080/ECYS-CP/rep-cap?accion=3',
+                                                    type: 'GET',
+                                                    success: function (data, textStatus, jqXHR) {
+                                                        try {
+
+                                                            var objetoJSON = JSON.parse(data);
+                                                            console.log(objetoJSON);
+                                                            var myRadarChart = new Chart(ctxR1, {
+                                                                type: 'pie',
+                                                                data: {
+                                                                    labels: objetoJSON.periodos, //["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                                                                    datasets: [{
+                                                                            label: "Numero de Carnet",
+                                                                            data: objetoJSON.cantidades, //[65, 59, 90, 81, 56, 55, 40],
+                                                                            backgroundColor: [
+                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                            ],
+                                                                            borderColor: [
+                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .7)',
+                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)'
+                                                                            ],
+                                                                            borderWidth: 2
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                options: {
+                                                                    responsive: true
+                                                                }
+                                                            });
+                                                        } catch (e) {
+                                                            console.log(e);
+                                                        }
                                                     }
                                                 });
-                                                var myRadarChart = new Chart(ctxR2, {
-                                                    type: 'radar',
-                                                    data: {
-                                                        labels: ["10-15", "16-20", "21-25", "26-30", "31-35", "36-40", "41-45"],
-                                                        datasets: [/*{
-                                                         label: "Edad",
-                                                         data: [65, 59, 90, 81, 56, 55, 40],
-                                                         backgroundColor: [
-                                                         'rgba(105, 0, 132, .2)',
-                                                         ],
-                                                         borderColor: [
-                                                         'rgba(200, 99, 132, .7)',
-                                                         ],
-                                                         borderWidth: 2
-                                                         },*/
-                                                            {
-                                                                label: "Edad de los Usuarios",
-                                                                data: [28, 48, 40, 19, 96, 27, 100],
-                                                                backgroundColor: [
-                                                                    'rgba(0, 250, 220, .2)',
-                                                                ],
-                                                                borderColor: [
-                                                                    'rgba(0, 213, 132, .7)',
-                                                                ],
-                                                                borderWidth: 2
-                                                            }
-                                                        ]
-                                                    },
-                                                    options: {
-                                                        responsive: true
+                                                $.ajax({
+                                                    url: 'http://172.10.1.100:8080/ECYS-CP/rep-cap?accion=2',
+                                                    type: 'GET',
+                                                    success: function (data, textStatus, jqXHR) {
+
+                                                        try {
+                                                            var objetoJSON = JSON.parse(data);
+                                                            var myRadarChart = new Chart(ctxR2, {
+                                                                type: 'radar',
+                                                                data: {
+                                                                    labels: ["<10", "10-14", "15-19", "20-24", "25-30", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", ">60"],
+                                                                    datasets: [
+                                                                        {
+                                                                            label: "Edad de los Usuarios",
+                                                                            data: objetoJSON,
+                                                                            backgroundColor: [
+                                                                                'rgba(0, 250, 220, .2)',
+                                                                            ],
+                                                                            borderColor: [
+                                                                                'rgba(0, 213, 132, .7)',
+                                                                            ],
+                                                                            borderWidth: 2
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                options: {
+                                                                    responsive: true
+                                                                }
+                                                            });
+                                                        } catch (e) {
+                                                            console.log(e);
+                                                        }
                                                     }
-                                                });
-                                            </script>
+                                                });</script>
 
                                         </div>
                                     </div>
@@ -337,8 +343,7 @@
                                                             }]
                                                     }
                                                 }
-                                            });
-                                        </script>
+                                            });</script>
                                     </div>
                                     <hr>
                                     <p style="text-align: left; font-weight: bold;">Tendencia de Consumo por Día</p>
@@ -348,6 +353,7 @@
                                     <hr>
                                     <canvas id="radarChart3" style="max-width: 50%; "></canvas>
                                     <script>
+
                                         var ctxR3 = document.getElementById("radarChart3").getContext('2d');
                                         var myRadarChart = new Chart(ctxR3, {
                                             type: 'radar',

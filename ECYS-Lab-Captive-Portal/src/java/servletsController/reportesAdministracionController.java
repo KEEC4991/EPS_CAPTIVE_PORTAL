@@ -71,13 +71,22 @@ public class reportesAdministracionController extends HttpServlet {
             String valor_accion = request.getParameter("accion");
             int accion = Integer.valueOf(valor_accion);
 
+            Carrera post_car = new Carrera();
+
             switch (accion) {
                 case 0: {
                     break;
                 }
                 case 1: {
-                    Carrera post_car = new Carrera();
                     out.println(post_car.getEstudiantesCarrera());
+                    break;
+                }
+                case 2: {
+                    out.println(post_car.getEdadEstudiantesPorSegmento());
+                    break;
+                }
+                case 3: {
+                    out.println(post_car.getCantidadEstudiantesPorCarnet());
                     break;
                 }
             }

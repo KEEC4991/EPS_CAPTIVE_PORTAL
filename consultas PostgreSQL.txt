@@ -1,0 +1,24 @@
+
+/* CONSULTAS DE RANGO DE EDADES */
+with mat_age as (
+	SELECT EXTRACT( year from  age(CURRENT_DATE, TO_DATE(fecha_nac,'MM/DD/YYYY'))) as mage
+	from public.captive_usuario
+)
+select 
+	count (*) filter (where mage < 10) as "age<10",
+	count (*) filter (where mage >= 10 and mage < 15) as "10<=age<15",
+	count (*) filter (where mage >= 15 and mage < 20) as "15<=age<20",
+	count (*) filter (where mage >= 20 and mage < 25) as "20<=age<25",
+	count (*) filter (where mage >= 25 and mage < 30) as "25<=age<30",
+	count (*) filter (where mage >= 30 and mage < 35) as "30<=age<35",
+	count (*) filter (where mage >= 35 and mage < 40) as "35<=age<40",
+	count (*) filter (where mage >= 40 and mage < 45) as "40<=age<45",
+	count (*) filter (where mage >= 45 and mage < 50) as "45<=age<50",
+	count (*) filter (where mage >= 50 and mage < 55) as "50<=age<55",
+	count (*) filter (where mage >= 55 and mage < 60) as "55<=age<60",
+	count (*) filter (where mage >= 60) as "60<age"
+from mat_age;
+
+
+
+/*  */
