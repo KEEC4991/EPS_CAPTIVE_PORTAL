@@ -212,6 +212,17 @@
                                                         try {
 
                                                             var objetoJSON = JSON.parse(data);
+
+                                                            var longitud = objetoJSON.periodos.length;
+                                                            var colores = [];
+                                                            var bordes = [];
+
+                                                            for (var i = 0; i < longitud; i++) {
+                                                                colores.push('rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .4)');
+                                                                bordes.push('rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .8)');
+                                                            }
+
+
                                                             console.log(objetoJSON);
                                                             var myRadarChart = new Chart(ctxR1, {
                                                                 type: 'pie',
@@ -220,16 +231,16 @@
                                                                     datasets: [{
                                                                             label: "Numero de Carnet",
                                                                             data: objetoJSON.cantidades, //[65, 59, 90, 81, 56, 55, 40],
-                                                                            backgroundColor: [
-                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                            ],
-                                                                            borderColor: [
-                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .7)',
-                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                                'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)'
-                                                                            ],
+                                                                            backgroundColor: colores/*[
+                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                             ]*/,
+                                                                            borderColor: bordes /*[
+                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .7)',
+                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
+                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)'
+                                                                             ]*/,
                                                                             borderWidth: 2
                                                                         }
                                                                     ]

@@ -21,4 +21,13 @@ from mat_age;
 
 
 
-/*  */
+/* CONSULTAS CONEXIONES POR FECHAS*/
+
+with fecha_conexion as (
+	select cast(acctstarttime as date) as fecha
+	from public.radacct 
+)
+select 
+count (*) filter (where fecha >= '2019-11-19' and fecha <= '2019-11-19') as "2019-11-19",
+count (*) filter (where fecha >= '2019-11-20' and fecha <= '2019-11-20') as "2019-11-20"
+from fecha_conexion;
