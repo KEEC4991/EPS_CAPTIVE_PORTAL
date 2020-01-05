@@ -31,3 +31,24 @@ select
 count (*) filter (where fecha >= '2019-11-19' and fecha <= '2019-11-19') as "2019-11-19",
 count (*) filter (where fecha >= '2019-11-20' and fecha <= '2019-11-20') as "2019-11-20"
 from fecha_conexion;
+
+
+/* CONSULTAS DE RANGO DE FECHAS Y NUMERO DE CONEXIONES */
+with registros_fecha as (
+	select TO_CHAR(public.radacct.acctstarttime,'DD/MM/YYYY') as fecha
+	from public.radacct
+ 	where TO_CHAR(public.radacct.acctstarttime,'DD/MM/YYYY') >= '19/11/2019' 
+	and TO_CHAR(public.radacct.acctstarttime,'DD/MM/YYYY') <= '20/11/2019'
+)
+select fecha, count(fecha)
+from registros_fecha
+group by fecha
+order by fecha asc;
+
+/*DETALLE DE CONEXIONES PARA UN DÍA ESPECIFICO*/
+select * 
+from public.radacct
+where TO_CHAR(public.radacct.acctstarttime,'DD/MM/YYYY') = '19/11/2019'
+order by radacctid asc
+
+

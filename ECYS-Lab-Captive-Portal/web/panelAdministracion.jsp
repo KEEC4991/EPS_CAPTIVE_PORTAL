@@ -9,10 +9,9 @@
 
 <link type="text/css" href="css/GUI/panelAdministracion.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
+<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="js/canvasjs/jquery.canvasjs.min.js"></script>
 
 <script type="text/javascript" src="panelAdministracion.js"></script>
 
@@ -25,79 +24,87 @@
         </div>
     </div>    
     <hr>
-    <div class="row" style="height: 100%; width: 100;">
+    <div class="row" style="height: 100%; width: 100%;">
         <div class="col" align="center" style="height: 100%; width: 100%;">
 
             <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
-                <div data-options="region:'center',title:'Concurrencia de Servicio Internet Inalambrico',split:true" style="width:90%; height: 100%;" align='center'>
+                <div data-options="region:'center',title:'Concurrencia de Servicio Internet Inalambrico - ACTUAL',split:true" style="width:90%; height: 100%;" align='center'>
                     <div class="container-fluid" style="height: 100%; width: 100%;" align='center'>
                         <div class="row" style="width:  100%; height: 100%; " align='center'>
                             <div class="col panel_general" style="width: 100%; height: 96%; margin-top: 1%;" align='center' >
                                 <div class="panel_reporte" align='center' style="width: 100%; height: 100%; color: black">
 
-                                    <br>
-                                    <br>
+                                    <canvas id="chart" style="height: 0.5vh; width: 0.5vh;"></canvas>
 
-                                    <style>
-                                        body {  
-                                            background: #1D1F20;
-                                            padding: 16px;
+                                    <script defer>
+
+                                        //var chart = new Chart('chart');
+                                        var chart = document.getElementById("chart").getContext("2d");
+
+                                        iniciarGrafico();
+
+                                        function actualizarGrafico() {
+                                            $.ajax({
+                                                url: 'http://172.10.1.100:8080/ECYS-CP/rep-cap?accion=7',
+                                                type: 'GET',
+                                                async: false,
+                                                success: function (data, textStatus, jqXHR) {
+                                                    var valores_data = JSON.parse(data);
+                                                    chart['data']['labels'] = valores_data.carreras;
+                                                    chart['data']['datasets'][0]['data'] = valores_data.contadores;
+                                                    chart.update();
+                                                }
+                                            });
                                         }
 
-                                        canvas {
-                                            /*border: 1px dotted red;*/
+                                        function iniciarGrafico() {
+                                            var options = {
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                scales: {
+                                                    yAxes: [{
+                                                            stacked: true,
+                                                            gridLines: {
+                                                                display: true,
+                                                                color: "rgba(255,99,132,0.2)"
+                                                            }
+                                                        }],
+                                                    xAxes: [{
+                                                            gridLines: {
+                                                                display: false
+                                                            }
+                                                        }]
+                                                }
+                                            };
+                                            var data = {
+                                                labels: ['En proceso'],
+                                                datasets: [{
+                                                        label: "Usuarios 014",
+                                                        backgroundColor: "rgba(75,145,245,0.2)",
+                                                        borderColor: "rgba(75,145,245,1)",
+                                                        borderWidth: 2,
+                                                        hoverBackgroundColor: "rgba(75,145,245,0.4)",
+                                                        hoverBorderColor: "rgba(75,145,245,1)",
+                                                        data: [0]
+                                                    }
+                                                ]
+                                            };
+                                            
+                                            chart = new Chart('chart', {
+                                                type: 'pie',
+                                                data: data,
+                                                options: options
+                                            });
+
+                                            crearActualizacion();
                                         }
 
-                                        .chart-container {
-                                            position: relative;
-                                            margin: auto;
-                                            height: 50vh;
-                                            width: 50vw;
+                                        function crearActualizacion() {
+                                            setInterval(
+                                                    function () {
+                                                        actualizarGrafico();
+                                                    }, 3000);
                                         }
-
-                                    </style>
-
-                                    <div class="chart-container">
-                                        <canvas id="chart"></canvas>
-                                    </div>
-
-
-                                    <script>
-                                        var data = {
-                                            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-                                            datasets: [{
-                                                    label: "Dataset #1",
-                                                    backgroundColor: "rgba(255,99,132,0.2)",
-                                                    borderColor: "rgba(255,99,132,1)",
-                                                    borderWidth: 2,
-                                                    hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                                                    hoverBorderColor: "rgba(255,99,132,1)",
-                                                    data: [65, 59, 20, 81, 56, 55, 40],
-                                                }]
-                                        };
-
-                                        var options = {
-                                            maintainAspectRatio: false,
-                                            scales: {
-                                                yAxes: [{
-                                                        stacked: true,
-                                                        gridLines: {
-                                                            display: true,
-                                                            color: "rgba(255,99,132,0.2)"
-                                                        }
-                                                    }],
-                                                xAxes: [{
-                                                        gridLines: {
-                                                            display: false
-                                                        }
-                                                    }]
-                                            }
-                                        };
-
-                                        Chart.Bar('chart', {
-                                            options: options,
-                                            data: data
-                                        });
 
                                     </script>
 
@@ -106,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                <div data-options="region:'west',split:true,collapsed:true" title="West" style="width:50%;">
+                <!--div data-options="region:'west',split:true,collapsed:true" title="West" style="width:50%;">
                     <div class="container-fluid" style="height: 100%; width: 100%;" align='center'>
                         <div class="row" style="width:  100%; height: 100%; " align='center'>
                             <div class="col panel_general" style="width: 100%; height: 98%; " align='center' >
@@ -210,7 +217,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div-->
             </div>
         </div>
     </div>

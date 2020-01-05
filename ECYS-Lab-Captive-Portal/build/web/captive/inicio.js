@@ -15,7 +15,7 @@ function access_validation() {
         var param_carnet = $('#txt_ingreso_carnet').numberbox('getValue');
 
         $.ajax({
-            url: 'http://127.0.0.1:8080/ECYS-CP/init-contr',
+            url: 'http://172.10.1.100:8080/ECYS-CP/init-contr',
             type: 'POST',
             data: {carnet: param_carnet},
             success: function (data, textStatus, jqXHR) {
@@ -48,7 +48,7 @@ function access_validation() {
 }
 
 function redirect_reg() {
-    location.replace('http://localhost:8080/ECYS-CP/reg-cap');
+    location.replace('http://172.10.1.100:8080/ECYS-CP/reg-cap');
 }
 
 

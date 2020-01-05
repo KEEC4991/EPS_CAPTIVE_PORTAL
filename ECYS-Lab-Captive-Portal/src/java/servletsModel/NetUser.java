@@ -241,7 +241,7 @@ public class NetUser {
                 } else {
                     respuesta += ",";
                 }
-                
+
                 respuesta += "{";
                 respuesta += "\"no_conexion\":\"" + rs.getString(1) + "\",";
                 respuesta += "\"no_usuario\":\"" + rs.getString(2) + "\",";
@@ -261,6 +261,43 @@ public class NetUser {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(NetUser.class.getName()).log(Level.SEVERE, null, ex);
             return "[]";
+        }
+    }
+
+    public String getPoliceType() {
+        try {
+
+            String query = "select * from public.captive_estado where id_tipo_estado = 2;";
+            String respuesta = "";
+
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            ResultSet rs = pstate.executeQuery();
+
+            respuesta = "[\n";
+            int contador = 0;
+
+            while (rs.next()) {
+                if (contador == 0) {
+                    contador++;
+                } else {
+                    respuesta += ",";
+                }
+
+                respuesta += "{";
+                respuesta += "\"idpolitica\":\"" + rs.getString(1) + "\",";
+                respuesta += "\"descripcion\":\"" + rs.getString(2) + "\"";
+                respuesta += "}";
+
+            }
+
+            respuesta += "\n]";
+            post_con.close();
+            return respuesta;
+
+        } catch (Exception e) {
+            return "['con errores'" + e.getMessage() + "]";
         }
     }
 

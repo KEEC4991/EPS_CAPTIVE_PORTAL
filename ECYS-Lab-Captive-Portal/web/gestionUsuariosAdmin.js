@@ -2,12 +2,13 @@ $(function () {
     var data_administradores = $('#dg_usuarios_administrativos').datagrid({
         singleSelect: true,
         collapsible: true,
-        url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=0',
+        url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=0',
         pagination: true,
         clientPaging: true,
         checkOnSelect: true,
         selectOnCheck: true,
         rownumbers: true,
+        fitColumns:true,
         nowrap: false,
         method: 'get',
         toolbar: '#ft1',
@@ -25,9 +26,10 @@ $(function () {
         selectOnCheck: true,
         rownumbers: true,
         nowrap: false,
+        fitColumns:true,
         toolbar: '#ft2',
         title: 'Listado de Usuarios de la Red',
-        url : 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=9',
+        url : 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=9',
         method : 'get'
     });
 
@@ -37,7 +39,7 @@ $(function () {
 
 function reiniciarTablaUsuariosAdmin() {
     $('#dg_usuarios_administrativos').datagrid('loadData', []);
-    $.getJSON('http://127.0.0.1:8080/ECYS-CP/get-user', {accion: 0}, function (resultado) {
+    $.getJSON('http://172.10.1.100:8080/ECYS-CP/get-user', {accion: 0}, function (resultado) {
         $('#dg_usuarios_administrativos').datagrid('loadData', resultado);
     });
 }
@@ -67,7 +69,7 @@ function eliminarUsusario() {
                     onClick: function () {
 
                         $.ajax({
-                            url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=6',
+                            url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=6',
                             method: 'GET',
                             data: {id_usuario: seleccionado.id_usuario},
                             success: function (data, textStatus, jqXHR) {
@@ -128,7 +130,7 @@ function guardarNuevoUsuario() {
             var estado = $('#txt_gestion_usuario_estado').combobox('getValue');
 
             $.ajax({
-                url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=5',
+                url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=5',
                 metod: 'GET',
                 data: {nombre: nombre, correo: correo, descrip: descripcion, tipo_user: tipo_usuario, estado: estado, contrasena: contrasena1},
                 success: function (data, textStatus, jqXHR) {

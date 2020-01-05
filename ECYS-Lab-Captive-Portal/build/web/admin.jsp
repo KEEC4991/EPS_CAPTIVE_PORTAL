@@ -11,6 +11,7 @@
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+
         <title> ADMIN ECYS - Portal Cautivo </title>
 
 
@@ -18,35 +19,24 @@
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="assets/js/core/jquery.min.js"></script>
 
+
         <link rel="shortcut icon" href="images/logo.png">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!--link rel="stylesheet" href="css/fontawsom-all.min.css"-->
 
         <link rel="stylesheet" type="text/css" href="css/css.css"/>
-        <!--link rel="stylesheet" type="text/css" href="css/w3.css"/>
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/fontawsom-all.min.css"/>
-        <link rel="stylesheet" type="text/scss" href="scss/mdb.scss"/>
-        <link rel="stylesheet" type="text/css" href="css/mdb.css"/-->
         <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
-        
+
         <link href="css/jquery-ui.css" rel="stylesheet" />
-
-        <!--script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/script.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/addons/datatables.min.js"></script-->
-
-        <!--script src="js/modules/waves.js"></script>
-        <script src="js/mdb.js"></script>
-        <script src="js/addons/datatables.js"></script>
-        <script src="js/moment.js"></script>
-        <script src="js/addons/datatables-select.min.js"></script-->
 
         <script src="admin.js" type="text/javascript"></script>
 
         <script src="js/jquery-ui.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
+        <link rel="stylesheet" type="text/css" href="themes/icon.css">
+        <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
@@ -54,6 +44,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+
+        <script type="text/javascript" src="reportesAdministracion.js"></script>
+        <script src="politicasContenedor/generalesGestion.js" type="text/javascript"></script>
 
     </head>
     <body style="height: 100vh;">

@@ -19,7 +19,7 @@ function saveNewUser() {
 
         if (param_carrera != 0) {
             $.ajax({
-                url: 'http://localhost:8080/ECYS-CP/reg-contr',
+                url: 'http://172.10.1.100:8080/ECYS-CP/reg-contr',
                 type: 'POST',
                 data: {
                     carnet: param_carnet,
@@ -38,7 +38,7 @@ function saveNewUser() {
                                 title: 'Registro de Usuario',
                                 msg: '<p style="text-align:center;"><b>' + resultado.mensaje + '</b><br> Se redigirá al login de acceso principal a la red de internet.</p>',
                                 fn: function () {
-                                    location.replace("http://localhost:8080/ECYS-CP/init-cap")
+                                    location.replace("http://172.10.1.100:8080/ECYS-CP/init-cap")
                                 }
                             });
                         } else {

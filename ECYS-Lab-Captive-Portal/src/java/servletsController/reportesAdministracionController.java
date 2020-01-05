@@ -89,6 +89,31 @@ public class reportesAdministracionController extends HttpServlet {
                     out.println(post_car.getCantidadEstudiantesPorCarnet());
                     break;
                 }
+                case 4: {
+                    String query = request.getParameter("consulta");
+                    int rango_fechas = Integer.valueOf(request.getParameter("rango"));
+                    out.println(post_car.getConsultaConexionesFecha(query, rango_fechas));
+                    break;
+                }
+                case 5: {
+                    String date_inicial = request.getParameter("inicio");
+                    String date_final = request.getParameter("final");
+                    out.println(post_car.getConsultaConexionesTotales(date_inicial, date_final));
+                    break;
+                }
+                case 6: {
+                    String date_busqueda = request.getParameter("fecha");
+                    out.println(post_car.getDetalleConexiones(date_busqueda));
+                    break;
+                }
+                case 7: {
+                    out.println(post_car.getDashboardConcurrenciaCarreras());
+                    break;
+                }
+                default: {
+                    out.println("no funciona");
+                    break;
+                }
             }
 
         }

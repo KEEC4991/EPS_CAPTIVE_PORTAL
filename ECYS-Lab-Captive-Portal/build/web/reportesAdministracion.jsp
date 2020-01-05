@@ -8,9 +8,10 @@
 <!DOCTYPE html>
 
 <link type="text/css" rel="stylesheet" href="css/GUI/reportesAdministracion.css">
-<link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
+<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/easyui/datagrid-detailview.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
 <script type="text/javascript" src="reportesAdministracion.js"></script>
 
@@ -59,12 +60,12 @@
                             <div class="col panel_general" style="height: 100%;">
                                 <div class="panel_reporte" style="height: 100%;" align='center'>
 
-                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker1" data-options="required:true,showSeconds:false,editable:false" >
-                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker2" data-options="required:true,showSeconds:false,editable:false" >
+                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker1" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser" >
+                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker2" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser" >
 
 
-                                    <a href="#" class="easyui-linkbutton c1" style="width:120px">Detalle</a>
-                                    <a href="#" class="easyui-linkbutton c1" style="width:120px">Actualizar</a>
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px" onclick="openVentanaDetalle()">Detalle</a>
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px" onclick="loadReporteConsumidores()">Actualizar</a>
 
                                     <hr>
 
@@ -73,40 +74,16 @@
                                     <!--/div-->
 
                                     <script>
-                                        //line
                                         var ctxL = document.getElementById("lineChart").getContext('2d');
                                         var myLineChart = new Chart(ctxL, {
                                             type: 'line',
                                             data: {
-                                                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                                                datasets: [{
-                                                        label: "My First dataset",
-                                                        data: [65, 59, 80, 81, 56, 55, 40],
-                                                        backgroundColor: [
-                                                            'rgba(105, 0, 132, .2)',
-                                                        ],
-                                                        borderColor: [
-                                                            'rgba(200, 99, 132, .7)',
-                                                        ],
-                                                        borderWidth: 2
-                                                    },
-                                                    {
-                                                        label: "My Second dataset",
-                                                        data: [28, 48, 40, 19, 86, 27, 90],
-                                                        backgroundColor: [
-                                                            'rgba(0, 137, 132, .2)',
-                                                        ],
-                                                        borderColor: [
-                                                            'rgba(0, 10, 130, .7)',
-                                                        ],
-                                                        borderWidth: 2
-                                                    }
-                                                ]
                                             },
                                             options: {
                                                 responsive: true
                                             }
-                                        });</script>
+                                        });
+                                    </script>
 
 
                                 </div>
@@ -222,8 +199,6 @@
                                                                 bordes.push('rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .8)');
                                                             }
 
-
-                                                            console.log(objetoJSON);
                                                             var myRadarChart = new Chart(ctxR1, {
                                                                 type: 'pie',
                                                                 data: {
@@ -231,16 +206,8 @@
                                                                     datasets: [{
                                                                             label: "Numero de Carnet",
                                                                             data: objetoJSON.cantidades, //[65, 59, 90, 81, 56, 55, 40],
-                                                                            backgroundColor: colores/*[
-                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                             ]*/,
-                                                                            borderColor: bordes /*[
-                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .7)',
-                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)',
-                                                                             'rgba(' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', ' + (Math.floor(Math.random() * 255)) + ', .2)'
-                                                                             ]*/,
+                                                                            backgroundColor: colores,
+                                                                            borderColor: bordes,
                                                                             borderWidth: 2
                                                                         }
                                                                     ]
@@ -261,10 +228,12 @@
 
                                                         try {
                                                             var objetoJSON = JSON.parse(data);
+                                                            objetoJSON.unshift(0);
+
                                                             var myRadarChart = new Chart(ctxR2, {
                                                                 type: 'radar',
                                                                 data: {
-                                                                    labels: ["<10", "10-14", "15-19", "20-24", "25-30", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", ">60"],
+                                                                    labels: ["", "<10", "10-14", "15-19", "20-24", "25-30", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", ">60"],
                                                                     datasets: [
                                                                         {
                                                                             label: "Edad de los Usuarios",
@@ -287,7 +256,8 @@
                                                             console.log(e);
                                                         }
                                                     }
-                                                });</script>
+                                                });
+                                            </script>
 
                                         </div>
                                     </div>
@@ -299,7 +269,10 @@
 
                 </div>
 
-                <div title="Dispositivos Conectados" data-options="iconCls:'icon-reporte-3'" style="overflow:auto;padding:10px; width: 100%; height: 100%;" >
+
+
+                <!--
+                <div title="Dispositivos Conectados" data-options="iconCls:'icon-reporte-3',hidden:true" style="overflow:auto;padding:10px; width: 100%; height: 100%;" >
 
                     <div class="container-fluid" style="height: content-box;" align='center'>
                         <div class="row" style="height: content-box;" align='center'>
@@ -407,6 +380,8 @@
 
                 </div>
 
+                -->
+
                 <div title="Conexiones" data-options="iconCls:'icon-reporte-4'" style="padding:10px; width: 100%; height: 100%;">
 
                     <div class="container-fluid" style="height: 100%; width: 100%;">
@@ -443,4 +418,17 @@
         </div>
     </div>
 </div>
+</div>
+
+
+<div id="ventana_detalle_reporte" class="easyui-window" title="Detalle de Consumidores por Fecha" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:70%;height:80%;padding:10px;">
+    <table class="easyui-datagrid" id="dg_detalle_consumidores" style="width: 100%; height: 100%;">
+        <thead>
+            <tr>
+                <th field="fecha" width="50%" align="center">Fecha de Conexión</th>
+                <th field="cantidad" width="50%" align="center">Número de Conexiones</th>
+            </tr>
+        </thead>
+    </table>
+
 </div>

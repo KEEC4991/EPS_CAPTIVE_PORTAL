@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link type="text/css" href="css/GUI/gestionUsuariosAdmin.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
+<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
@@ -63,27 +63,25 @@
                             <div class="col panel_reporte" style="height: 100%; width: 100%;"  align='center'>
                                 <table style="width:100%; height: 100%;"
                                        id="dg_usuarios_red_gestion"
+                                       data-options="fitColumns:true"
                                        >
                                     <thead>
                                         <tr>
                                             <th data-options="field:'ck',checkbox:true"></th>
-                                            <th data-options="field:'id_usuario'" align="center" width="11%">ID Usuario</th>
-                                            <th data-options="field:'id_usuario_freeradius'" align="center" width="11%">Id RADIUS</th>
-                                            <th data-options="field:'carnet'" align="center" width="11%">Carnet</th>
-                                            <th data-options="field:'nombre'" align="center" width="11%">Nombre</th>
-                                            <th data-options="field:'apellido'" align="center" width="11%">Apellido</th>
-                                            <th data-options="field:'fecha_nac'" align="center" width="11%">Fecha Nac</th>
-                                            <th data-options="field:'id_carrera',hidden:true" align="center" width="11%">Fin Conexión</th>
-                                            <th data-options="field:'correo'" align="center" width="11%">Correo</th>
-                                            <th data-options="field:'nombre_carrera'" align="center" width="10%">Nombre Carrera</th>
+                                            <th data-options="field:'id_usuario'" align="center" width="11">ID Usuario</th>
+                                            <th data-options="field:'id_usuario_freeradius'" align="center" width="11">Id RADIUS</th>
+                                            <th data-options="field:'carnet'" align="center" width="11">Carnet</th>
+                                            <th data-options="field:'nombre'" align="center" width="11">Nombre</th>
+                                            <th data-options="field:'apellido'" align="center" width="11">Apellido</th>
+                                            <th data-options="field:'fecha_nac'" align="center" width="11">Fecha Nac</th>
+                                            <th data-options="field:'id_carrera',hidden:true" align="center" width="11">Fin Conexión</th>
+                                            <th data-options="field:'correo'" align="center" width="11">Correo</th>
+                                            <th data-options="field:'nombre_carrera'" align="center" width="10">Nombre Carrera</th>
                                         </tr>
                                     </thead>
                                 </table>
                                 <div id="ft2" style="padding:2px 5px;">
-                                    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="agregarUsuarioAdmin()"></a>
                                     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
-                                    <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
-                                    <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
                                     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
                                 </div>
                             </div>
@@ -117,7 +115,7 @@
                    editable: false,
                    required: true,
                    prompt:'Seleccione una opcion',
-                   url:'http://127.0.0.1:8080/ECYS-CP/get-user?accion=3'
+                   url:'http://172.10.1.100:8080/ECYS-CP/get-user?accion=3'
                    " 
                    style="width:100%;">
             <input class="easyui-combobox" labelWidth='140' label='Estado' 
@@ -129,7 +127,7 @@
                    editable: false,
                    required: true,
                    prompt:'Seleccione una opcion',
-                   url:'http://127.0.0.1:8080/ECYS-CP/get-user?accion=4'
+                   url:'http://172.10.1.100:8080/ECYS-CP/get-user?accion=4'
                    " 
                    style="width:100%;">
         </div>

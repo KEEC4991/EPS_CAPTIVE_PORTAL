@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
+<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
@@ -17,7 +17,6 @@
 
     var data_administradores = $('#dg_usuarios_admin_administrivos').datagrid({
         singleSelect: true,
-        collapsible: true,
         method: 'get',
         toolbar: '#ft_ad1',
         pagination: true,
@@ -27,7 +26,7 @@
         checkOnSelect: true,
         selectOnCheck: true,
         nowrap: false,
-        url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=0'
+        url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=0'
     });
 
     data_administradores.datagrid('enableFilter');
@@ -36,8 +35,8 @@
 
 <div style="width: 100%; height: 100%;" class="container-fluid" align="center">
     <div class="easyui-panel" style="width: 100%; height: 100%;" title="Administracion de Usuarios" >
-        <div class="container" style="height: 100%;">
-            <table id='dg_usuarios_admin_administrivos' title="Listado de Usuarios Administrativos" style="width:100%; height: 98%;">
+        <div style="height: 100%; width: 98%;" align='center'>
+            <table id='dg_usuarios_admin_administrivos' title="Listado de Usuarios Administrativos" style="width:100%; height: 100%;">
                 <thead>
                     <tr>
                         <th data-options="field:'ck',checkbox:true" ></th>
@@ -74,7 +73,7 @@
                editable: false,
                required: true,
                prompt:'Seleccione una opcion',
-               url:'http://127.0.0.1:8080/ECYS-CP/get-user?accion=4'
+               url:'http://172.10.1.100:8080/ECYS-CP/get-user?accion=4'
                " 
                style="width:80%;">
         <hr>
@@ -97,7 +96,7 @@
                editable: false,
                required: true,
                prompt:'Seleccione una opcion',
-               url:'http://127.0.0.1:8080/ECYS-CP/get-user?accion=3'
+               url:'http://172.10.1.100:8080/ECYS-CP/get-user?accion=3'
                " 
                style="width:80%;">
         <hr>

@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servletsModel.NetUser;
+import servletsModel.Politica;
 
 /**
  *
@@ -37,7 +39,7 @@ public class politicasAdministracionController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet politicasAdministracionController</title>");            
+            out.println("<title>Servlet politicasAdministracionController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet politicasAdministracionController at " + request.getContextPath() + "</h1>");
@@ -58,7 +60,46 @@ public class politicasAdministracionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.setContentType("text/html;charset=UTF-8");
+        
+        try (PrintWriter out = response.getWriter()) {
+            
+            String valor_accion = request.getParameter("accion");
+            int accion = Integer.valueOf(valor_accion);
+            
+            NetUser usuarios_red = new NetUser();
+            Politica politica_users = new Politica();
+            
+            switch (accion) {
+                case 0: {
+                    break;
+                }
+                case 1: {
+                    out.println(usuarios_red.getPoliceType());
+                    break;
+                }
+                case 2: {
+                    String tipo = request.getParameter("tipo");
+                    String nombre = request.getParameter("nombre");
+                    String valor = request.getParameter("valor");
+                    String descripcion = request.getParameter("descripcion");
+                    String usuario = request.getParameter("usuario");
+                    out.println(politica_users.registroPolitica(nombre, valor, descripcion, tipo, usuario));
+                    break;
+                }
+                case 3: {
+                    out.print(politica_users.listadoPoliticas());
+                    break;
+                }
+            }
+            
+        }
+        
     }
 
     /**

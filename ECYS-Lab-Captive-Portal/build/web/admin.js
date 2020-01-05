@@ -1,7 +1,7 @@
 $(document).ready(function () {
     cambioPanel(1);
-    if (sessionStorage.getItem('id_usuario') == null) {
-        location.replace('http://127.0.0.1:8080/ECYS-CP/log-cap');
+    if (sessionStorage.getItem('id_usuario') === null) {
+        //location.replace('http://172.10.1.100:8080/ECYS-CP/log-cap');
     }
 });
 

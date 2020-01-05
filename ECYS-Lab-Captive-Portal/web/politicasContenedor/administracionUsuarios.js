@@ -11,7 +11,7 @@ function confirmar_Cambio_Estado_Usuario_Administracion()
         var nuevo_estado = $('#cmb_tipo_ususario_cambio_estado').combobox('getValue');
 
         $.ajax({
-            url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=7',
+            url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=7',
             metod: 'GET',
             data: {id_usuario: seleccionado.id_usuario, id_estado: nuevo_estado},
             success: function (data, textStatus, jqXHR) {
@@ -86,7 +86,7 @@ function confirmar_Cambio_Tipo_Usuario_Administracion()
         var nuevo_estado = $('#cmb_tipo_usuario_cambio_tipo').combobox('getValue');
 
         $.ajax({
-            url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=8',
+            url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=8',
             metod: 'GET',
             data: {id_usuario: seleccionado.id_usuario, id_tipo_usuario: nuevo_estado},
             success: function (data, textStatus, jqXHR) {
@@ -153,7 +153,7 @@ function administracionUsuarios_Cambiar_Tipo_Usuario() {
 
 function reiniciarTablaUsuariosAdmin_Admin() {
     $('#dg_usuarios_admin_administrivos').datagrid('loadData', []);
-    $.getJSON('http://127.0.0.1:8080/ECYS-CP/get-user', {accion: 0}, function (resultado) {
+    $.getJSON('http://172.10.1.100:8080/ECYS-CP/get-user', {accion: 0}, function (resultado) {
         $('#dg_usuarios_admin_administrivos').datagrid('loadData', resultado);
     });
 }

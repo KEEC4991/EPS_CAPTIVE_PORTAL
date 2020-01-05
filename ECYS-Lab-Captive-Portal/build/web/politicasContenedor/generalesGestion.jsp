@@ -7,29 +7,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="themes/black/easyui.css">
+<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="themes/icon.css">
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
 
+<script type="text/javascript" src="politicasContenedor/generalesGestion.js"></script>
+
 <script>
-
-
     var data_administradores = $('#dg_politicas_administracion').datagrid({
         singleSelect: true,
         collapsible: true,
         method: 'get',
         pagination: true,
+        fitColumns:true,
         clientPaging: true,
         remoteFilter: true,
         rownumbers: true,
         checkOnSelect: true,
         selectOnCheck: true,
         nowrap: false,
+        url: 'http://localhost:8080/ECYS-CP/pol-cap?accion=3',
         toolbar: '#toolbar-tabla-politicas-admin'
     });
 
-    // url: 'http://127.0.0.1:8080/ECYS-CP/get-user?accion=0'
+    // url: 'http://172.10.1.100:8080/ECYS-CP/pol-cap?accion=1'
 
     data_administradores.datagrid('enableFilter');
 
@@ -43,30 +45,65 @@
             <thead>
                 <tr>
                     <th data-options="field:'ck',checkbox:true" ></th>
-                    <th data-options="field:'id_usuario'" align="center" width="8%">ID Usuario</th>
-                    <th data-options="field:'nombre_usuario'" align="left" width="15%">Nombre Usuario</th>
-                    <th data-options="field:'correo_electronico'" align="center" width="15%">Correo Electronico</th>
-                    <th data-options="field:'tipo_usuario'" align="center" width="10%">Tipo Usuario</th>
-                    <th data-options="field:'estado_usuario'" align="center" width="10%">Estado</th>
-                    <th data-options="field:'fecha_ultima_conexion'" align="center" width="10%">Fecha Conexión</th>
-                    <th data-options="field:'fecha_registro'" align="center" width="10%">Fecha Registro</th>
-                    <th data-options="field:'usuario_descripcion'" align="left" width="20%">Descripción Usuario</th>
+                    <th data-options="field:'id_politica'," align="center" width="10">ID Politica</th>
+                    <th data-options="field:'nombre_politica'" align="left" width="20">Nombre Politica</th>
+                    <th data-options="field:'valor_descriptivo'" align="center" width="15">Valor</th>
+                    <th data-options="field:'descripcion'" align="center" width="20">Descripcion</th>
+                    <th data-options="field:'id_estado'" align="center" width="10">Tipo</th>
+                    <th data-options="field:'id_administrador'" align="center" width="10">ID Administrador</th>
+                    <th data-options="field:'fecha_registro'" align="center" width="10">Fecha Registro</th>
                 </tr>
             </thead>
         </table>
-        
+        <script>
+
+        </script>
+
         <div id="toolbar-tabla-politicas-admin">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
-            <input class="easyui-combobox" data-options="editable:false" />
+            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="windowNuevaPolitica()">Añadir</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Eliminar</a>
+            <!--input class="easyui-combobox"
+                   style="text-align: center; width: 20%;"
+                   data-options="
+                   editable:false,
+                   valueField:'idpolitica',
+                   textField:'descripcion',
+                   url:'http://localhost:8080/ECYS-CP/pol-cap?accion=1',
+                   method:'get'"  /-->
         </div>
-        
     </div>
 </div>
 
-<div style="width: 100%;">
-
+<div class="easyui-window" id='window_new_politica' title='Nueva Politica' 
+     data-options="modal:true,closed:true,iconCls:'icon-add',onClose: function(){ $('#form_new_policy').form('reset'); }" style="width: 25%; height: content-box;" align='left'>
+    <form id='form_new_policy' class="container" align="left" style="color: white !important;">
+        <style>
+            .form-check, label {
+                color: #006666 !Important;
+            }
+        </style>
+        <br>
+        <input class="easyui-combobox" labelWidth='140' label='Tipo Politica' 
+               labelPosition="top"
+               data-options="
+               valueField:'idpolitica',
+               textField:'descripcion',
+               method: 'get',
+               editable: false,
+               required: true,
+               prompt:'Seleccione una opcion',
+               url:'http://localhost:8080/ECYS-CP/pol-cap?accion=1'
+               " 
+               style="width:100%;"
+               id="policy_tipo_combobox"
+               >
+        <hr>
+        <input id="policy_nombre_textbox" class="easyui-textbox" prompt="Texto" data-options="required:true" labelPosition="top" label="Nombre Politica:" style="width: 100%; color: white;">
+        <input id="policy_valor_textbox" class="easyui-textbox" data-options="required:true" prompt="Numerico / texto" labelPosition="top" label="Valor de Asignacion/Descriptivo:" style="width: 100%;">
+        <input id="policy_descripcion_textbox" class="easyui-textbox" data-options="required:true" prompt="Texto descriptivo.." labelPosition="top" label="Descripcion:" data-options="multiline:true" style="width: 100%;">
+        <hr>
+        <div style="width: 100%;" align="center">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="savePolicy()" style="width: 50%;">Guardar</a>
+        </div>
+    </form>
 </div>

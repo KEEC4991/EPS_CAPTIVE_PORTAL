@@ -9,10 +9,13 @@
 <style>
 
     .panel_informativo{
-        background-color: #312f2f;
-        color:white;
+        background-color: white;//#312f2f;
+        opacity: 0.9;
+        color:#006666;
         border-radius: 5px;
-        padding: 20px 20px 20px 20px;
+        border-color: gainsboro;
+        border-style: outset;
+        
     }
 
 </style>
@@ -21,8 +24,8 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="col panel_informativo">
-                <p style="font-weight: bold;">Funcionalidad:</p>
+            <div class="col panel_informativo" style="border-bottom-color: gray;">
+                <p style="font-weight: bold; margin-top: 10px;">Funcionalidad:</p>
                 <div style="padding-left: 20px;">
                     <ul>
                         <li>

@@ -42,7 +42,7 @@
 
     <body>
         <script>
-            $.getJSON('http://localhost:8080/ECYS-CP/reg-contr', {}, function (respuesta) {
+            $.getJSON('http://172.10.1.100:8080/ECYS-CP/reg-contr', {}, function (respuesta) {
                 $('#txt_reg_carrera').combobox({
                     data : respuesta,
                     editable:false,
