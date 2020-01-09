@@ -90,5 +90,13 @@ public class Politica {
             return "[]";
         }
     }
+    
+    public String deletePolitica(String id_politica){
+        
+        String query = "delete from public.captive_politicas where id_politica = " + id_politica;
+        
+        
+        
+    }
 
 }
