@@ -95,7 +95,7 @@ public class Politica {
         
         String query = "delete from public.captive_politicas where id_politica = " + id_politica;
         
-        
+        return "";
         
     }
 

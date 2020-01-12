@@ -27,7 +27,7 @@
         checkOnSelect: true,
         selectOnCheck: true,
         nowrap: false,
-        url: 'http://localhost:8080/ECYS-CP/pol-cap?accion=3',
+        url: 'http://172.10.1.100:8080/ECYS-CP/pol-cap?accion=3',
         toolbar: '#toolbar-tabla-politicas-admin'
     });
 
@@ -92,7 +92,7 @@
                editable: false,
                required: true,
                prompt:'Seleccione una opcion',
-               url:'http://localhost:8080/ECYS-CP/pol-cap?accion=1'
+               url:'http://172.10.1.100:8080/ECYS-CP/pol-cap?accion=1'
                " 
                style="width:100%;"
                id="policy_tipo_combobox"

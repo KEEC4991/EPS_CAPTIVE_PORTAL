@@ -21,10 +21,23 @@ function savePolicy() {
         var usuario = sessionStorage.getItem('id_usuario');
 
         $.ajax({
-            url: 'http://localhost:8080/ECYS-CP/pol-cap?accion=2',
+            url: 'http://172.10.1.100:8080/ECYS-CP/pol-cap?accion=2',
             data: {tipo: tipo, nombre: nombre, valor: valor, descripcion: descripcion, usuario: usuario},
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
+
+                try {
+
+                    var objetoResultado = JSON.parse(data);
+                    if (data.resultado === "1") {
+                        $.messager.alert('Nueva politica', 'Politica almacenada exitosamente.', 'info');
+                    }else{
+                        $.messager.alert('Error', 'Problemas al registrar la nueva politica.', 'error');
+                    }
+
+                } catch (e) {
+                        $.messager.alert('Error', 'Problemas al registrar la nueva politica. Error de servidor.', 'error');
+                }
+
             }
         });
 
