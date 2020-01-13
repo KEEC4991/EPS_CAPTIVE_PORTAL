@@ -121,3 +121,9 @@
 .icon-estado-usuario{
         background:url('icons/estado_usuario.png') no-repeat center center;
 }
+.icon-asignar-valor{
+    background: url('icons/asignar.png') no-repeat center center;
+}
+.icon-cambio-estado{
+    background: url('icons/cambio.png') no-repeat center center;
+}

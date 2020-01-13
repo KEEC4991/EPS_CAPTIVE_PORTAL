@@ -83,13 +83,15 @@ public class politicasAdministracionController extends HttpServlet {
                     out.println(usuarios_red.getPoliceType());
                     break;
                 }
-                case 2: {
-                    String tipo = request.getParameter("tipo");
-                    String nombre = request.getParameter("nombre");
-                    String valor = request.getParameter("valor");
-                    String descripcion = request.getParameter("descripcion");
-                    String usuario = request.getParameter("usuario");
-                    out.println(politica_users.registroPolitica(nombre, valor, descripcion, tipo, usuario));
+                case 4:{
+                    String id_politica = request.getParameter("id_politica");
+                    String valor_politica = request.getParameter("valor_politica");
+                    out.println(politica_users.updateValorPolitica(id_politica, valor_politica));
+                    break;
+                }
+                case 5:{
+                    String id_politica = request.getParameter("id_politica");
+                    out.println(politica_users.disablePolitica(id_politica));
                     break;
                 }
                 case 3: {

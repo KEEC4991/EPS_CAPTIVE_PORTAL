@@ -21,6 +21,62 @@ public class Politica {
     public Politica() {
     }
 
+    public String updateValorPolitica(String id_politica, String valor_) {
+
+        try {
+            String query = "";
+            String respuesta = "";
+
+            query = "UPDATE public.captive_politicas\n"
+                    + "SET valor_descriptivo = '" + valor_ + "'\n"
+                    + "WHERE id_politica = " + id_politica + ";";
+
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            int valor_retorno = pstate.executeUpdate();
+
+            post_con.close();
+            return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Registro realizado con exito.\" }";
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Politica.class.getName()).log(Level.SEVERE, null, ex);
+            return "{ \"resultado\": \"false\", \"mensaje\": \"Error de conexión.\" }";
+        } catch (SQLException ex) {
+            Logger.getLogger(Politica.class.getName()).log(Level.SEVERE, null, ex);
+            return "{ \"resultado\": \"false\", \"mensaje\": \"Error en Postgresql.\" }";
+        }
+
+    }
+
+    public String disablePolitica(String id_politica) {
+
+        try {
+            String query = "";
+            String respuesta = "";
+
+            query = "UPDATE public.captive_politicas\n"
+                    + "SET valor_descriptivo = 'NA' \n"
+                    + "WHERE id_politica = " + id_politica + ";";
+
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            int valor_retorno = pstate.executeUpdate();
+
+            post_con.close();
+            return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Registro realizado con exito.\" }";
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Politica.class.getName()).log(Level.SEVERE, null, ex);
+            return "{ \"resultado\": \"false\", \"mensaje\": \"Error de conexión.\" }";
+        } catch (SQLException ex) {
+            Logger.getLogger(Politica.class.getName()).log(Level.SEVERE, null, ex);
+            return "{ \"resultado\": \"false\", \"mensaje\": \"Error en Postgresql.\" }";
+        }
+
+    }
+
     public String registroPolitica(String nombre, String valor, String descripcion, String id_estado, String id_administrador) {
         try {
             String query = "";
@@ -90,13 +146,13 @@ public class Politica {
             return "[]";
         }
     }
-    
-    public String deletePolitica(String id_politica){
-        
+
+    public String deletePolitica(String id_politica) {
+
         String query = "delete from public.captive_politicas where id_politica = " + id_politica;
-        
+
         return "";
-        
+
     }
 
 }
