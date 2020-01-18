@@ -17,7 +17,13 @@
         cargaMenu(1);
     });
 </script>
-
+<style type="text/css">
+    .datagrid-header-row .datagrid-cell{
+        line-height:normal;
+        height:auto;
+        white-space:normal;
+    }
+</style>
 <div class="container-fluid" style="height: 100%;">
     <div class="row" >
         <div class="col" align="center">

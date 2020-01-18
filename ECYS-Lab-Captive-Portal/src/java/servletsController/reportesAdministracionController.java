@@ -72,6 +72,7 @@ public class reportesAdministracionController extends HttpServlet {
             int accion = Integer.valueOf(valor_accion);
 
             Carrera post_car = new Carrera();
+            NetUser net_cons = new NetUser();
 
             switch (accion) {
                 case 0: {
@@ -108,6 +109,10 @@ public class reportesAdministracionController extends HttpServlet {
                 }
                 case 7: {
                     out.println(post_car.getDashboardConcurrenciaCarreras());
+                    break;
+                }
+                case 8:{
+                    out.println(net_cons.getConsumoDiario());
                     break;
                 }
                 default: {

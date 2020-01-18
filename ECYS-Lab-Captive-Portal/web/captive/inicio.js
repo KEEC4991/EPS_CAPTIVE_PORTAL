@@ -19,9 +19,10 @@ function access_validation() {
             type: 'POST',
             data: {carnet: param_carnet},
             success: function (data, textStatus, jqXHR) {
+                console.log(data);
                 try {
                     var result = JSON.parse(data);
-
+                    
                     if (result.resultado == true) {
                         $.messager.alert({
                             title: 'Ingreso a Red Internet Inalambrico',

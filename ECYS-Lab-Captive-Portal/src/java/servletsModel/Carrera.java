@@ -303,21 +303,21 @@ public class Carrera {
                 respuesta += "{";
                 respuesta += "\"id\":" + rs.getString(1).trim() + ",\n";
                 respuesta += "\"usuario\":\"" + rs.getString(4).trim() + "\",\n";
-                respuesta += "\"origen\":\"" + rs.getString(7).trim() + "\",\n";
-                respuesta += "\"tipo\":\"" + rs.getString(9).trim() + "\",\n";
-                respuesta += "\"fecha_inicio\":\"" + rs.getString(10).trim() + "\",\n";
-                if (rs.getString(12) != null) {
-                    respuesta += "\"fecha_final\":\"" + rs.getString(12).trim() + "\",\n";
+                respuesta += "\"origen\":\"" + rs.getString(6).trim() + "\",\n";
+                respuesta += "\"tipo\":\"" + rs.getString(8).trim() + "\",\n";
+                respuesta += "\"fecha_inicio\":\"" + rs.getString(9).trim() + "\",\n";
+                if (rs.getString(11) != null) {
+                    respuesta += "\"fecha_final\":\"" + rs.getString(11).trim() + "\",\n";
                 } else {
                     respuesta += "\"fecha_final\":\" Con conexión \",\n";
                 }
-                if (rs.getString(21) != null) {
-                    respuesta += "\"dispositivo\":\"" + rs.getString(21).trim() + "\",\n";
+                if (rs.getString(20) != null) {
+                    respuesta += "\"dispositivo\":\"" + rs.getString(20).trim() + "\",\n";
                 }else{
                     respuesta += "\"dispositivo\":\"Dispositivo desconocido\",\n";
                 }
-                if (rs.getString(22) != null) {
-                    respuesta += "\"causa\":\"" + rs.getString(22).trim() + "\"";
+                if (rs.getString(21) != null) {
+                    respuesta += "\"causa\":\"" + rs.getString(21).trim() + "\"";
                 } else {
                     respuesta += "\"causa\":\"Conectado\"";
                 }

@@ -12,7 +12,13 @@
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
 <script src="gestionUsuariosAdmin.js" type="text/javascript"></script>
-
+<style type="text/css">
+    .datagrid-header-row .datagrid-cell{
+        line-height:normal;
+        height:auto;
+        white-space:normal;
+    }
+</style>
 <div class="container-fluid" style="height: 100%;">
     <div class="row">
         <div class="col" align="center">

@@ -34,7 +34,6 @@ public class JDBC_PostgreSQL {
         setIPConexion();
         TimeZone.setDefault(TimeZone.getTimeZone("America/Guatemala"));
         Connection conn = DriverManager.getConnection("jdbc:postgresql://" + ip + ":5432/radius?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Guatemala", "postgres", "admin");
-        conn.setClientInfo(null);
         return conn;
     }
 

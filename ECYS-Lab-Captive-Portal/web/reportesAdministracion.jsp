@@ -60,12 +60,17 @@
                             <div class="col panel_general" style="height: 100%;">
                                 <div class="panel_reporte" style="height: 100%;" align='center'>
 
-                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker1" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser" >
-                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker2" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser" >
+                                    <div align="left" style="font-weight: bold;">
+                                        <p>
+                                            Seleccione un rango de fechas no mayor a un mes (30 o 31 días) para consultar:
+                                            <br>
+                                        </p>
+                                    </div>
+                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker1" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser,prompt:'Fecha Inicial'" >
+                                    <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker2" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser,prompt:'Fecha Final'" >
 
-
-                                    <a href="#" class="easyui-linkbutton c1" style="width:120px" onclick="openVentanaDetalle()">Detalle</a>
-                                    <a href="#" class="easyui-linkbutton c1" style="width:120px" onclick="loadReporteConsumidores()">Actualizar</a>
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px;color: white !Important;" onclick="loadReporteConsumidores()">Actualizar</a>
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px; color: white !Important;" onclick="openVentanaDetalle()">Detalle</a>
 
                                     <hr>
 
@@ -269,119 +274,6 @@
 
                 </div>
 
-
-
-                <!--
-                <div title="Dispositivos Conectados" data-options="iconCls:'icon-reporte-3',hidden:true" style="overflow:auto;padding:10px; width: 100%; height: 100%;" >
-
-                    <div class="container-fluid" style="height: content-box;" align='center'>
-                        <div class="row" style="height: content-box;" align='center'>
-                            <div class="col panel_general" style="height: content-box;" align='center'>
-                                <div class="panel_reporte" style="height: content-box; color: black;" align='center'>
-
-                                    <h5 style="text-align: center;font-weight: bold;">DISPOSITIVOS CONECTADOS POR DÍA</h5>
-                                    <hr>
-                                    <div>
-                                        <div align="center">
-                                            <input class="easyui-datetimebox" style="color: black;" id="date_reporte_dispositivos_conectados_inicio" data-options="required:true,showSeconds:false,editable:false" >
-                                            <input class="easyui-datetimebox" style="color: black;" id="date_reporte_dispositivos_conectados_fin" data-options="required:true,showSeconds:false,editable:false" >
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div>
-                                        <canvas id="dispositivos_conectados" style="max-width: 50%; display: inline-block; "></canvas>
-                                        <script>
-                                            var ctx = document.getElementById("dispositivos_conectados").getContext('2d');
-                                            var myChart = new Chart(ctx, {
-                                                type: 'bar',
-                                                data: {
-                                                    labels: ["3/10/2019", "4/10/2019", "5/10/2019", "6/10/2019", "7/10/2019", "8/10/2019"],
-                                                    datasets: [{
-                                                            label: 'Dispositivos Conectados por Día',
-                                                            data: [12, 19, 3, 5, 2, 3],
-                                                            backgroundColor: [
-                                                                'rgba(255, 99, 132, 0.2)',
-                                                                'rgba(54, 162, 235, 0.2)',
-                                                                'rgba(255, 206, 86, 0.2)',
-                                                                'rgba(75, 192, 192, 0.2)',
-                                                                'rgba(153, 102, 255, 0.2)',
-                                                                'rgba(255, 159, 64, 0.2)'
-                                                            ],
-                                                            borderColor: [
-                                                                'rgba(255,99,132,1)',
-                                                                'rgba(54, 162, 235, 1)',
-                                                                'rgba(255, 206, 86, 1)',
-                                                                'rgba(75, 192, 192, 1)',
-                                                                'rgba(153, 102, 255, 1)',
-                                                                'rgba(255, 159, 64, 1)'
-                                                            ],
-                                                            borderWidth: 1
-                                                        }]
-                                                },
-                                                options: {
-                                                    scales: {
-                                                        yAxes: [{
-                                                                ticks: {
-                                                                    beginAtZero: true
-                                                                }
-                                                            }]
-                                                    }
-                                                }
-                                            });</script>
-                                    </div>
-                                    <hr>
-                                    <p style="text-align: left; font-weight: bold;">Tendencia de Consumo por Día</p>
-                                    <hr>
-                                    <input class="easyui-datetimebox" style="color: black;" id="date_reporte_consumo_por_dia" data-options="required:true,showSeconds:false,editable:false" >
-                                    <button id='reporte3_dato2'>Consultar</button>
-                                    <hr>
-                                    <canvas id="radarChart3" style="max-width: 50%; "></canvas>
-                                    <script>
-
-                                        var ctxR3 = document.getElementById("radarChart3").getContext('2d');
-                                        var myRadarChart = new Chart(ctxR3, {
-                                            type: 'radar',
-                                            data: {
-                                                labels: ["VIDEO", "HTTP", "STREAMING", "MAIL", "OTHERS", "VIDEO", "AUDIO"],
-                                                datasets: [{
-                                                        label: "Numero de Carnet",
-                                                        data: [65, 59, 90, 81, 56, 55, 40],
-                                                        backgroundColor: [
-                                                            'rgba(105, 0, 132, .2)',
-                                                        ],
-                                                        borderColor: [
-                                                            'rgba(200, 99, 132, .7)',
-                                                        ],
-                                                        borderWidth: 2
-                                                    }/*,
-                                                     {
-                                                     label: "My Second dataset",
-                                                     data: [28, 48, 40, 19, 96, 27, 100],
-                                                     backgroundColor: [
-                                                     'rgba(0, 250, 220, .2)',
-                                                     ],
-                                                     borderColor: [
-                                                     'rgba(0, 213, 132, .7)',
-                                                     ],
-                                                     borderWidth: 2
-                                                     }*/
-                                                ]
-                                            },
-                                            options: {
-                                                responsive: true
-                                            }
-                                        });
-                                    </script>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                -->
-
                 <div title="Conexiones" data-options="iconCls:'icon-reporte-4'" style="padding:10px; width: 100%; height: 100%;">
 
                     <div class="container-fluid" style="height: 100%; width: 100%;">
@@ -401,13 +293,44 @@
                                             </tr>
                                         </thead>
                                     </table>
-                                    <div id="ft_reporte2" style="padding:2px 5px;">
-                                        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
-                                        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
-                                        <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
-                                        <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
-                                        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div title="Detalle de Consumo por Sesion Usuario" data-options="iconCls:'icon-reporte-4'" style="padding:10px; width: 100%; height: 100%;">
+                    <style type="text/css">
+                        .datagrid-header-row .datagrid-cell{
+                            line-height:normal;
+                            height:auto;
+                            white-space:normal;
+                        }
+                    </style>
+                    <div class="container-fluid" style="height: 100%; width: 100%;">
+                        <div class="row" style="height: 100%; width: 100%;">
+                            <div class="col panel_general" style="height: 100%;">
+                                <div class="panel_reporte" style="height: 100%; color: black;">
+
+                                    <table style="width:100%; height: 100%;"
+                                           id="dg_consumo"
+                                           url="http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8"
+                                           >
+                                        <thead>
+                                            <tr>
+                                                <th data-options="field:'ck',checkbox:true"></th>
+                                                <th data-options="field:'no_usuario',width:50" align="center">No. Usuario</th>
+                                                <th data-options="field:'name_us',width:50" align="center">Nombre Usuario</th>
+                                                <th data-options="field:'init_fecha',width:50" align="center">Inicio Conexión</th>
+                                                <th data-options="field:'fin_fecha',width:50" align="center">Fin de Conexión</th>
+                                                <th data-options="field:'time_con',width:50" align="center">Tiempo de Conexión</th>
+                                                <th data-options="field:'up_con',width:50" align="center">Consumo Bytes Carga</th>
+                                                <th data-options="field:'down_con',width:50" align="center">Consumo Bytes Descarga</th>
+                                                <th data-options="field:'mac_dis',width:50" align="center">MAC Dispositivo</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+
                                 </div>
                             </div>
                         </div>

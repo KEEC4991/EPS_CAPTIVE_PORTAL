@@ -38,7 +38,7 @@ public class inicioController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet inicioController</title>");            
+            out.println("<title>Servlet inicioController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet inicioController at " + request.getContextPath() + "</h1>");
@@ -59,7 +59,19 @@ public class inicioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.setContentType("text/html;charset=UTF-8");
+
+        String param_carnet = request.getParameter("carnet");
+
+        try (PrintWriter out = response.getWriter()) {
+            NetUser usuariosRed = new NetUser();
+            out.println(usuariosRed.checkUserJson(param_carnet));
+        }
     }
 
     /**
@@ -73,17 +85,17 @@ public class inicioController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
         response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String param_carnet = request.getParameter("carnet");
 
         try (PrintWriter out = response.getWriter()) {
             NetUser usuariosRed = new NetUser();
-            out.println(usuariosRed.checkUserJson(param_carnet));            
+            out.println(usuariosRed.checkUserJson(param_carnet));
         }
     }
 

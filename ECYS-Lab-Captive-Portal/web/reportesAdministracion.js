@@ -1,6 +1,42 @@
 
 $(function () {
 
+    var dgconsumos = $('#dg_consumo').datagrid({
+        singleSelect: false,
+        collapsible: true,
+        pagination: true,
+        clientPaging: true,
+        rownumbers: true,
+        checkOnSelect: true,
+        selectOnCheck: true,
+        nowrap: false,
+        fitColumns: true,
+        method: 'post',
+        title: 'Detalle de Consumo por Usuario y Conexion',
+        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
+    });
+
+    dgconsumos.datagrid('enableFilter');
+
+    $.ajax({
+        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep',
+        data: {accion: 8},
+        success: function (data, textStatus, jqXHR) {
+            var JSONresp = JSON.parse(data);
+            dgconsumos.datagrid('loadData', JSONresp);
+        }
+    });
+
+/*
+    $.post('http://localhost:8080/ECYS-CP/admin-rep', {accion: 8}, function (respuesta) {
+        console.log(respuesta);
+        datagrid_detalle_consumo_reporte.datagrid('loadData', respuesta);
+    }, 'json');
+*/
+    /**
+     * OTRO GRID
+     */
+
     var datagrid_usuarios_conexion_reportes = $('#dg_reportes_listado_usuarios_conexion').datagrid({
         singleSelect: false,
         collapsible: true,
@@ -11,10 +47,10 @@ $(function () {
         checkOnSelect: true,
         selectOnCheck: true,
         nowrap: false,
-        fitColumns:true,
+        fitColumns: true,
         method: 'post',
         title: 'Listado de Usuarios por Conexión',
-        toolbar: '#ft_reporte2',
+        // toolbar: '#ft_reporte2',
         rowStyler: function (index, row) {
             //console.log(row);
             if (row.no_tipo_respuesta === "Access-Accept") {
@@ -140,6 +176,7 @@ function loadReporteConsumidores() {
 
 }
 
+var indice_global = -1;
 
 function openVentanaDetalle() {
 
@@ -196,13 +233,9 @@ function openVentanaDetalle() {
             //var id_datagrid = "clase" + index; return '<div style="padding:2px;position:relative;">\n\ <table class="' + id_datagrid + '" id="' + id_datagrid + '"></table>\n\</div>';
             return '<div style="padding:2px;position:relative;"><table class="ddv"></table></div>';
         },
-        onCollapseRow: function (index, row) {
-
-        },
         onExpandRow: function (index, row) {
 
             var ddv = $(this).datagrid('getRowDetail', index).find('table.ddv');
-
 
             ddv.datagrid({
                 url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=6&fecha=' + row.fecha,
@@ -211,7 +244,7 @@ function openVentanaDetalle() {
                 method: 'get',
                 rownumbers: true,
                 loadMsg: '',
-                height: 'auto',
+                height: 'content',
                 rowStyler: function (index, row) {
                     if (row.causa === "Conectado") {
                         return 'background-color:rgb(46, 134, 193,0.3);color:white;font-weight:bold;';
@@ -235,10 +268,18 @@ function openVentanaDetalle() {
                 onLoadSuccess: function () {
                     setTimeout(function () {
                         $('#dg').datagrid('fixDetailRowHeight', index);
-                    }, 0);
+                    }, 100);
                 }
             });
-            $('#dg').datagrid('fixDetailRowHeight', index);
+
+            grid_detalle.datagrid('fixDetailRowHeight', index);
+
+            if (index !== -1 && index !== indice_global) {
+                grid_detalle.datagrid('collapseRow', indice_global);
+            }
+
+            indice_global = index;
+
         },
         nowrap: false,
         method: 'get',

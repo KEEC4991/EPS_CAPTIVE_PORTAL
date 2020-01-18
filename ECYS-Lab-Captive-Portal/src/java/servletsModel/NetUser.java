@@ -73,7 +73,7 @@ public class NetUser {
         if (check == 0) {
 
             try {
-                String query = "INSERT INTO public.radcheck( username, attribute, op, value) VALUES ('" + carnet + "', 'User-Password', '=', '" + carnet + "');";
+                String query = "INSERT INTO public.radcheck( username, attribute, op, value) VALUES ('" + carnet + "', 'Cleartext-Password', ':=', '" + carnet + "');";
 
                 JDBC_PostgreSQL conector = new JDBC_PostgreSQL();
                 Connection post_con = conector.get_connection_freeradius();
@@ -288,6 +288,60 @@ public class NetUser {
                 respuesta += "{";
                 respuesta += "\"idpolitica\":\"" + rs.getString(1) + "\",";
                 respuesta += "\"descripcion\":\"" + rs.getString(2) + "\"";
+                respuesta += "}";
+
+            }
+
+            respuesta += "\n]";
+            post_con.close();
+            return respuesta;
+
+        } catch (Exception e) {
+            return "['con errores'" + e.getMessage() + "]";
+        }
+    }
+
+    public String getConsumoDiario() {
+        try {
+
+            String query = "select "
+                    + "radacctid, "
+                    + "username, "
+                    + "acctstarttime,  "
+                    + "acctstoptime , "
+                    + "acctsessiontime, "
+                    + "acctoutputoctets, "
+                    + "acctinputoctets, "
+                    + "callingstationid \n"
+                    + "from radacct;";
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            ResultSet rs = pstate.executeQuery();
+
+            String respuesta = "[\n";
+            int contador = 0;
+
+            while (rs.next()) {
+                if (contador == 0) {
+                    contador++;
+                } else {
+                    respuesta += ",";
+                }
+
+                respuesta += "{";
+                respuesta += "\"no_usuario\":\"" + rs.getString(1) + "\",";
+                respuesta += "\"name_us\":\"" + rs.getString(2) + "\",";
+                respuesta += "\"init_fecha\":\"" + rs.getString(3) + "\",";
+                if (rs.getString(contador) != "null") {
+                    respuesta += "\"fin_fecha\":\"" + rs.getString(4) + "\",";
+                } else {
+                    respuesta += "\"fin_fecha\":\"Conectado\",";
+                }
+                respuesta += "\"time_con\":\"" + rs.getString(5) + "\",";
+                respuesta += "\"up_con\":\"" + rs.getString(7) + "\",";
+                respuesta += "\"down_con\":\"" + rs.getString(6) + "\",";
+                respuesta += "\"mac_dis\":\"" + rs.getString(8) + "\"";
                 respuesta += "}";
 
             }

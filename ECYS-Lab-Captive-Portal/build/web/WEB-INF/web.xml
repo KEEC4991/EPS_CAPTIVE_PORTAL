@@ -22,11 +22,11 @@
     </servlet>
     <servlet>
         <servlet-name>RegistroCaptivo</servlet-name>
-        <jsp-file>/captive/registro.jsp</jsp-file>
+        <jsp-file>/captive/registro.html</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>IngresoCaptivo</servlet-name>
-        <jsp-file>/captive/inicio.jsp</jsp-file>
+        <jsp-file>/captive/iniciov7.html</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>AdministracionCaptive</servlet-name>
@@ -100,10 +100,6 @@
         <jsp-property-group>
             <display-name>my-admin</display-name>
             <url-pattern>/admin.jsp</url-pattern>
-        </jsp-property-group>
-        <jsp-property-group>
-            <display-name>ingreso</display-name>
-            <url-pattern>/ingreso.html</url-pattern>
         </jsp-property-group>
         <jsp-property-group>
             <display-name>login-cp</display-name>
