@@ -16,7 +16,7 @@ import java.util.TimeZone;
  */
 public class JDBC_PostgreSQL {
 
-    String ip = "172.10.1.200";
+    String ip = "172.10.1.250";
 
     public Connection get_connection() throws ClassNotFoundException, SQLException {
 
@@ -39,7 +39,7 @@ public class JDBC_PostgreSQL {
 
     public void setIPConexion() {
         this.ip = "172.10.1.250";
-        //this.ip = "127.0.0.1";
+        this.ip = "127.0.0.1";
     }
 
 }
