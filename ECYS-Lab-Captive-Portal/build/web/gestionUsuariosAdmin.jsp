@@ -74,15 +74,15 @@
                                     <thead>
                                         <tr>
                                             <th data-options="field:'ck',checkbox:true"></th>
-                                            <th data-options="field:'id_usuario'" align="center" width="11">ID Usuario</th>
-                                            <th data-options="field:'id_usuario_freeradius'" align="center" width="11">Id RADIUS</th>
-                                            <th data-options="field:'carnet'" align="center" width="11">Carnet</th>
-                                            <th data-options="field:'nombre'" align="center" width="11">Nombre</th>
-                                            <th data-options="field:'apellido'" align="center" width="11">Apellido</th>
-                                            <th data-options="field:'fecha_nac'" align="center" width="11">Fecha Nac</th>
-                                            <th data-options="field:'id_carrera',hidden:true" align="center" width="11">Fin Conexión</th>
-                                            <th data-options="field:'correo'" align="center" width="11">Correo</th>
-                                            <th data-options="field:'nombre_carrera'" align="center" width="10">Nombre Carrera</th>
+                                            <th data-options="field:'id_usuario',width:50" align="center" >ID Usuario</th>
+                                            <th data-options="field:'id_usuario_freeradius',width:50" align="center" >Id RADIUS</th>
+                                            <th data-options="field:'carnet',width:110" align="center" >Carnet</th>
+                                            <th data-options="field:'nombre',width:110" align="center" >Nombre</th>
+                                            <th data-options="field:'apellido',width:110" align="center" >Apellido</th>
+                                            <th data-options="field:'fecha_nac',width:110" align="center" >Fecha Nac</th>
+                                            <th data-options="field:'id_carrera',hidden:true,width:110" align="center" >Fin Conexión</th>
+                                            <th data-options="field:'correo',width:250" align="center" >Correo</th>
+                                            <th data-options="field:'nombre_carrera',width:100" align="center" >Nombre Carrera</th>
                                         </tr>
                                     </thead>
                                 </table>

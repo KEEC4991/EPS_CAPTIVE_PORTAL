@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-detailview.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
-<script type="text/javascript" src="reportesAdministracion.js"></script>
+
 
 <script>
     $(function () {
@@ -28,18 +28,39 @@
         $("#datepicker3").datepicker("setDate", currentDate);
         $("#datepicker4").datepicker("setDate", currentDate);
         $("#datepicker5").datepicker("setDate", currentDate);
-    });</script>
+    });
+
+    var dgconsumos = $('#dg_consumo').datagrid({
+        singleSelect: false,
+        collapsible: true,
+        //pagination: true,
+        //clientPaging: true,
+        rownumbers: true,
+        checkOnSelect: true,
+        selectOnCheck: true,
+        nowrap: false,
+        fitColumns: true,
+        remoteFilter: true,
+        method: 'post',
+        title: 'Detalle de Consumo por Usuario y Conexion',
+        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
+    });
+
+    dgconsumos.datagrid('enableFilter', []);
+    dgconsumos.datagrid('load', 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8');
+
+</script>
+
+<script type="text/javascript" src="reportesAdministracion.js"></script>
 
 
-<style>
-    #reportesAdministracion_form .l-btn{
-        background: #009900 !important;
-        //background-image: linear-gradient(rgb(255, 152, 0) 0px, rgb(255, 152, 0) 100%) !important;
-        background-image: #009900 !important;
-
+<style type="text/css">
+    .datagrid-header-row .datagrid-cell{
+        line-height:normal;
+        height:auto;
+        white-space:normal;
     }
 </style>
-
 
 <div class="container-fluid" id="reportesAdministracion_form" style="height: 100%;">
     <div class="row">
@@ -69,8 +90,8 @@
                                     <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker1" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser,prompt:'Fecha Inicial'" >
                                     <input class="easyui-datebox" style="color: black; text-align: center;" id="datepicker2" data-options="required:true,showSeconds:false,editable:false,formatter:myformatter,parser:myparser,prompt:'Fecha Final'" >
 
-                                    <a href="#" class="easyui-linkbutton c1" style="width:120px;color: white !Important;" onclick="loadReporteConsumidores()">Actualizar</a>
-                                    <a href="#" class="easyui-linkbutton c1" style="width:120px; color: white !Important;" onclick="openVentanaDetalle()">Detalle</a>
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px;color: black !Important;" onclick="loadReporteConsumidores()">Actualizar</a>
+                                    <a href="#" class="easyui-linkbutton c1" style="width:120px; color: black !Important;" onclick="openVentanaDetalle()">Detalle</a>
 
                                     <hr>
 
@@ -89,6 +110,54 @@
                                             }
                                         });
                                     </script>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div title="Detalle de Consumo por Sesion Usuario" data-options="iconCls:'icon-reporte-4'" 
+                     style="padding:10px; width: 100%; height: 100%;">
+
+                    <table class="easyui-datagrid"
+                           id="dg_consumo"
+                           style="width:100%; height: 100%;"
+                           data-options="
+                           singleSelect: false,
+                           collapsible: true,
+                           rownumbers: true,
+                           checkOnSelect: true,
+                           selectOnCheck: true,
+                           nowrap: false,
+                           fitColumns: true,
+                           remoteFilter: true,
+                           method: 'post',
+                           url:'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
+                           ">
+                        <thead>
+                            <tr>
+                                <th data-options="field:'ck',checkbox:true"></th>
+                                <th data-options="field:'no_usuario',width:50" align="center">No. Usuario</th>
+                                <th data-options="field:'name_us',width:50" align="center">Nombre Usuario</th>
+                                <th data-options="field:'mac_dis',width:50" align="center">MAC Dispositivo</th>
+                                <th data-options="field:'ip_add',width:50" align="center">Dirección IP</th>
+                                <th data-options="field:'up_con',width:50" align="center">Consumo Bytes Carga MB</th>
+                                <th data-options="field:'down_con',width:50" align="center">Consumo Bytes Descarga MB</th>
+                                <th data-options="field:'init_fecha',width:50" align="center">Inicio Conexión</th>
+                                <th data-options="field:'fin_fecha',width:50" align="center">Fin de Conexión</th>
+                                <th data-options="field:'time_con',width:50" align="center">Tiempo de Conexión</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <div class="container-fluid" style="height: 100%; width: 100%;">
+                        <div class="row" style="height: 100%; width: 100%;">
+                            <div class="col panel_general" style="height: 100%;">
+                                <div class="panel_reporte" style="height: 100%; color: black;">
+
 
 
                                 </div>
@@ -282,7 +351,8 @@
                                 <div class="panel_reporte" style="height: 100%; color: black;">
 
                                     <table style="width:100%; height: 100%;"
-                                           id="dg_reportes_listado_usuarios_conexion" >
+                                           id="dg_reportes_listado_usuarios_conexion" 
+                                           url='http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=0'>
                                         <thead>
                                             <tr>
                                                 <th data-options="field:'ck',checkbox:true"></th>
@@ -299,44 +369,6 @@
                     </div>
                 </div>
 
-                <div title="Detalle de Consumo por Sesion Usuario" data-options="iconCls:'icon-reporte-4'" style="padding:10px; width: 100%; height: 100%;">
-                    <style type="text/css">
-                        .datagrid-header-row .datagrid-cell{
-                            line-height:normal;
-                            height:auto;
-                            white-space:normal;
-                        }
-                    </style>
-                    <div class="container-fluid" style="height: 100%; width: 100%;">
-                        <div class="row" style="height: 100%; width: 100%;">
-                            <div class="col panel_general" style="height: 100%;">
-                                <div class="panel_reporte" style="height: 100%; color: black;">
-
-                                    <table style="width:100%; height: 100%;"
-                                           id="dg_consumo"
-                                           url="http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8"
-                                           >
-                                        <thead>
-                                            <tr>
-                                                <th data-options="field:'ck',checkbox:true"></th>
-                                                <th data-options="field:'no_usuario',width:50" align="center">No. Usuario</th>
-                                                <th data-options="field:'name_us',width:50" align="center">Nombre Usuario</th>
-                                                <th data-options="field:'init_fecha',width:50" align="center">Inicio Conexión</th>
-                                                <th data-options="field:'fin_fecha',width:50" align="center">Fin de Conexión</th>
-                                                <th data-options="field:'time_con',width:50" align="center">Tiempo de Conexión</th>
-                                                <th data-options="field:'up_con',width:50" align="center">Consumo Bytes Carga</th>
-                                                <th data-options="field:'down_con',width:50" align="center">Consumo Bytes Descarga</th>
-                                                <th data-options="field:'mac_dis',width:50" align="center">MAC Dispositivo</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>            
         </div>
     </div>

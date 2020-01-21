@@ -39,7 +39,7 @@ public class JDBC_PostgreSQL {
 
     public void setIPConexion() {
         this.ip = "172.10.1.250";
-        this.ip = "127.0.0.1";
+        //this.ip = "127.0.0.1";
     }
 
 }

@@ -348,6 +348,7 @@ public class Carrera {
                     + "join captive_carrera ON captive_carrera.id_carrera = captive_usuario.id_carrera\n"
                     + "where radacct.username = captive_usuario.carnet\n"
                     + "and  to_date(to_char(public.radacct.acctstarttime, 'YYYY/MM/DD'), 'YYYY-MM-DD')  = current_date\n"
+                    + "and public.radacct.acctstoptime is null\n"
                     + "group by captive_carrera.id_carrera; ";
 
             JDBC_PostgreSQL con = new JDBC_PostgreSQL();

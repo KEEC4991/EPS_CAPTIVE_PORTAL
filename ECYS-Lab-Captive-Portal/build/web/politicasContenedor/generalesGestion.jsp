@@ -51,7 +51,7 @@
                     <th data-options="field:'valor_descriptivo'" align="center" width="15">Valor</th>
                     <th data-options="field:'descripcion'" align="center" width="20">Descripcion</th>
                     <th data-options="field:'id_estado'" align="center" width="10">Tipo</th>
-                    <th data-options="field:'id_administrador'" align="center" width="10" hidden="true">ID Administrador</th>
+                    <th data-options="field:'id_administrador'" align="center" width="10" hidden="false">ID Administrador</th>
                     <th data-options="field:'fecha_registro'" align="center" width="10">Fecha Registro</th>
                 </tr>
             </thead>

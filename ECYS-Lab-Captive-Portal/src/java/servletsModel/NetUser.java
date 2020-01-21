@@ -312,8 +312,10 @@ public class NetUser {
                     + "acctsessiontime, "
                     + "acctoutputoctets, "
                     + "acctinputoctets, "
-                    + "callingstationid \n"
-                    + "from radacct;";
+                    + "callingstationid , "
+                    + "framedipaddress\n"
+                    + "from radacct\n"
+                    + "order by acctstarttime desc;";
             JDBC_PostgreSQL con = new JDBC_PostgreSQL();
             Connection post_con = con.get_connection();
             PreparedStatement pstate = post_con.prepareStatement(query);
@@ -333,15 +335,24 @@ public class NetUser {
                 respuesta += "\"no_usuario\":\"" + rs.getString(1) + "\",";
                 respuesta += "\"name_us\":\"" + rs.getString(2) + "\",";
                 respuesta += "\"init_fecha\":\"" + rs.getString(3) + "\",";
-                if (rs.getString(contador) != "null") {
+                if (!"null".equals(rs.getString(4))) {
                     respuesta += "\"fin_fecha\":\"" + rs.getString(4) + "\",";
                 } else {
                     respuesta += "\"fin_fecha\":\"Conectado\",";
                 }
+                
                 respuesta += "\"time_con\":\"" + rs.getString(5) + "\",";
-                respuesta += "\"up_con\":\"" + rs.getString(7) + "\",";
-                respuesta += "\"down_con\":\"" + rs.getString(6) + "\",";
-                respuesta += "\"mac_dis\":\"" + rs.getString(8) + "\"";
+                
+                double carga = Double.parseDouble(rs.getString(6)) * 1 * Math.pow(10, -6);
+                respuesta += "\"up_con\":\"" + Double.toString(carga) + "\",";
+                
+                double descarga = Double.parseDouble(rs.getString(7)) * 1 * Math.pow(10, -6);
+                respuesta += "\"down_con\":\"" + Double.toString(descarga) + "\",";
+                
+                //respuesta += "\"up_con\":\"" + rs.getString(6) + "\",";
+                //respuesta += "\"down_con\":\"" + rs.getString(7) + "\",";
+                respuesta += "\"mac_dis\":\"" + rs.getString(8) + "\",";
+                respuesta += "\"ip_add\":\"" + rs.getString(9) + "\"";
                 respuesta += "}";
 
             }

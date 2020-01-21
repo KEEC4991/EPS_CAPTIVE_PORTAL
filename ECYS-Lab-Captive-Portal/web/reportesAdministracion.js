@@ -1,48 +1,10 @@
 
 $(function () {
 
-    var dgconsumos = $('#dg_consumo').datagrid({
-        singleSelect: false,
-        collapsible: true,
-        pagination: true,
-        clientPaging: true,
-        rownumbers: true,
-        checkOnSelect: true,
-        selectOnCheck: true,
-        nowrap: false,
-        fitColumns: true,
-        method: 'post',
-        title: 'Detalle de Consumo por Usuario y Conexion',
-        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
-    });
-
-    dgconsumos.datagrid('enableFilter');
-
-    $.ajax({
-        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep',
-        data: {accion: 8},
-        success: function (data, textStatus, jqXHR) {
-            var JSONresp = JSON.parse(data);
-            dgconsumos.datagrid('loadData', JSONresp);
-        }
-    });
-
-/*
-    $.post('http://localhost:8080/ECYS-CP/admin-rep', {accion: 8}, function (respuesta) {
-        console.log(respuesta);
-        datagrid_detalle_consumo_reporte.datagrid('loadData', respuesta);
-    }, 'json');
-*/
-    /**
-     * OTRO GRID
-     */
-
     var datagrid_usuarios_conexion_reportes = $('#dg_reportes_listado_usuarios_conexion').datagrid({
-        singleSelect: false,
-        collapsible: true,
-        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=0',
         pagination: true,
         clientPaging: true,
+        singleSelect: false,
         rownumbers: true,
         checkOnSelect: true,
         selectOnCheck: true,
@@ -50,9 +12,7 @@ $(function () {
         fitColumns: true,
         method: 'post',
         title: 'Listado de Usuarios por Conexión',
-        // toolbar: '#ft_reporte2',
         rowStyler: function (index, row) {
-            //console.log(row);
             if (row.no_tipo_respuesta === "Access-Accept") {
                 return 'background-color:rgb(46, 134, 193);color:white;font-weight:bold;';
             } else {
@@ -60,11 +20,34 @@ $(function () {
             }
         }
     });
-    datagrid_usuarios_conexion_reportes.datagrid('loadData', []);
-    datagrid_usuarios_conexion_reportes.datagrid('enableFilter');
+
+    var dgconsumos = $('#dg_consumo').datagrid({
+        singleSelect: false,
+        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8',
+        rownumbers: true,
+        checkOnSelect: true,
+        selectOnCheck: true,
+        nowrap: false,
+        fitColumns: true,
+        method: 'post',
+        title: 'Detalle de Consumo por Usuario y Conexion',
+        pagination: true,
+        clientPaging: true,
+    });
+
+    //  datagrid_usuarios_conexion_reportes.datagrid('loadData', []);
+//    datagrid_usuarios_conexion_reportes.datagrid('enableFilter');
 
     $.post('http://172.10.1.100:8080/ECYS-CP/admin-rep', {accion: 1}, function (respuesta) {
         datagrid_usuarios_conexion_reportes.datagrid('loadData', respuesta);
+    }, 'json');
+
+
+//    dgconsumos.datagrid('loadData', []);
+//    dgconsumos.datagrid('enableFilter');
+
+    $.post('http://172.10.1.100:8080/ECYS-CP/admin-rep', {accion: 8}, function (respuesta) {
+        dgconsumos.datagrid('loadData', respuesta);
     }, 'json');
 
 
@@ -286,7 +269,7 @@ function openVentanaDetalle() {
         title: 'Cantidad de Consumidores de Servicio de Internet'
     });
 
-    grid_detalle.datagrid('enableFilter');
+    grid_detalle.datagrid('enableFilter', []);
 
     $('#ventana_detalle_reporte').window('open');
 }
