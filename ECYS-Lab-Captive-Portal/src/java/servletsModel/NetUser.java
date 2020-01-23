@@ -304,15 +304,14 @@ public class NetUser {
     public String getConsumoDiario() {
         try {
 
-            String query = "select "
-                    + "radacctid, "
-                    + "username, "
-                    + "acctstarttime,  "
-                    + "acctstoptime , "
-                    + "acctsessiontime, "
-                    + "acctoutputoctets, "
-                    + "acctinputoctets, "
-                    + "callingstationid , "
+            String query = "select radacctid, \n"
+                    + "username, \n"
+                    + "acctstarttime,  \n"
+                    + "acctstoptime , \n"
+                    + "CONCAT((acctsessiontime/60),' minutos') as tiempoConexion, \n"
+                    + "(CASE WHEN acctoutputoctets < 1000000 THEN CONCAT(CEILING(acctoutputoctets / 1024.0), 'KB') ELSE CONCAT(CEILING(acctoutputoctets / 1048576.0), 'MB') END) AS octetosSubida, \n"
+                    + "(CASE WHEN acctinputoctets < 1000000 THEN CONCAT(CEILING(acctinputoctets / 1024.0), 'KB') ELSE CONCAT(CEILING(acctinputoctets / 1048576.0), 'MB') END) AS octetosDescarga, \n"
+                    + "callingstationid , \n"
                     + "framedipaddress\n"
                     + "from radacct\n"
                     + "order by acctstarttime desc;";
@@ -340,15 +339,9 @@ public class NetUser {
                 } else {
                     respuesta += "\"fin_fecha\":\"Conectado\",";
                 }
-                
                 respuesta += "\"time_con\":\"" + rs.getString(5) + "\",";
-                
-                double carga = Double.parseDouble(rs.getString(6)) * 1 * Math.pow(10, -6);
-                respuesta += "\"up_con\":\"" + Double.toString(carga) + "\",";
-                
-                double descarga = Double.parseDouble(rs.getString(7)) * 1 * Math.pow(10, -6);
-                respuesta += "\"down_con\":\"" + Double.toString(descarga) + "\",";
-                
+                respuesta += "\"up_con\":\"" + rs.getString(6) + "\",";
+                respuesta += "\"down_con\":\"" + rs.getString(7) + "\",";
                 //respuesta += "\"up_con\":\"" + rs.getString(6) + "\",";
                 //respuesta += "\"down_con\":\"" + rs.getString(7) + "\",";
                 respuesta += "\"mac_dis\":\"" + rs.getString(8) + "\",";

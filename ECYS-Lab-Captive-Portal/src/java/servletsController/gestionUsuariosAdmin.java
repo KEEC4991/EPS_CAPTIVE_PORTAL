@@ -70,12 +70,14 @@ public class gestionUsuariosAdmin extends HttpServlet {
         String valores = request.getParameter("accion");
 
         try (PrintWriter out = response.getWriter()) {
+
             int accion = Integer.valueOf(valores);
+            Usuario inter_admin = new Usuario();
+
             switch (accion) {
                 case 0: {
-                    Usuario administradores = new Usuario();
                     String listado;
-                    listado = administradores.get_usuarios_admin();
+                    listado = inter_admin.get_usuarios_admin();
                     out.print(listado);
                     break;
                 }
@@ -83,19 +85,16 @@ public class gestionUsuariosAdmin extends HttpServlet {
                     break;
                 }
                 case 3: {
-                    Usuario tipos_administrador = new Usuario();
-                    String respuesta = tipos_administrador.get_tipos_usuarios_admin();
+                    String respuesta = inter_admin.get_tipos_usuarios_admin();
                     out.print(respuesta);
                     break;
                 }
                 case 4: {
-                    Usuario tipos_administrador = new Usuario();
-                    String respuesta = tipos_administrador.get_tipos_estado_usuarios_admin();
+                    String respuesta = inter_admin.get_tipos_estado_usuarios_admin();
                     out.print(respuesta);
                     break;
                 }
                 case 5: {
-                    Usuario inter_admin = new Usuario();
                     String param_nombre = request.getParameter("nombre");
                     String param_correo = request.getParameter("correo");
                     String param_descrip = request.getParameter("descrip");
@@ -107,31 +106,35 @@ public class gestionUsuariosAdmin extends HttpServlet {
                     break;
                 }
                 case 6: {
-                    Usuario inter_admin = new Usuario();
                     String param_id_usuario = request.getParameter("id_usuario");
                     String respuesta = inter_admin.eliminar_usuario_admin(param_id_usuario);
                     out.print(respuesta);
                     break;
                 }
                 case 7: {
-                    Usuario usuario_admin = new Usuario();
                     String param_id_usuario = request.getParameter("id_usuario");
                     String param_id_estado = request.getParameter("id_estado");
-                    String respuesta = usuario_admin.cambiar_estado_usuario_admin(param_id_usuario, param_id_estado);
+                    String respuesta = inter_admin.cambiar_estado_usuario_admin(param_id_usuario, param_id_estado);
                     out.print(respuesta);
                     break;
                 }
                 case 8: {
-                    Usuario usuario_admin = new Usuario();
                     String param_id_usuario = request.getParameter("id_usuario");
                     String param_id_estado = request.getParameter("id_tipo_usuario");
-                    String respuesta = usuario_admin.cambiar_tipo_usuario_admin(param_id_usuario, param_id_estado);
+                    String respuesta = inter_admin.cambiar_tipo_usuario_admin(param_id_usuario, param_id_estado);
                     out.print(respuesta);
                     break;
                 }
-                case 9:{
+                case 9: {
                     NetUser usuarios_red = new NetUser();
                     out.println(usuarios_red.getNetUsers());
+                    break;
+                }
+                case 10: {
+                    String param_id_usuario = request.getParameter("id_usuario");
+                    String param_no_carnet = request.getParameter("no_carnet");
+                    String respuestas = "[" + inter_admin.delete_net_user(param_id_usuario) + "," + inter_admin.delete_net_user_from_radius(param_no_carnet) + "]";
+                    out.println(respuestas);
                     break;
                 }
             }

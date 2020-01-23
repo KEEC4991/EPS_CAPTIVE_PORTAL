@@ -1,4 +1,5 @@
 $(function () {
+
     var data_administradores = $('#dg_usuarios_administrativos').datagrid({
         singleSelect: true,
         collapsible: true,
@@ -8,7 +9,7 @@ $(function () {
         checkOnSelect: true,
         selectOnCheck: true,
         rownumbers: true,
-        fitColumns:true,
+        fitColumns: true,
         nowrap: false,
         method: 'get',
         toolbar: '#ft1',
@@ -26,16 +27,54 @@ $(function () {
         selectOnCheck: true,
         rownumbers: true,
         nowrap: false,
-        fitColumns:true,
+        fitColumns: true,
         toolbar: '#ft2',
         title: 'Listado de Usuarios de la Red',
-        url : 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=9',
-        method : 'get'
+        url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=9',
+        method: 'get'
     });
 
     data_administradores.datagrid('enableFilter');
 
 });
+
+function eliminarUsuarioRed() {
+
+    var usuarioRed = $('#dg_usuarios_red_gestion').datagrid('getSelected');
+    if (usuarioRed) {
+
+
+        $.messager.alert({
+            title: 'Confirmación de eliminación',
+            msg: '<p style="text-weight:bold; text-align:center;">Presione "OK" si desea eliminar el usuario o cierre esta ventana si desea cancelar la eliminación!</p>',
+            icon: 'info',
+            fn: function () {
+                $.ajax({
+                    url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=10',
+                    data: {id_usuario: usuarioRed.id_usuario, no_carnet: usuarioRed.carnet},
+                    success: function (data, textStatus, jqXHR) {
+                        try {
+
+                            var resultado_eliminacion = JSON.parse(data);
+                            if (resultado_eliminacion[0].resultado === "1" && resultado_eliminacion[1].resultado === "1") {
+                                $('#dg_usuarios_red_gestion').datagrid('reload');
+                                $.messager.alert('Eliminacion de Usuario', '<p style="text-align:center;">Se eliminó exitosamente al usuario de la red <br><b>El usuario tendrá que registrarse nuevamente en el siguiente intento de acceso a la red.</b>.</p>', 'info');
+                            } else {
+                                $.messager.alert('Error', 'Error en registro de eliminación, por favor comunicarse con el administrador del sistema.', 'error');
+                            }
+
+                        } catch (e) {
+                            $.messager.alert('Error', 'Error en la respuesta del servidor.', 'error');
+                        }
+                    }
+                });
+            }
+        });
+    } else {
+        $.messager.alert('Error', 'Debe seleccionar un usuario para eliminar.', 'warning');
+    }
+
+}
 
 function reiniciarTablaUsuariosAdmin() {
     $('#dg_usuarios_administrativos').datagrid('loadData', []);

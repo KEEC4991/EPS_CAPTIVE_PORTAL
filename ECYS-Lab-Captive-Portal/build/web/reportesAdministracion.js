@@ -23,7 +23,6 @@ $(function () {
 
     var dgconsumos = $('#dg_consumo').datagrid({
         singleSelect: false,
-        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8',
         rownumbers: true,
         checkOnSelect: true,
         selectOnCheck: true,
@@ -35,21 +34,28 @@ $(function () {
         clientPaging: true,
     });
 
-    //  datagrid_usuarios_conexion_reportes.datagrid('loadData', []);
-//    datagrid_usuarios_conexion_reportes.datagrid('enableFilter');
-
+    datagrid_usuarios_conexion_reportes.datagrid('loadData', []);
+    datagrid_usuarios_conexion_reportes.datagrid('enableFilter',[]);
+    
     $.post('http://172.10.1.100:8080/ECYS-CP/admin-rep', {accion: 1}, function (respuesta) {
         datagrid_usuarios_conexion_reportes.datagrid('loadData', respuesta);
     }, 'json');
 
-
-//    dgconsumos.datagrid('loadData', []);
-//    dgconsumos.datagrid('enableFilter');
-
-    $.post('http://172.10.1.100:8080/ECYS-CP/admin-rep', {accion: 8}, function (respuesta) {
-        dgconsumos.datagrid('loadData', respuesta);
-    }, 'json');
-
+    dgconsumos.datagrid('loadData', []);
+    dgconsumos.datagrid('enableFilter', []);
+    $.ajax({
+        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep',
+        data: {
+            accion: 8
+        },
+        success: function (data, textStatus, jqXHR) {
+            var JSon_S = JSON.parse(data);
+            dgconsumos.datagrid('loadData', JSon_S);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
 
 });
 

@@ -87,8 +87,8 @@
                                     </thead>
                                 </table>
                                 <div id="ft2" style="padding:2px 5px;">
-                                    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
-                                    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+                                    <!--a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a-->
+                                    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="eliminarUsuarioRed()"></a>
                                 </div>
                             </div>
                         </div>

@@ -133,6 +133,44 @@ public class Usuario {
         }
     }
 
+    public String delete_net_user_from_radius(String id_net_user) {
+
+        try {
+            String query = "delete from radcheck where username='" + id_net_user + "';";
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            int valor_retorno = pstate.executeUpdate();
+            
+            System.out.println(query);
+
+            post_con.close();
+            return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Registro realizado con exito.\" }";
+        } catch (Exception e) {
+            return "{ \"resultado\": false, \"mensaje\": \"Error al realizar el registro.\" }";
+        }
+
+    }
+
+    public String delete_net_user(String id_user_net) {
+
+        try {
+            String query = "DELETE FROM captive_usuario where id_usuario=" + id_user_net + ";";
+            JDBC_PostgreSQL con = new JDBC_PostgreSQL();
+            Connection post_con = con.get_connection();
+            PreparedStatement pstate = post_con.prepareStatement(query);
+            int valor_retorno = pstate.executeUpdate();
+
+            System.out.println(query);
+            
+            post_con.close();
+            return "{ \"resultado\": \"" + valor_retorno + "\", \"mensaje\": \"Registro realizado con exito.\" }";
+        } catch (Exception e) {
+            return "{ \"resultado\": false, \"mensaje\": \"Error al realizar el registro.\" }";
+        }
+
+    }
+
     public String registrar_usuario_admin(String nombre, String correo, String tipo_usuario, String estado, String descripcion, String passwd) {
         try {
             String query = "INSERT INTO public.captive_administrador(\n"
