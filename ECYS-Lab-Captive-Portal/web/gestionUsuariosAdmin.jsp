@@ -69,7 +69,14 @@
                             <div class="col panel_reporte" style="height: 100%; width: 100%;"  align='center'>
                                 <table style="width:100%; height: 100%;"
                                        id="dg_usuarios_red_gestion"
-                                       data-options="fitColumns:true"
+                                       data-options="
+                                       fitColumns:true,
+                                       pagination:true,
+                                       onDropColumn: function(){
+                                            $(this).datagrid('clientPaging')
+                                            $(this).datagrid('reaload');
+                                       },
+                                       pageSize:10"
                                        >
                                     <thead>
                                         <tr>

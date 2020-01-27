@@ -56,7 +56,7 @@ public class Politica {
             String respuesta = "";
 
             query = "UPDATE public.captive_politicas\n"
-                    + "SET valor_descriptivo = 'NA' \n"
+                    + "SET valor_descriptivo = '' \n"
                     + "WHERE id_politica = " + id_politica + ";";
 
             JDBC_PostgreSQL con = new JDBC_PostgreSQL();
@@ -108,8 +108,9 @@ public class Politica {
 
     public String listadoPoliticas() {
         try {
-            String query = "select id_politica, nombre_politica, valor_descriptivo, public.captive_politicas.descripcion, public.captive_estado.descripcion, id_administrador, fecha_registro from public.captive_politicas\n"
-                    + "join public.captive_estado on captive_estado.id_estado = captive_politicas.id_estado;";
+            String query = "select id_politica, nombre_politica, valor_descriptivo, public.captive_politicas.descripcion, public.captive_estado.descripcion, id_administrador, fecha_registro, valor_sistema, tipo_case_coontrolador from public.captive_politicas\n"
+                    + "join public.captive_estado on captive_estado.id_estado = captive_politicas.id_estado "
+                    + "order by id_politica asc;";
             String respuesta = "";
 
             JDBC_PostgreSQL con = new JDBC_PostgreSQL();
@@ -133,6 +134,8 @@ public class Politica {
                         + "\n\"descripcion\":\"" + rs.getString(4) + "\",\n"
                         + "\n\"id_estado\":\"" + rs.getString(5) + "\",\n"
                         + "\n\"id_administrador\":\"" + rs.getString(6) + "\",\n"
+                        + "\n\"valor_sistema\":\"" + rs.getString(8) + "\",\n"
+                        + "\n\"tipo_case\":\"" + rs.getString(9) + "\",\n"
                         + "\"fecha_registro\":\"" + rs.getString(7) + "\"\n"
                         + "}";
             }

@@ -31,7 +31,7 @@ $(function () {
         method: 'post',
         title: 'Detalle de Consumo por Usuario y Conexion',
         pagination: true,
-        clientPaging: true,
+        clientPaging: true
     });
 
     datagrid_usuarios_conexion_reportes.datagrid('loadData', []);

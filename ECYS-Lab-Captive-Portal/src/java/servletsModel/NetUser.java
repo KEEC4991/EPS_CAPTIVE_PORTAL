@@ -315,6 +315,9 @@ public class NetUser {
                     + "framedipaddress\n"
                     + "from radacct\n"
                     + "order by acctstarttime desc;";
+            
+            System.out.println(query);
+            
             JDBC_PostgreSQL con = new JDBC_PostgreSQL();
             Connection post_con = con.get_connection();
             PreparedStatement pstate = post_con.prepareStatement(query);
@@ -331,9 +334,9 @@ public class NetUser {
                 }
 
                 respuesta += "{";
-                respuesta += "\"no_usuario\":\"" + rs.getString(1) + "\",";
-                respuesta += "\"name_us\":\"" + rs.getString(2) + "\",";
-                respuesta += "\"init_fecha\":\"" + rs.getString(3) + "\",";
+                respuesta += "\"no_usuario\":\"" + rs.getString(1).trim() + "\",";
+                respuesta += "\"name_us\":\"" + rs.getString(2).replace("\n", "") + "\",";
+                respuesta += "\"init_fecha\":\"" + rs.getString(3).replace("\n", "") + "\",";
                 if (!"null".equals(rs.getString(4))) {
                     respuesta += "\"fin_fecha\":\"" + rs.getString(4) + "\",";
                 } else {
@@ -344,8 +347,12 @@ public class NetUser {
                 respuesta += "\"down_con\":\"" + rs.getString(7) + "\",";
                 //respuesta += "\"up_con\":\"" + rs.getString(6) + "\",";
                 //respuesta += "\"down_con\":\"" + rs.getString(7) + "\",";
-                respuesta += "\"mac_dis\":\"" + rs.getString(8) + "\",";
-                respuesta += "\"ip_add\":\"" + rs.getString(9) + "\"";
+                respuesta += "\"mac_dis\":\"" + rs.getString(8).replace("\n", "") + "\",";
+                if (rs.getString(9) != null) {
+                    respuesta += "\"ip_add\":\"" + rs.getString(9) + "\"";
+                } else {
+                    respuesta += "\"ip_add\":\"SIN IP\"";
+                }
                 respuesta += "}";
 
             }
@@ -355,6 +362,7 @@ public class NetUser {
             return respuesta;
 
         } catch (Exception e) {
+            System.out.println(e.getCause());
             return "['con errores'" + e.getMessage() + "]";
         }
     }

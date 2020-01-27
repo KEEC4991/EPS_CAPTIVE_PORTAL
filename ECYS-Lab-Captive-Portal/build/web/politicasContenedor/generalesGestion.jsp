@@ -46,11 +46,11 @@
             <thead>
                 <tr>
                     <th data-options="field:'ck',checkbox:true" ></th>
-                    <th data-options="field:'id_politica'," align="center" width="10">ID Politica</th>
-                    <th data-options="field:'nombre_politica'" align="left" width="20">Nombre Politica</th>
+                    <th data-options="field:'id_politica'," align="center" width="6">ID Politica</th>
+                    <th data-options="field:'nombre_politica'" align="center" width="15">Nombre Politica</th>
                     <th data-options="field:'valor_descriptivo'" align="center" width="15">Valor</th>
-                    <th data-options="field:'descripcion'" align="center" width="20">Descripcion</th>
-                    <th data-options="field:'id_estado'" align="center" width="10">Tipo</th>
+                    <th data-options="field:'descripcion'" align="center" width="25">Descripcion</th>
+                    <th data-options="field:'id_estado'" align="center" width="7">Tipo</th>
                     <th data-options="field:'id_administrador'" align="center" width="10" hidden="false">ID Administrador</th>
                     <th data-options="field:'fecha_registro'" align="center" width="10">Fecha Registro</th>
                 </tr>
@@ -70,7 +70,7 @@
 <div class="easyui-window" id='window_new_politica1' title='Habilitacion de Politica' 
      data-options="modal:true,closed:true,iconCls:'icon-add',onClose: function(){ $('#form_new_policy').form('reset'); }" style="width: 25%; height: content-box;" align='left'>
 
-    <form id='form_new_policy1' class="container" align="left" style="color: white !important;">
+    <form id='form_new_policy1' class="container" align="center" style="color: white !important;">
         <style>
             .form-check, label {
                 color: #006666 !Important;
@@ -80,7 +80,7 @@
         <input id="policy_valor_registro_numero" class="easyui-textbox" 
                prompt="Ingrese un valor de acuerdo al tipo de pólitica." labelPosition="top" label="Valor de Asignacion/Descriptivo:" 
                data-options="type:'number'"
-               style="width: 100%; display: none;"
+               style="width: 60%; display: none;"
                />
         <br>
         <hr>
@@ -94,7 +94,7 @@
 <div class="easyui-window" id='window_new_politica2' title='Habilitacion de Politica' 
      data-options="modal:true,closed:true,iconCls:'icon-add',onClose: function(){ $('#form_new_policy').form('reset'); }" style="width: 25%; height: content-box;" align='left'>
 
-    <form id='form_new_policy2' class="container" align="left" style="color: white !important;">
+    <form id='form_new_policy2' class="container" align="center" style="color: white !important;" >
         <style>
             .form-check, label {
                 color: #006666 !Important;
@@ -104,7 +104,7 @@
         <input id="policy_valor_registro_texto" class="easyui-textbox" 
                prompt="Ingrese un valor de acuerdo al tipo de pólitica." labelPosition="top" label="Valor de Asignacion/Descriptivo:" 
                data-options="type:'text'"
-               style="width: 100%; display: none;"
+               style="width: 60%; display: none;"
                />
         <br>
         <hr>

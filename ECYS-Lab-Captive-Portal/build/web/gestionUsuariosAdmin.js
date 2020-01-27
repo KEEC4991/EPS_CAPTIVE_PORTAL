@@ -31,10 +31,15 @@ $(function () {
         toolbar: '#ft2',
         title: 'Listado de Usuarios de la Red',
         url: 'http://172.10.1.100:8080/ECYS-CP/get-user?accion=9',
-        method: 'get'
+        method: 'get',
+        onDropColumn: function(){
+                    $(this).datagrid('clientPaging')
+                    $(this).datagrid('reload');
+                }
     });
 
-    data_administradores.datagrid('enableFilter');
+    datagrid_red.datagrid('enableFilter');
+    datagrid_red.datagrid('load','http://172.10.1.100:8080/ECYS-CP/get-user?accion=9')
 
 });
 

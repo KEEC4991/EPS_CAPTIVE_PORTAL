@@ -19,15 +19,18 @@ function windowNuevaPolitica() {
     } else {
         $.messager.alert('Error', 'Debe seleccionar una politica administrativa.', 'warning');
     }
-
 }
 
 function deshabilitarPolitica() {
 
-
     var seleccionado = $('#dg_politicas_administracion').datagrid('getSelected');
 
     if (seleccionado) {
+
+        var accion = seleccionado.tipo_case;
+        var valor = "";
+
+
         $.messager.confirm({
             title: 'Deshabilitar Politica',
             msg: '<p style="text-align:center;"><b>Desea deshabilitar la politica seleccionada?? </b><br>El valor de la politica será asignado como NA.</p>',
@@ -35,21 +38,45 @@ function deshabilitarPolitica() {
                 if (r) {
 
                     $.ajax({
-                        url: 'http://172.10.1.100:8080/ECYS-CP/pol-cap?accion=5',
-                        data: {id_politica: seleccionado.id_politica},
+                        url: 'http://172.10.1.100/',
+                        type: 'GET',
+                        data: {accion: accion, valor: valor},
                         success: function (data, textStatus, jqXHR) {
                             try {
-                                var objetoResultado = JSON.parse(data);
-                                if (objetoResultado.resultado === "1") {
-                                    $.messager.alert('Deshabilitar politica', 'Politica deshabilitada.', 'info');
-                                    $('#dg_politicas_administracion').datagrid('reload');
+                                var ResultadoJson = JSON.parse(data);
+
+                                if (ResultadoJson.message === "ok") {
+
+                                    $.ajax({
+                                        url: 'http://172.10.1.100:8080/ECYS-CP/pol-cap?accion=5',
+                                        data: {id_politica: seleccionado.id_politica},
+                                        success: function (data, textStatus, jqXHR) {
+                                            try {
+                                                var objetoResultado = JSON.parse(data);
+                                                if (objetoResultado.resultado === "1") {
+                                                    $.messager.alert('Deshabilitar politica', 'Politica deshabilitada.', 'info');
+                                                    $('#dg_politicas_administracion').datagrid('reload');
+                                                } else {
+                                                    $.messager.alert('Error', 'Problemas al desactivar la pólitica.', 'error');
+                                                }
+
+                                            } catch (e) {
+                                                $.messager.alert('Error', 'Problemas al registrar la desactivación de la politica. Error de servidor.', 'error');
+                                            }
+                                        }
+                                    });
+
                                 } else {
-                                    $.messager.alert('Error', 'Problemas al desactivar la pólitica.', 'error');
+                                    $.messager.alert('Error', 'No fue posible registrar la desactivación de la política.', 'warning');
                                 }
 
                             } catch (e) {
-                                $.messager.alert('Error', 'Problemas al registrar la desactivación de la politica. Error de servidor.', 'error');
+                                $.messager.alert('Error', 'Problemas al registrar la desactivación de la politica. Error de servidor firewall.', 'error');
                             }
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            $.messager.alert('Error', 'Problemas al registrar la desactivación de la politica. Error de servidor firewall.', 'error');
                         }
                     });
 
@@ -73,23 +100,53 @@ function savePolicy() {
     }
 
     if (valorRegistro !== "") {
+
+        var seleccionado = $('#dg_politicas_administracion').datagrid('getSelected');
+        var valor = valorRegistro;
+        var accion = seleccionado.tipo_case;
+
         $.ajax({
-            url: 'http://172.10.1.100:8080/ECYS-CP/pol-cap',
-            data: {accion: 4, id_politica: seleccionado.id_politica, valor_politica: valorRegistro},
+            url: 'http://172.10.1.100/',
+            type: 'GET',
+            data: {accion: accion, valor: valor},
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
-                var objetoResultado = JSON.parse(data);
-                if (objetoResultado.resultado === "1") {
-                    $.messager.alert('Valor de  politica', 'Valor registrado exitosamente.', 'info');
-                    $('#dg_politicas_administracion').datagrid('reload');
-                    $('#window_new_politica1').window('close');
-                    $('#window_new_politica2').window('close');
-                } else {
-                    $.messager.alert('Error', 'Problemas al registrar el valor de la politica.', 'error');
+                try {
+                    var ResultadoJson = JSON.parse(data);
+
+                    if (ResultadoJson.message === "ok") {
+
+                        $.ajax({
+                            url: 'http://172.10.1.100:8080/ECYS-CP/pol-cap',
+                            data: {accion: 4, id_politica: seleccionado.id_politica, valor_politica: valorRegistro},
+                            success: function (data, textStatus, jqXHR) {
+                                console.log(data);
+                                var objetoResultado = JSON.parse(data);
+                                if (objetoResultado.resultado === "1") {
+                                    $.messager.alert('Valor de  politica', 'Valor registrado exitosamente.', 'info');
+                                    $('#dg_politicas_administracion').datagrid('reload');
+                                    $('#window_new_politica1').window('close');
+                                    $('#window_new_politica2').window('close');
+                                } else {
+                                    $.messager.alert('Error', 'Problemas al registrar el valor de la politica.', 'error');
+                                }
+                            }
+                        });
+
+                    } else {
+                        $.messager.alert('Error', 'No fue posible registrar la desactivación de la política.', 'warning');
+                    }
+
+                } catch (e) {
+                    $.messager.alert('Error', 'Problemas al registrar la desactivación de la politica. Error de servidor firewall.', 'error');
                 }
-                
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $.messager.alert('Error', 'Problemas al registrar la desactivación de la politica. Error de servidor firewall.', 'error');
             }
         });
+
+
     }
 
     /*

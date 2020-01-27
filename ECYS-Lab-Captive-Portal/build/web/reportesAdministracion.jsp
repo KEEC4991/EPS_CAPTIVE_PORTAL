@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-detailview.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
-
+<script type="text/javascript" src="reportesAdministracion.js"></script>
 
 <script>
     $(function () {
@@ -30,25 +30,30 @@
         $("#datepicker5").datepicker("setDate", currentDate);
     });
 
-    var dgconsumos = $('#dg_consumo').datagrid({
-        singleSelect: false,
-        collapsible: true,
-        //pagination: true,
-        //clientPaging: true,
-        rownumbers: true,
-        checkOnSelect: true,
-        selectOnCheck: true,
-        nowrap: false,
-        fitColumns: true,
-        remoteFilter: true,
-        method: 'post',
-        title: 'Detalle de Consumo por Usuario y Conexion',
-        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
+    $('#acordeon_reportes').accordion({
+        animated: false
     });
 
-    dgconsumos.datagrid('enableFilter', []);
-    dgconsumos.datagrid('load', 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8');
-
+    /*
+     var dgconsumos = $('#dg_consumo').datagrid({
+     singleSelect: false,
+     collapsible: true,
+     //pagination: true,
+     //clientPaging: true,
+     rownumbers: true,
+     checkOnSelect: true,
+     selectOnCheck: true,
+     nowrap: false,
+     fitColumns: true,
+     remoteFilter: true,
+     method: 'post',
+     title: 'Detalle de Consumo por Usuario y Conexion',
+     url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
+     });
+     
+     dgconsumos.datagrid('enableFilter', []);
+     dgconsumos.datagrid('load', 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8');
+     */
 </script>
 
 <script type="text/javascript" src="reportesAdministracion.js"></script>
@@ -93,8 +98,6 @@
                                     <a href="#" class="easyui-linkbutton c1" style="width:120px;color: black !Important;" onclick="loadReporteConsumidores()">Actualizar</a>
                                     <a href="#" class="easyui-linkbutton c1" style="width:120px; color: black !Important;" onclick="openVentanaDetalle()">Detalle</a>
 
-                                    <hr>
-
                                     <!--div style="height: 85%;"-->
                                     <canvas id="lineChart" style="height: 0.4vh; width: 1vh;"></canvas>
                                     <!--/div-->
@@ -125,18 +128,18 @@
                     <table class="easyui-datagrid"
                            id="dg_consumo"
                            style="width:100%; height: 100%;"
+                           pagination="true"
+                           clientPaging="true"
+                           url="http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8"
                            data-options="
-                           singleSelect: false,
-                           collapsible: true,
-                           rownumbers: true,
-                           checkOnSelect: true,
-                           selectOnCheck: true,
-                           nowrap: false,
-                           fitColumns: true,
-                           remoteFilter: true,
-                           method: 'post',
-                           url:'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
-                           ">
+                           fitColumns:true,
+                           pagination:true,
+                           onDropColumn: function(){
+                            $(this).datagrid('clientPaging');
+                            $(this).datagrid('reaload');
+                           },
+                           pageSize:10"
+                           >
                         <thead>
                             <tr>
                                 <th data-options="field:'ck',checkbox:true"></th>
@@ -152,18 +155,6 @@
                             </tr>
                         </thead>
                     </table>
-
-                    <div class="container-fluid" style="height: 100%; width: 100%;">
-                        <div class="row" style="height: 100%; width: 100%;">
-                            <div class="col panel_general" style="height: 100%;">
-                                <div class="panel_reporte" style="height: 100%; color: black;">
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
@@ -344,12 +335,10 @@
                 </div>
 
                 <div title="Conexiones" data-options="iconCls:'icon-reporte-4'" style="padding:10px; width: 100%; height: 100%;">
-
                     <div class="container-fluid" style="height: 100%; width: 100%;">
                         <div class="row" style="height: 100%; width: 100%;">
                             <div class="col panel_general" style="height: 100%;">
                                 <div class="panel_reporte" style="height: 100%; color: black;">
-
                                     <table style="width:100%; height: 100%;"
                                            id="dg_reportes_listado_usuarios_conexion" 
                                            url='http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=0'>
@@ -368,7 +357,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>            
         </div>
     </div>

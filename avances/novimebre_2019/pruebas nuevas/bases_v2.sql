@@ -337,11 +337,12 @@ ALTER TABLE ONLY public.captive_usuario ALTER COLUMN id_usuario SET DEFAULT next
 -- Data for Name: captive_administrador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+/*
 COPY public.captive_administrador (id_usuario, nombre_usuario, correo_electronico, usuario_descripcion, passwd_usuario, tipo_usuario, id_estado, fecha_ultima_conexion, fecha_registro) FROM stdin;
 2	Kevin	kgmt@gmail.com	Segundo usuario administrativo	202cb962ac59075b964b07152d234b70	1	1	2019-11-16	2019-11-16
 1	KEVIN	keec.4991@gmail.com	Primer usuario administrativo	21232f297a57a5a743894a0e4a801fc3	1	1	2019-11-16	2019-11-16
 3	Kevin	k@gmail.com	Tercer usuario administrativo	250cf8b51c773f3f8dc8b4be867a9a02	2	1	2019-11-16	2019-11-16
-\.
+*/
 
 
 --
@@ -350,6 +351,7 @@ COPY public.captive_administrador (id_usuario, nombre_usuario, correo_electronic
 -- Data for Name: captive_carrera; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+/*
 COPY public.captive_carrera (id_carrera, descripcion) FROM stdin;
 1	Ingenieria Civil
 2	Ingenieria Quimica
@@ -361,7 +363,7 @@ COPY public.captive_carrera (id_carrera, descripcion) FROM stdin;
 9	Ingenieria en Ciencias y Sistemas
 13	Ingenieria Electronica
 35	Ingenieria Ambiental
-\.
+*/
 
 
 --
@@ -370,10 +372,11 @@ COPY public.captive_carrera (id_carrera, descripcion) FROM stdin;
 -- Data for Name: captive_estado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+/*
 COPY public.captive_estado (id_estado, descripcion, id_tipo_estado) FROM stdin;
 1	Habilitado	1
 2	Deshabilitado/Bloqueado	1
-\.
+*/
 
 
 --
@@ -382,9 +385,10 @@ COPY public.captive_estado (id_estado, descripcion, id_tipo_estado) FROM stdin;
 -- Data for Name: captive_tipo_estado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+/*
 COPY public.captive_tipo_estado (id_tipo_estado, descripcion) FROM stdin;
 1	Estado de usuarios administrativos
-\.
+*/
 
 
 --
@@ -393,10 +397,11 @@ COPY public.captive_tipo_estado (id_tipo_estado, descripcion) FROM stdin;
 -- Data for Name: captive_tipo_usuario_admin; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+/*
 COPY public.captive_tipo_usuario_admin (id_tipo, descripcion) FROM stdin;
 1	Master
 2	Administrativo
-\.
+*/
 
 
 --
@@ -405,11 +410,12 @@ COPY public.captive_tipo_usuario_admin (id_tipo, descripcion) FROM stdin;
 -- Data for Name: captive_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+/*
 COPY public.captive_usuario (id_usuario, id_freeradius, carnet, nombre, apellido, fecha_nac, id_carrera, correo_electronico) FROM stdin;
 1	1	201403935	Kevin	Esquivel	11/14/2019	5	k@g.com
 2	2	201403937	Kevin	Funcional 3	11/16/2019	35	keec.4991@gmail.com
 3	3	201403936	Kevin	Funcional 2	11/02/2019	35	k@gmail.com
-\.
+*/
 
 
 --

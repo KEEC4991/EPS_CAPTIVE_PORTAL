@@ -115,6 +115,10 @@ public class reportesAdministracionController extends HttpServlet {
                     out.println(net_cons.getConsumoDiario());
                     break;
                 }
+                case 9:{
+                    
+                    break;
+                }
                 default: {
                     out.println("no funciona");
                     break;

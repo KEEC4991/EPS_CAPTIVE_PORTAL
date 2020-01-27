@@ -48,6 +48,10 @@
         <servlet-name>PoliticasCaptivo</servlet-name>
         <servlet-class>servletsController.politicasAdministracionController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Cliente</servlet-name>
+        <jsp-file>/captive/iniciocliente.php</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>PoliticasCaptivo</servlet-name>
         <url-pattern>/pol-cap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cliente</servlet-name>
+        <url-pattern>/cliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
