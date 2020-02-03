@@ -76,6 +76,7 @@ public class reportesAdministracionController extends HttpServlet {
 
             switch (accion) {
                 case 0: {
+                    out.println(new NetUser().getConnectionHistory());
                     break;
                 }
                 case 1: {
@@ -111,12 +112,12 @@ public class reportesAdministracionController extends HttpServlet {
                     out.println(post_car.getDashboardConcurrenciaCarreras());
                     break;
                 }
-                case 8:{
+                case 8: {
                     out.println(net_cons.getConsumoDiario());
                     break;
                 }
-                case 9:{
-                    
+                case 9: {
+
                     break;
                 }
                 default: {

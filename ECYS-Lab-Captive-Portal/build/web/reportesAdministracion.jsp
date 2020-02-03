@@ -13,6 +13,7 @@
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-detailview.js"></script>
 <script type="text/javascript" src="js/easyui/datagrid-filter.js"></script>
+
 <script type="text/javascript" src="reportesAdministracion.js"></script>
 
 <script>
@@ -31,33 +32,10 @@
     });
 
     $('#acordeon_reportes').accordion({
-        animated: false
+        animated: true
     });
 
-    /*
-     var dgconsumos = $('#dg_consumo').datagrid({
-     singleSelect: false,
-     collapsible: true,
-     //pagination: true,
-     //clientPaging: true,
-     rownumbers: true,
-     checkOnSelect: true,
-     selectOnCheck: true,
-     nowrap: false,
-     fitColumns: true,
-     remoteFilter: true,
-     method: 'post',
-     title: 'Detalle de Consumo por Usuario y Conexion',
-     url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
-     });
-     
-     dgconsumos.datagrid('enableFilter', []);
-     dgconsumos.datagrid('load', 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8');
-     */
 </script>
-
-<script type="text/javascript" src="reportesAdministracion.js"></script>
-
 
 <style type="text/css">
     .datagrid-header-row .datagrid-cell{
@@ -98,9 +76,7 @@
                                     <a href="#" class="easyui-linkbutton c1" style="width:120px;color: black !Important;" onclick="loadReporteConsumidores()">Actualizar</a>
                                     <a href="#" class="easyui-linkbutton c1" style="width:120px; color: black !Important;" onclick="openVentanaDetalle()">Detalle</a>
 
-                                    <!--div style="height: 85%;"-->
-                                    <canvas id="lineChart" style="height: 0.4vh; width: 1vh;"></canvas>
-                                    <!--/div-->
+                                    <canvas id="lineChart" style="height: 0.3vh; width: 1vh;"></canvas>
 
                                     <script>
                                         var ctxL = document.getElementById("lineChart").getContext('2d');
@@ -125,21 +101,17 @@
                 <div title="Detalle de Consumo por Sesion Usuario" data-options="iconCls:'icon-reporte-4'" 
                      style="padding:10px; width: 100%; height: 100%;">
 
-                    <table class="easyui-datagrid"
-                           id="dg_consumo"
-                           style="width:100%; height: 100%;"
-                           pagination="true"
-                           clientPaging="true"
-                           url="http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8"
-                           data-options="
-                           fitColumns:true,
-                           pagination:true,
-                           onDropColumn: function(){
-                            $(this).datagrid('clientPaging');
-                            $(this).datagrid('reaload');
-                           },
-                           pageSize:10"
-                           >
+                    <table
+                        id="dg_consumo"
+                        style="width:100%; height: 100%;"
+                        data-options="
+                        pageSize: 10,
+                        pagination: true,
+                        clientPaging: true,
+                        method:'get',
+                        url:'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
+                        "
+                        >
                         <thead>
                             <tr>
                                 <th data-options="field:'ck',checkbox:true"></th>
@@ -341,7 +313,14 @@
                                 <div class="panel_reporte" style="height: 100%; color: black;">
                                     <table style="width:100%; height: 100%;"
                                            id="dg_reportes_listado_usuarios_conexion" 
-                                           url='http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=0'>
+                                           data-options="
+                                           pageSize: 10,
+                                           pagination: true,
+                                           clientPaging: true,
+                                           method:'post',
+                                           url:'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=1'
+                                           "
+                                           >
                                         <thead>
                                             <tr>
                                                 <th data-options="field:'ck',checkbox:true"></th>

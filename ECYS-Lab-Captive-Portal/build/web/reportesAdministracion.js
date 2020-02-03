@@ -1,63 +1,122 @@
 
 $(function () {
+    /*
+     $.ajax({
+     url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep',
+     async: false,
+     data: {accion: 0},
+     success: function (data, textStatus, jqXHR) {
+     
+     console.log(RES);
+     var RES = JSON.parse(data);
+     
+     var datagrid_usuarios_conexion_reportes = $('#dg_reportes_listado_usuarios_conexion').datagrid({
+     pagination: true,
+     clientPaging: true,
+     singleSelect: false,
+     rownumbers: true,
+     checkOnSelect: true,
+     selectOnCheck: true,
+     nowrap: false,
+     fitColumns: true,
+     method: 'get',
+     title: 'Listado de Usuarios por Conexión',
+     data: RES,
+     //        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=1',
+     
+     });
+     
+     }
+     });
+     
+     
+     
+     var resultados_s;
+     $.ajax({
+     url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep',
+     data: {accion: 8},
+     async: true,
+     success: function (data, textStatus, jqXHR) {
+     resultados_s = data;
+     },
+     complete: function (jqXHR, textStatus) {
+     var RES = JSON.parse(resultados_s);
+     
+     }
+     });
+     */
 
-    var datagrid_usuarios_conexion_reportes = $('#dg_reportes_listado_usuarios_conexion').datagrid({
-        pagination: true,
-        clientPaging: true,
+    /*
+     $.ajax({
+     url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep',
+     data: {accion: 8},
+     type: 'GET',
+     success: function (data, textStatus, jqXHR) {
+     var RES = JSON.parse(data);
+     var dgconsumos = $('#dg_consumo').datagrid({
+     singleSelect: false,
+     rownumbers: true,
+     nowrap: false,
+     fitColumns: true,
+     method: 'GET',
+     title: 'Detalle de Consumo por Usuario y Conexion',
+     data: RES,
+     onDropColumn: function () {
+     $(this).datagrid('clientPaging')
+     $(this).datagrid('loadData', RES);
+     }
+     });
+     }
+     })
+     */
+
+
+    var dgconsumos = $('#dg_reportes_listado_usuarios_conexion').datagrid({
         singleSelect: false,
         rownumbers: true,
-        checkOnSelect: true,
-        selectOnCheck: true,
         nowrap: false,
         fitColumns: true,
-        method: 'post',
-        title: 'Listado de Usuarios por Conexión',
+        method: 'POST',
+        pageSize: 10,
+        clientPaging: true,
+        pagination: true,
+        onDropColumn: function () {
+            $(this).datagrid('clientPaging')
+        },
         rowStyler: function (index, row) {
             if (row.no_tipo_respuesta === "Access-Accept") {
                 return 'background-color:rgb(46, 134, 193);color:white;font-weight:bold;';
             } else {
                 return 'background-color:rgb(203, 67, 53);color:white;font-weight:bold;';
             }
-        }
+        },
+        title: 'Detalle de Conexiones',
+        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=1'
     });
+
+    dgconsumos.datagrid('enableFilter');
+
 
     var dgconsumos = $('#dg_consumo').datagrid({
         singleSelect: false,
         rownumbers: true,
-        checkOnSelect: true,
-        selectOnCheck: true,
         nowrap: false,
         fitColumns: true,
-        method: 'post',
-        title: 'Detalle de Consumo por Usuario y Conexion',
+        method: 'GET',
+        pageSize: 10,
+        clientPaging: true,
         pagination: true,
-        clientPaging: true
+        onDropColumn: function () {
+            $(this).datagrid('clientPaging')
+        },
+        title: 'Detalle de Consumo por Usuario y Conexion',
+        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep?accion=8'
     });
 
-    datagrid_usuarios_conexion_reportes.datagrid('loadData', []);
-    datagrid_usuarios_conexion_reportes.datagrid('enableFilter',[]);
-    
-    $.post('http://172.10.1.100:8080/ECYS-CP/admin-rep', {accion: 1}, function (respuesta) {
-        datagrid_usuarios_conexion_reportes.datagrid('loadData', respuesta);
-    }, 'json');
-
-    dgconsumos.datagrid('loadData', []);
-    dgconsumos.datagrid('enableFilter', []);
-    $.ajax({
-        url: 'http://172.10.1.100:8080/ECYS-CP/admin-rep',
-        data: {
-            accion: 8
-        },
-        success: function (data, textStatus, jqXHR) {
-            var JSon_S = JSON.parse(data);
-            dgconsumos.datagrid('loadData', JSon_S);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
+    dgconsumos.datagrid('enableFilter');
 
 });
+
 
 Date.prototype.addDays = function (days) {
     var date = new Date(this.valueOf());
