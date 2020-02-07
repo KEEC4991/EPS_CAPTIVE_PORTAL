@@ -40,7 +40,7 @@ function deshabilitarPolitica() {
                     $.ajax({
                         url: 'http://172.10.1.100/',
                         type: 'GET',
-                        data: {accion: accion, valor: valor},
+                        data: {accion: accion},
                         success: function (data, textStatus, jqXHR) {
                             try {
                                 var ResultadoJson = JSON.parse(data);
